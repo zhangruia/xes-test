@@ -1,0 +1,434 @@
+{
+	"version": "0.0.1",
+	"isEdited": false,
+	"pages": [{
+		"modelId": 2,
+		"source": {
+			"id": "20481",
+			"type": 1
+		},
+		"width": 0,
+		"height": 0,
+		"id": 0,
+		"type": 2,
+		"animationList": [],
+		"actionList": [{
+			"sourceId": 4,
+			"eventType": 10001,
+			"actions": [{
+				"targetId": null,
+				"actionType": 90001,
+				"actionProps": {
+					"order": 0
+				}
+			}]
+		}, {
+			"sourceId": 7,
+			"eventType": 10001,
+			"actions": [{
+				"targetId": null,
+				"actionType": 90001,
+				"actionProps": {
+					"order": 1
+				}
+			}]
+		}, {
+			"sourceId": 10,
+			"eventType": 10001,
+			"actions": [{
+				"targetId": null,
+				"actionType": 90001,
+				"actionProps": {
+					"order": 2
+				}
+			}]
+		}, {
+			"sourceId": 13,
+			"eventType": 10001,
+			"actions": [{
+				"targetId": null,
+				"actionType": 90001,
+				"actionProps": {
+					"order": 3
+				}
+			}]
+		}, {
+			"sourceId": 16,
+			"eventType": 10001,
+			"actions": [{
+				"targetId": null,
+				"actionType": 90003,
+				"actionProps": {}
+			}]
+		}],
+		"children": [{
+			"id": 1,
+			"name": "question_num",
+			"visible": true,
+			"type": 0,
+			"rectangle": [],
+			"transform": [],
+			"children": [],
+			"texture": {
+				"content": "互动4",
+				"type": 0,
+				"opacity": 1,
+				"style": {}
+			},
+			"edit": {
+				"layer": {
+					"lock": false,
+					"hide": false
+				},
+				"control": {
+					"permission": [1, 1, 1, 1]
+				}
+			}
+		}, {
+			"id": 2,
+			"name": "module_name",
+			"visible": true,
+			"type": 0,
+			"rectangle": [],
+			"transform": [],
+			"children": [],
+			"texture": {
+				"content": "2",
+				"type": 0,
+				"opacity": 1,
+				"style": {}
+			},
+			"edit": {
+				"layer": {
+					"lock": false,
+					"hide": false
+				},
+				"control": {
+					"permission": [1, 1, 1, 1]
+				}
+			}
+		}, {
+			"id": 3,
+			"name": "stem",
+			"visible": true,
+			"type": 0,
+			"rectangle": [],
+			"transform": [],
+			"children": [],
+			"texture": {
+				"content": "在平面直角坐标系中，把一条抛物线先向上平移3个单位长度，然后绕原点旋转$$180{}^\\circ $$得到抛物线$$y={{x}^{2}}+5x+6$$，则原抛物线的解析式是（　　）  <br>",
+				"type": 0,
+				"opacity": 1,
+				"style": {}
+			},
+			"edit": {
+				"layer": {
+					"lock": false,
+					"hide": false
+				},
+				"control": {
+					"permission": [1, 1, 1, 1]
+				}
+			}
+		}, {
+			"id": 4,
+			"name": "test_option",
+			"visible": true,
+			"type": 1,
+			"rectangle": [],
+			"transform": [],
+			"children": [{
+				"id": 5,
+				"name": "option_label",
+				"visible": true,
+				"type": 0,
+				"rectangle": [],
+				"transform": [],
+				"children": [],
+				"texture": {
+					"content": "A",
+					"type": 0,
+					"opacity": 1,
+					"style": {}
+				},
+				"edit": {
+					"layer": {
+						"lock": false,
+						"hide": false
+					},
+					"control": {
+						"permission": [1, 1, 1, 1]
+					}
+				}
+			}, {
+				"id": 6,
+				"name": "option_content",
+				"visible": true,
+				"type": 0,
+				"rectangle": [],
+				"transform": [],
+				"children": [],
+				"texture": {
+					"content": "$$y=-{{\\left( x-\\frac{5}{2} \\right)}^{2}}-\\frac{11}{4}$$  <br>",
+					"type": 0,
+					"opacity": 1,
+					"style": {}
+				},
+				"edit": {
+					"layer": {
+						"lock": false,
+						"hide": false
+					},
+					"control": {
+						"permission": [1, 1, 1, 1]
+					}
+				}
+			}],
+			"texture": {
+				"content": "",
+				"type": 0,
+				"opacity": 1,
+				"style": {}
+			},
+			"edit": {
+				"layer": {
+					"lock": false,
+					"hide": false
+				},
+				"control": {
+					"permission": [1, 1, 1, 1]
+				}
+			}
+		}, {
+			"id": 7,
+			"name": "test_option",
+			"visible": true,
+			"type": 1,
+			"rectangle": [],
+			"transform": [],
+			"children": [{
+				"id": 8,
+				"name": "option_label",
+				"visible": true,
+				"type": 0,
+				"rectangle": [],
+				"transform": [],
+				"children": [],
+				"texture": {
+					"content": "B",
+					"type": 0,
+					"opacity": 1,
+					"style": {}
+				},
+				"edit": {
+					"layer": {
+						"lock": false,
+						"hide": false
+					},
+					"control": {
+						"permission": [1, 1, 1, 1]
+					}
+				}
+			}, {
+				"id": 9,
+				"name": "option_content",
+				"visible": true,
+				"type": 0,
+				"rectangle": [],
+				"transform": [],
+				"children": [],
+				"texture": {
+					"content": "$$y=-{{\\left( x+\\frac{5}{2} \\right)}^{2}}-\\frac{11}{4}$$  <br>",
+					"type": 0,
+					"opacity": 1,
+					"style": {}
+				},
+				"edit": {
+					"layer": {
+						"lock": false,
+						"hide": false
+					},
+					"control": {
+						"permission": [1, 1, 1, 1]
+					}
+				}
+			}],
+			"texture": {
+				"content": "",
+				"type": 0,
+				"opacity": 1,
+				"style": {}
+			},
+			"edit": {
+				"layer": {
+					"lock": false,
+					"hide": false
+				},
+				"control": {
+					"permission": [1, 1, 1, 1]
+				}
+			}
+		}, {
+			"id": 10,
+			"name": "test_option",
+			"visible": true,
+			"type": 1,
+			"rectangle": [],
+			"transform": [],
+			"children": [{
+				"id": 11,
+				"name": "option_label",
+				"visible": true,
+				"type": 0,
+				"rectangle": [],
+				"transform": [],
+				"children": [],
+				"texture": {
+					"content": "C",
+					"type": 0,
+					"opacity": 1,
+					"style": {}
+				},
+				"edit": {
+					"layer": {
+						"lock": false,
+						"hide": false
+					},
+					"control": {
+						"permission": [1, 1, 1, 1]
+					}
+				}
+			}, {
+				"id": 12,
+				"name": "option_content",
+				"visible": true,
+				"type": 0,
+				"rectangle": [],
+				"transform": [],
+				"children": [],
+				"texture": {
+					"content": "$$y=-{{\\left( x-\\frac{5}{2} \\right)}^{2}}-\\frac{1}{4}$$  <br>",
+					"type": 0,
+					"opacity": 1,
+					"style": {}
+				},
+				"edit": {
+					"layer": {
+						"lock": false,
+						"hide": false
+					},
+					"control": {
+						"permission": [1, 1, 1, 1]
+					}
+				}
+			}],
+			"texture": {
+				"content": "",
+				"type": 0,
+				"opacity": 1,
+				"style": {}
+			},
+			"edit": {
+				"layer": {
+					"lock": false,
+					"hide": false
+				},
+				"control": {
+					"permission": [1, 1, 1, 1]
+				}
+			}
+		}, {
+			"id": 13,
+			"name": "test_option",
+			"visible": true,
+			"type": 1,
+			"rectangle": [],
+			"transform": [],
+			"children": [{
+				"id": 14,
+				"name": "option_label",
+				"visible": true,
+				"type": 0,
+				"rectangle": [],
+				"transform": [],
+				"children": [],
+				"texture": {
+					"content": "D",
+					"type": 0,
+					"opacity": 1,
+					"style": {}
+				},
+				"edit": {
+					"layer": {
+						"lock": false,
+						"hide": false
+					},
+					"control": {
+						"permission": [1, 1, 1, 1]
+					}
+				}
+			}, {
+				"id": 15,
+				"name": "option_content",
+				"visible": true,
+				"type": 0,
+				"rectangle": [],
+				"transform": [],
+				"children": [],
+				"texture": {
+					"content": "$$y=-{{\\left( x+\\frac{5}{2} \\right)}^{2}}+\\frac{1}{4}$$  <br>",
+					"type": 0,
+					"opacity": 1,
+					"style": {}
+				},
+				"edit": {
+					"layer": {
+						"lock": false,
+						"hide": false
+					},
+					"control": {
+						"permission": [1, 1, 1, 1]
+					}
+				}
+			}],
+			"texture": {
+				"content": "",
+				"type": 0,
+				"opacity": 1,
+				"style": {}
+			},
+			"edit": {
+				"layer": {
+					"lock": false,
+					"hide": false
+				},
+				"control": {
+					"permission": [1, 1, 1, 1]
+				}
+			}
+		}, {
+			"id": 16,
+			"name": "submit_btn",
+			"visible": true,
+			"type": 0,
+			"rectangle": [],
+			"transform": [],
+			"children": [],
+			"texture": {
+				"content": "提交",
+				"type": 0,
+				"opacity": 1,
+				"style": {}
+			},
+			"edit": {
+				"layer": {
+					"lock": false,
+					"hide": false
+				},
+				"control": {
+					"permission": [1, 1, 1, 1]
+				}
+			}
+		}]
+	}]
+}

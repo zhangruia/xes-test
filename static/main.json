@@ -1,0 +1,339 @@
+{
+  "version": "0.0.1",
+  "pages": [
+    {
+      "modelId": 76,
+      "modelType": 4,
+      "width": 1920,
+      "height": 1080,
+      "id": 1,
+      "remark": "测试备注",
+      "animationList": [
+        {
+          "sourceId": "int",
+          "eventType": "int",
+          "animations": [
+            {
+              "targetId": "int",
+              "animationType": "int"
+            }
+          ]
+        }
+      ],
+      "actionList": [
+        {
+          "sourceId": "int",
+          "eventType": "int",
+          "actions": [
+            {
+              "targetId": "int",
+              "actionType": "int",
+              "actionProps": {
+                "order": "int"
+              }
+            }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "name": "bgImg",
+          "visible": true,
+          "alpha": 1,
+          "rectangle": [
+            0,
+            0,
+            1920,
+            1080
+          ],
+          "transform": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "texture": {
+            "content": [
+              8
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "stem1",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_stem",
+          "matchItems": ["answer1"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            250
+          ],
+          "transform": [
+            300,
+            660,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "texture": {
+            "content": [
+              0
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "answer1",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_answer",
+          "matchItems": ["stem1"],
+          "rectangle": [
+            100,
+            100,
+            250,
+            250
+          ],
+          "transform": [
+            700,
+            660,
+            1,
+            1,
+            0,
+            0,
+            0,
+            110,
+            110
+          ],
+          "texture": {
+            "content": [
+              1
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "stem2",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_stem",
+          "matchItems": ["answer2"],
+          "rectangle": [
+            200,
+            200,
+            250,
+            250
+          ],
+          "transform": [
+            300,
+            660,
+            1,
+            1,
+            0,
+            0,
+            0,
+            200,
+            200
+          ],
+          "texture": {
+            "content": [
+              2
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "answer2",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_answer",
+          "matchItems": ["stem2"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            250
+          ],
+          "transform": [
+            700,
+            660,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "texture": {
+            "content": [
+              3
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "stem3",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_stem",
+          "matchItems": ["answer3"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            250
+          ],
+          "transform": [
+            300,
+            660,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "texture": {
+            "content": [
+              4
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "answer3",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_answer",
+          "matchItems": ["stem3"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            250
+          ],
+          "transform": [
+            700,
+            660,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "texture": {
+            "content": [
+              5
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "stem4",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_stem",
+          "matchItems": ["answer4"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            250
+          ],
+          "transform": [
+            300,
+            660,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "texture": {
+            "content": [
+              6
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "answer4",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_answer",
+          "matchItems": ["stem4"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            250
+          ],
+          "transform": [
+            700,
+            660,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "texture": {
+            "content": [
+              7
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "submit_btn",
+          "visible": true,
+          "alpha": 1,
+          "rectangle": [
+            0,
+            0,
+            210,
+            80
+          ],
+          "transform": [
+            1650,
+            950,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "children": [],
+          "texture": {
+            "content": [
+              7
+            ],
+            "type": "4"
+          }
+        }
+      ]
+    }
+  ]
+}
