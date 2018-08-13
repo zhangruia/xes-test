@@ -38,6 +38,7 @@
       "children": [
         {
           "name": "bgImg",
+          "conName": "Sprite",
           "visible": true,
           "alpha": 1,
           "rectangle": [
@@ -67,6 +68,7 @@
         {
           "name": "stem1",
           "visible": true,
+          "conName": "Ligature",
           "alpha": 1,
           "groupType": "ligature_stem",
           "matchItems": ["answer1"],
@@ -96,6 +98,7 @@
         },
         {
           "name": "answer1",
+          "conName": "Ligature",
           "visible": true,
           "alpha": 1,
           "groupType": "ligature_answer",
@@ -126,6 +129,7 @@
         },
         {
           "name": "stem2",
+          "conName": "Ligature",
           "visible": true,
           "alpha": 1,
           "groupType": "ligature_stem",
@@ -156,6 +160,7 @@
         },
         {
           "name": "answer2",
+          "conName": "Ligature",
           "visible": true,
           "alpha": 1,
           "groupType": "ligature_answer",
@@ -186,6 +191,7 @@
         },
         {
           "name": "stem3",
+          "conName": "Ligature",
           "visible": true,
           "alpha": 1,
           "groupType": "ligature_stem",
@@ -216,6 +222,7 @@
         },
         {
           "name": "answer3",
+          "conName": "Ligature",
           "visible": true,
           "alpha": 1,
           "groupType": "ligature_answer",
@@ -246,6 +253,7 @@
         },
         {
           "name": "stem4",
+          "conName": "Ligature",
           "visible": true,
           "alpha": 1,
           "groupType": "ligature_stem",
@@ -276,6 +284,7 @@
         },
         {
           "name": "answer4",
+          "conName": "Ligature",
           "visible": true,
           "alpha": 1,
           "groupType": "ligature_answer",
@@ -306,6 +315,7 @@
         },
         {
           "name": "submit_btn",
+          "conName": "Sprite",
           "visible": true,
           "alpha": 1,
           "rectangle": [

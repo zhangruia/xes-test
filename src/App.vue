@@ -6,6 +6,10 @@
   </div>
 </template>
 <script>
+require('xes-choice');
+require('xes_fillvacancy');
+require('xes-classification');
+require('xes-ligature');
 import {canvasStage} from 'xes_canvas_renderer';
 import { PixiExporter } from "xeditor-convertor";
 import {pageSizeFun} from "../static/preload";
