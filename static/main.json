@@ -104,8 +104,8 @@
           "groupType": "ligature_answer",
           "matchItems": ["stem1"],
           "rectangle": [
-            100,
-            100,
+            0,
+            0,
             250,
             250
           ],

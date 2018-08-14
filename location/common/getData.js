@@ -4,10 +4,8 @@ class GetData {
   constructor (json) {
     this.json = json
     this.traverse()
-    // console.log(json);
   }
   traverse () {
-    // console.log(this.json)
     let json  = this.json
     let a = []
     json.forEach(val => {
@@ -31,6 +29,7 @@ class GetData {
       // TODO: 没有children，直接计算rectangle
     }
     // const topic = eval(json.texture.type) // 主题类型
+    // console.log(json)
     juade(json)
 
   }

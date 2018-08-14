@@ -16,6 +16,7 @@ import {pageSizeFun} from "../static/preload";
 import { GetData } from '../location/index'
 import mainJson from "../static/main";
 import resourceJson from "../static/resource";
+import { ligature } from '../location/common/ligature.js'
 export default {
   name: 'App',
   components: {
@@ -28,8 +29,9 @@ export default {
     }
   },
   created(){
+    ligature(mainJson);
     this.inFun();
-    new GetData(mainJson.pages[0].children)
+    // new GetData(mainJson)
   },
   methods:{
     inFun() {
