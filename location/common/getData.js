@@ -7,6 +7,7 @@ class GetData {
     // console.log(json);
   }
   traverse () {
+    // console.log(this.json)
     let json  = this.json
     let a = []
     json.forEach(val => {

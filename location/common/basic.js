@@ -1,10 +1,10 @@
 // TODO: 题型 question
-const questionType = {
-  1: 'gap',
-  2: 'classify',
-  3: 'matching',
-  4: 'choice'
-}
+// const questionType = {
+//   1: 'gap',
+//   2: 'classify',
+//   3: 'matching',
+//   4: 'choice'
+// }
 
 const fontSize  = 16 // 文字
 const character = 10 // 字符

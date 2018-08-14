@@ -23,8 +23,8 @@ export default {
   },
   data(){
     return{
-      showPage:false,
-      rootStageObj:{}
+      showPage: false,
+      rootStageObj: {}
     }
   },
   created(){
@@ -42,7 +42,7 @@ export default {
         },
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
-          pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
+          pageSizeFun(document, window, pixi.pixiApp.stage.width, pixi.pixiApp.stage.height);
           this.showPage=true;
         }
       );

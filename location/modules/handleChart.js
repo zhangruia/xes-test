@@ -1,5 +1,5 @@
 exports.handleChart = handleChart
 
-function handleChart () {
-  console.log('handleChart');
+function handleChart (json) {
+  console.log(json);
 }
