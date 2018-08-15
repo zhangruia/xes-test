@@ -25,11 +25,16 @@ export default {
   data(){
     return{
       showPage: false,
-      rootStageObj: {}
+      rootStageObj: {},
+      coordinate: {
+        X: 360,
+        Y: -70,
+        rightX: 1300
+      }
     }
   },
   created(){
-    ligature(mainJson);
+    ligature(mainJson, this.coordinate);
     this.inFun();
     // new GetData(mainJson)
   },
