@@ -1,4 +1,6 @@
-export function ligature (mainJson, coordinate) {
+import { coordinates } from './data/coordinate.js'
+export function ligature (mainJson) {
+    var coordinate = coordinates[mainJson.pages[0].modelType - 1]
     var spaceX = coordinate.spaceX;
     var spaceY = coordinate.spaceY;
     var Y = coordinate.contentY - spaceY;
@@ -25,6 +27,5 @@ export function ligature (mainJson, coordinate) {
             mainJson.pages[0].children[i].transform[1] = Y;
         }
     }
-    // console.log(mainJson)
 }
 
