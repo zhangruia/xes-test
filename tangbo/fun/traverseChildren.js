@@ -9,9 +9,9 @@ export const traverseChildren=(children)=>{
         let id = child.id;
         console.log("正在遍历id="+id+"的children...")
 //判断类型，选择构造类
-        let conName=getConName(child);
-        console.log(conName);
-        children[i].conName=conName;
+        // let conName=getConName(child);
+        // console.log(conName);
+        // children[i].conName=conName;
         
 
 

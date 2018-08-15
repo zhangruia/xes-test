@@ -1,7 +1,7 @@
 import {Resource} from './constructor/Resource'
 import {newId,toJSON} from './common/common.js'
 import { traverseChildren } from './fun/traverseChildren'
-
+require('xes-ligature');
 
 export const  translate=(main,source)=>{
     console.log("=============================index.js导出成功=================================")
