@@ -12,20 +12,20 @@ export class Coordinates {
         }
             //填空题数据
         this.coordinate2 = {
-            spaceX: 0,
-            spaceY: 200,
-            stemX:360,
-            stemY:130,
-            answerX:1300,
-            answerY:130,
+            spaceX: 400,
+            spaceY: 0,
+            stemX:300,
+            stemY:700,
+            answerX:0,
+            answerY:0,
             modelType: 2
         }
             //分类题
         this.coordinate3 = {
-            spaceX: 0,
-            spaceY: 300,
+            spaceX: 400,
+            spaceY: 0,
             stemX:300,
-            stemY:600,
+            stemY:650,
             answerX:0,
             answerY:0,
             modelType: 3

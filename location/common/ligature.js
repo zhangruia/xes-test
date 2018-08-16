@@ -1,4 +1,5 @@
 import { Coordinates } from './data/coordinate.js'
+import { nest } from './nest.js'
 export function ligature (mainJson) {
     var coordinates = new Coordinates();
     var coordinate;
@@ -20,7 +21,6 @@ export function ligature (mainJson) {
     var answerY = coordinate.answerY;
     // var modelType = coordinate.modelType;
     var children = mainJson.pages[0].children;
-    console.log(children)
     for (var i = 0; i < children.length; i++) {
         children[i].transform[2] = 1;
         children[i].transform[3] = 1;
@@ -33,17 +33,17 @@ export function ligature (mainJson) {
             children[i].rectangle = [0, 0, 1920, 1080];
             children[i].transform = [0, 0, 1, 1, 0, 0, 0, 0, 0];
         } else if (children[i].conName == 'Text') {
-            console.log(222)
             children[i].rectangle = [0, 0, 0, 40];
             children[i].transform = [200, 100, 1, 1, 0, 0, 0, 0, 0];
         } else if (children[i].name == 'submit_btn') {
             children[i].rectangle = [0, 0, 210, 80];
             children[i].transform = [1200, 900, 1, 1, 0, 0, 0, 0, 0];
         } else {
-            if (children[i].groupType == 'ligature_stem' || children[i].groupType == 'choice') {
+            if (children[i].groupType == 'ligature_stem' 
+                || children[i].groupType == 'choice' 
+                || children[i].groupType == 'blank') {
                 children[i].transform[0] = stemX;
                 children[i].transform[1] = stemY;
-                console.log(stemY)
                 stemX = stemX + spaceX;
                 stemY = stemY + spaceY;
             }
@@ -54,7 +54,12 @@ export function ligature (mainJson) {
                 answerY = answerY + spaceY;
             }
         }
-        // if (children[i].name !== 'bgImg' && children[i].conName !== 'Text' && children[i].groupType == undefined) {
+        if (children[i].children) {
+            nest(children[i].children)
+        }
+        // if (children[i].name !== 'bgImg' 
+            // && children[i].conName !== 'Text' 
+            // && children[i].groupType == undefined) {
         //     children[i].transform[0] = 2000;
         //     children[i].transform[1] = 2000;
         // }

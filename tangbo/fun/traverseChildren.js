@@ -12,12 +12,6 @@ export const traverseChildren=(children)=>{
         // let conName=getConName(child);
         // console.log(conName);
         // children[i].conName=conName;
-        
-
-
-
-
-
 
         // console.log(id);
         // console.log(content);
