@@ -5,9 +5,11 @@ module.exports = {
   juade
 }
 
-function juade (json) {
-  const content = json.texture.content[0]
-  if (typeof(content) == 'string') handleChart()
-  else if (typeof(content) == 'number') handleImg()
-  else console.log('what')
+function juade (current, prev, isRoot) {
+  console.log(current.texture.content.text);
+  // if (!prev.id) console.log(prev);
+  // else
+  console.log(prev);
+  // console.log(prev);
+  console.log('----------------------------');
 }

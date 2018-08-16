@@ -3,35 +3,53 @@ import { juade } from './juadeMold'
 class GetData {
   constructor (json) {
     this.json = json
+    this.which = 0
     this.traverse()
     // console.log(json);
   }
   traverse () {
     let json  = this.json
-    let a = []
-    json.forEach(val => {
-      this.recursion(val)
+    json.forEach((val, ind) => {
+      this.which = ind
+      if (val.name === 'bgImg') {
+        /*******
+          * 单独写背景图的操作
+          * TODO: 根据name判断 目前不确定背景图name是否固定
+       */
+        return false
+      }
+      if (ind > 0) this.recursion(val, json[ind-1], 'page')
+      else this.recursion(val, null, 'page')
     })
   }
 
   // 取值进行判断值类型
-  recursion (json) {
-    if (json.texture && json.texture.children) {
-      const children = json.texture.children
-      children.forEach(val => {
-        /********
-          TODO: 先取val的content，然后再递归判断是否还有子级
-          content需要判断类型
-          根据类型进行不同的间距换算
-      */
-        this.recursion(val)
-      })
+  recursion (json, prev, isRoot) {
+    if (isRoot === 'page') {
+      if (json.children) {
+        const children = json.children
+        children.forEach((val, ind) => {
+          if (ind > 0) this.recursion(val, children[ind-1], null)
+          else this.recursion(val, null, null)
+        })
+      } else {
+        // TODO: page的子元素
+        // 可单纯第一级对象
+        // juade(json, prev, null)
+      }
     } else {
-      // TODO: 没有children，直接计算rectangle
+      if (json.children) {
+        const children = json.children
+        children.forEach((val, ind) => {
+          if (ind > 0) this.recursion(val, children[ind-1], null)
+          else this.recursion(val, null, null)
+        })
+        juade(json, prev, null)
+      } else {
+        // TODO: page的子元素
+        juade(json, prev, null)
+      }
     }
-    // const topic = eval(json.texture.type) // 主题类型
-    juade(json)
-
   }
 }
 
