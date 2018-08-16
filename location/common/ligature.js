@@ -1,7 +1,7 @@
 import { Coordinates } from './data/coordinate.js'
 import { nest } from './nest.js'
 export function ligature (mainJson) {
-    var coordinates = new Coordinates();
+    var coordinates = new Coordinates(mainJson);
     var coordinate;
     //判断题型
     if (mainJson.pages[0].modelType == 1) {
@@ -37,7 +37,7 @@ export function ligature (mainJson) {
             children[i].transform = [200, 100, 1, 1, 0, 0, 0, 0, 0];
         } else if (children[i].name == 'submit_btn') {
             children[i].rectangle = [0, 0, 210, 80];
-            children[i].transform = [1200, 900, 1, 1, 0, 0, 0, 0, 0];
+            children[i].transform = [1500, 900, 1, 1, 0, 0, 0, 0, 0];
         } else {
             if (children[i].groupType == 'ligature_stem' 
                 || children[i].groupType == 'choice' 
@@ -56,13 +56,8 @@ export function ligature (mainJson) {
         }
         if (children[i].children) {
             nest(children[i].children)
+            // console.log(children[i].children)
         }
-        // if (children[i].name !== 'bgImg' 
-            // && children[i].conName !== 'Text' 
-            // && children[i].groupType == undefined) {
-        //     children[i].transform[0] = 2000;
-        //     children[i].transform[1] = 2000;
-        // }
     }
 }
 

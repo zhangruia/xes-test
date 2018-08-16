@@ -60,7 +60,7 @@
           ],
           "texture": {
             "content": [
-              0
+              8
             ],
             "type": "4"
           }
@@ -218,7 +218,7 @@
           "children": [],
           "texture": {
             "content": [
-              2
+              5
             ],
             "type": "4"
           }

@@ -60,7 +60,7 @@
           ],
           "texture": {
             "content": [
-              0
+              8
             ],
             "type": "4"
           }
@@ -119,8 +119,8 @@
                 "content": {
                   "text": "A",
                   "style": {
-                    "font-size": 46,
-                    "text-align": "center"
+                    "fontSize": 46,
+                    "textAlign": "center"
                   }
                 },
                 "type": "3"
@@ -154,7 +154,7 @@
           ],
           "texture": {
             "content": [
-              2
+              5
             ],
             "type": "4"
           },
@@ -172,7 +172,7 @@
                 20,
                 1,
                 1,
-                0,
+                0, 
                 0,
                 0,
                 0,
@@ -182,8 +182,8 @@
                 "content": {
                   "text": "B",
                   "style": {
-                    "font-size": 46,
-                    "text-align": "center"
+                    "fontSize": 46,
+                    "textAlign": "center"
                   }
                 },
                 "type": "3"
@@ -245,8 +245,8 @@
                 "content": {
                   "text": "C",
                   "style": {
-                    "font-size": 46,
-                    "text-align": "center"
+                    "fontSize": 46,
+                    "textAlign": "center"
                   }
                 },
                 "type": "3"
@@ -279,7 +279,7 @@
           "children": [],
           "texture": {
             "content": [
-              4
+              5
             ],
             "type": "4"
           }
@@ -311,11 +311,12 @@
             "content": {
               "text": "让我们根据这个月 许多、莉莉、和阿丘的值日天数来选一选吧！这个月谁的值日最多",
               "style": {
+                "fill": "red",
                 "position": "absolute",
                 "left": 200,
                 "top": 100,
                 "fontSize": 40,
-                "text-align": "center"
+                "textAlign": "center"
               }
             },
             "type": "3"
@@ -441,8 +442,8 @@
                 "content": {
                   "text": "A",
                   "style": {
-                    "font-size": 46,
-                    "text-align": "center"
+                    "fontSize": 46,
+                    "textAlign": "center"
                   }
                 },
                 "type": "3"
@@ -504,8 +505,8 @@
                 "content": {
                   "text": "B",
                   "style": {
-                    "font-size": 46,
-                    "text-align": "center"
+                    "fontSize": 46,
+                    "textAlign": "center"
                   }
                 },
                 "type": "3"
@@ -637,7 +638,7 @@
                 "left": 200,
                 "top": 100,
                 "fontSize": 40,
-                "text-align": "center"
+                "textAlign": "center"
               }
             },
             "type": "3"
