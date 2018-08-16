@@ -16,6 +16,9 @@ import {pageSizeFun} from "../static/preload";
 import { GetData } from '../location/index'
 import mainJson from "../static/main选择.json";
 import resourceJson from "../static/resource";
+import mainJson1 from "../static/main1";
+import resourceJson1 from "../static/resource1";
+import {translate} from "../tangbo/index";
 import { ligature } from '../location/common/ligature.js';
 export default {
   name: 'App',
@@ -34,17 +37,25 @@ export default {
     // new GetData(mainJson)
   },
   methods:{
-    inFun() {
+     inFun() {
+      var src=translate(mainJson,resourceJson);
+      // var src=translate(mainJson1,resourceJson1);
+      // console.log(parseJson(src.main));
+      console.log("================src.main====================")
+      console.log(src.main);
+      console.log(src.resource)
       let pixi = new PixiExporter(
-        mainJson,
-        resourceJson,
+        src.main,
+        src.resource,
         (current, all) => {
-          // console.log("资源加载个数：" + current);
-          // console.log("资源总个数：" + all);
+          console.log("资源加载个数：" + current);
+          console.log("资源总个数：" + all);
         },
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
-          pageSizeFun(document, window, pixi.pixiApp.stage.width, pixi.pixiApp.stage.height);
+          // console.log(1111111111111111111111111);  
+          console.log(this.rootStageObj );
+          pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
         }
       );
