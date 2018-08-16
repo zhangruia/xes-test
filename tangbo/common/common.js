@@ -1,5 +1,6 @@
-import mainJson from "../../static/main";
-// import resourceJson from "../../static/resource1";
+import mainJson from "../../static/main1";
+import resourceJson from "../../static/resource1";
+import { Resource } from "../constructor/Resource"
 
 export const getMaxId=(data)=>{//获取最大各种id
     let idObj={};
@@ -19,10 +20,13 @@ export const getMaxId=(data)=>{//获取最大各种id
 }
 
 // console.log(maxId);
-let maxId=getMaxId(mainJson);
+let maxId=getMaxId(mainJson).id;
 export const newId=()=>{
-    return ++maxId.id;
+    return ++maxId;
 }
+
+export let resource=new Resource(resourceJson);
+
 export const getConName=(child)=>{
     let name = child.name;
     let type =  child.texture.type;

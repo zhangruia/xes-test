@@ -38,7 +38,7 @@ export default {
   },
   methods:{
      inFun() {
-      var src=translate(mainJson,resourceJson);
+      var src=translate(mainJson1,resourceJson1);
       // var src=translate(mainJson1,resourceJson1);
       // console.log(parseJson(src.main));
       console.log("================src.main====================")
