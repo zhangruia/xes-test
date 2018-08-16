@@ -1,35 +1,44 @@
-export var coordinates = [
-    //选择题数据
-    {
-      spaceX: 400,
-      spaceY: 0,
-      contentX: 300,
-      contentY: 660,
-      rightX: 0,
-      modelType: 1},
-    //填空题数据
-   {
-      spaceX: 0,
-      soaceY: 0,
-      contentX: 0,
-      contentY: 0,
-      rightX: 0,
-      modelType: 2},
-    //分类题
-    {
-      spaceX: 0,
-      soaceY: 0,
-      contentX: 0,
-      contentY: 0,
-      rightX: 0,
-      modelType: 3},
-    //连线题数据
-   {
-      spaceX: 0,//x轴图片间距
-      spaceY: 200,//y轴图片间距
-      contentX:360,//x容器坐标
-      contentY:130,//y容器坐标
-      rightX: 1300,
-      modelType: 4} //题型
-  ]
-//   export default {coordinate}
+export class Coordinates {
+    constructor () {
+        //选择题数据
+        this.coordinate1 = {
+            spaceX: 500,
+            spaceY: 0,
+            stemX:300,
+            stemY:600,
+            answerX:0,
+            answerY:0,
+            modelType: 1
+        }
+            //填空题数据
+        this.coordinate2 = {
+            spaceX: 0,
+            spaceY: 200,
+            stemX:360,
+            stemY:130,
+            answerX:1300,
+            answerY:130,
+            modelType: 2
+        }
+            //分类题
+        this.coordinate3 = {
+            spaceX: 0,
+            spaceY: 300,
+            stemX:300,
+            stemY:600,
+            answerX:0,
+            answerY:0,
+            modelType: 3
+        }
+            //连线题数据
+        this.coordinate4 = {
+            spaceX: 0,//x轴图片间距
+            spaceY: 200,//y轴图片间距
+            stemX:360,//x容器坐标
+            stemY:130,//y容器坐标
+            answerX:1300,
+            answerY:130,
+            modelType: 4
+        }
+    }
+}

@@ -164,7 +164,7 @@
           "visible": true,
           "alpha": 1,
           "groupType": "ligature_answer",
-          "matchItems": ["stem2"],
+          "matchItems": [" "],
           "rectangle": [
             0,
             0,
