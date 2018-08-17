@@ -159,37 +159,6 @@
           }
         },
         {
-          "name": "stem2",
-          "conName": "Ligature",
-          "visible": true,
-          "alpha": 1,
-          "groupType": "ligature_stem",
-          "matchItems": ["answer2"],
-          "rectangle": [
-            0,
-            0,
-            250,
-            150
-          ],
-          "transform": [
-            560,
-            330,
-            1,
-            1,
-            0,
-            0,
-            0,
-            200,
-            200
-          ],
-          "texture": {
-            "content": [
-              2
-            ],
-            "type": "4"
-          }
-        },
-        {
           "name": "answer2",
           "conName": "Ligature",
           "visible": true,
@@ -278,6 +247,37 @@
           "texture": {
             "content": [
               5
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "stem4",
+          "conName": "Ligature",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_stem",
+          "matchItems": ["answer4"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            150
+          ],
+          "transform": [
+            360,
+            730,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "texture": {
+            "content": [
+              6
             ],
             "type": "4"
           }

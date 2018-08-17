@@ -1,6 +1,8 @@
 import { Coordinates } from './data/coordinate.js'//引入坐标数据
 import { nest } from './nest.js'//引入处理嵌套关系方法
 import { style } from './style.js'
+import { GetData } from './getData.js'
+
 export function ligature (mainJson) {
   let coordinates = new Coordinates(mainJson);
   let coordinate;
@@ -58,7 +60,7 @@ export function ligature (mainJson) {
         || children[i].groupType == 'blank') {//填空题
         children[i].transform[0] = stemX;
         children[i].transform[1] = stemY;
-        console.log(stemY)
+        // console.log(stemY)
         stemX = stemX + spaceX;
         stemY = stemY + spaceY;
         if (children[i].groupType !== 'ligature_stem') {//非连线题
@@ -70,11 +72,11 @@ export function ligature (mainJson) {
       if (children[i].groupType == 'ligature_answer') {//连线题答案
         if (index == 0) {
           answerX = answerX - children[i].rectangle[2]
-          index = index + 1;
+          index++;
         }
         children[i].transform[0] = answerX;
         children[i].transform[1] = answerY;
-        console.log(answerY)
+        // console.log(answerY)
         answerX = answerX + spaceX;
         answerY = answerY + RspaceY + children[i].rectangle[3];
       }
@@ -82,7 +84,8 @@ export function ligature (mainJson) {
     if (children[i].children) {
       //处理children里面嵌套了children
       nest(children[i].children)
+      const modelType = mainJson.pages[0].modelType
+      new GetData(modelType, children[i], children[i].children)
     }
   }
 }
-
