@@ -41,20 +41,20 @@ export default {
       var src=translate(mainJson,resourceJson);
       // var src=translate(mainJson1,resourceJson1);
       // console.log(parseJson(src.main));
-      console.log("================src.main====================")
-      console.log(src.main);
-      console.log(src.resource)
+      // console.log("================src.main====================")
+      // console.log(src.main);
+      // console.log(src.resource)
       let pixi = new PixiExporter(
         src.main,
         src.resource,
         (current, all) => {
-          console.log("资源加载个数：" + current);
-          console.log("资源总个数：" + all);
+          // console.log("资源加载个数：" + current);
+          // console.log("资源总个数：" + all);
         },
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
-          // console.log(1111111111111111111111111);  
-          console.log(this.rootStageObj );
+          // console.log(1111111111111111111111111);
+          // console.log(this.rootStageObj );
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
         }
