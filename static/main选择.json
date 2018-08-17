@@ -119,9 +119,9 @@
                 "content": {
                   "text": "A",
                   "style": {
-                    "fill": "red",
-                    "fontSize": 46,
-                    "textAlign": "center"
+                    "color": "red",
+                    "font-size": 46,
+                    "text-align": "center"
                   }
                 },
                 "type": "3"
