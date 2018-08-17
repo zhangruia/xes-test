@@ -79,8 +79,101 @@
             250
           ],
           "transform": [
-            1300,
+            360,
+            130,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "texture": {
+            "content": [
+              0
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "answer1",
+          "conName": "Ligature",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_answer",
+          "matchItems": ["stem1"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            250
+          ],
+          "transform": [
+            1000,
+            130,
+            1,
+            1,
+            0,
+            0,
+            0,
+            110,
+            110
+          ],
+          "texture": {
+            "content": [
+              1
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "stem2",
+          "conName": "Ligature",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_stem",
+          "matchItems": ["answer2"],
+          "rectangle": [
             200,
+            200,
+            250,
+            250
+          ],
+          "transform": [
+            560,
+            330,
+            1,
+            1,
+            0,
+            0,
+            0,
+            200,
+            200
+          ],
+          "texture": {
+            "content": [
+              2
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "answer2",
+          "conName": "Ligature",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_answer",
+          "matchItems": [" "],
+          "rectangle": [
+            0,
+            0,
+            250,
+            250
+          ],
+          "transform": [
+            1300,
+            330,
             1,
             1,
             0,
@@ -312,8 +405,8 @@
             250
           ],
           "transform": [
-            300,
-            660,
+            360,
+            730,
             1,
             1,
             0,
@@ -322,7 +415,37 @@
             0,
             0
           ],
-          "children": [],
+          "texture": {
+            "content": [
+              6
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "answer4",
+          "conName": "Ligature",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_answer",
+          "matchItems": ["stem4"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            250
+          ],
+          "transform": [
+            1300,
+            730,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
           "texture": {
             "content": [
               1
