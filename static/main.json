@@ -76,7 +76,7 @@
             0,
             0,
             250,
-            250
+            150
           ],
           "transform": [
             360,
@@ -107,7 +107,7 @@
             0,
             0,
             250,
-            250
+            150
           ],
           "transform": [
             1000,
@@ -135,10 +135,41 @@
           "groupType": "ligature_stem",
           "matchItems": ["answer2"],
           "rectangle": [
-            200,
-            200,
+            0,
+            0,
             250,
-            250
+            150
+          ],
+          "transform": [
+            560,
+            330,
+            1,
+            1,
+            0,
+            0,
+            0,
+            200,
+            200
+          ],
+          "texture": {
+            "content": [
+              2
+            ],
+            "type": "4"
+          }
+        },
+        {
+          "name": "stem2",
+          "conName": "Ligature",
+          "visible": true,
+          "alpha": 1,
+          "groupType": "ligature_stem",
+          "matchItems": ["answer2"],
+          "rectangle": [
+            0,
+            0,
+            250,
+            150
           ],
           "transform": [
             560,
@@ -169,7 +200,7 @@
             0,
             0,
             250,
-            250
+            150
           ],
           "transform": [
             1300,
@@ -200,7 +231,7 @@
             0,
             0,
             250,
-            250
+            150
           ],
           "transform": [
             360,
@@ -231,7 +262,7 @@
             0,
             0,
             250,
-            250
+            150
           ],
           "transform": [
             1300,
@@ -262,7 +293,7 @@
             0,
             0,
             250,
-            250
+            150
           ],
           "transform": [
             360,
@@ -283,6 +314,36 @@
           }
         },
         {
+          "name": "submit_btn",
+          "conName": "Sprite",
+          "visible": true,
+          "alpha": 1,
+          "rectangle": [
+            0,
+            0,
+            210,
+            80
+          ],
+          "transform": [
+            1650,
+            950,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "children": [],
+          "texture": {
+            "content": [
+              4
+            ],
+            "type": "4"
+          }
+        },
+        {
           "name": "answer4",
           "conName": "Ligature",
           "visible": true,
@@ -293,7 +354,7 @@
             0,
             0,
             250,
-            250
+            150
           ],
           "transform": [
             1300,

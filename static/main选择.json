@@ -316,7 +316,7 @@
                 "position": "absolute",
                 "left": 200,
                 "top": 100,
-                "fontSize": 40,
+                "font-size": 40,
                 "textAlign": "center"
               }
             },
