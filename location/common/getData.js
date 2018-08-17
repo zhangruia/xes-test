@@ -1,37 +1,40 @@
 import { juade } from './juadeMold'
+import { Coordinate } from './basic'
 
 class GetData {
-  constructor (json) {
-    this.json = json
-    this.traverse()
-  }
-  traverse () {
-    let json  = this.json
-    let a = []
-    json.forEach(val => {
-      this.recursion(val)
-    })
+  constructor (modelType, current) {
+    this.recursion(modelType, current)
   }
 
   // 取值进行判断值类型
-  recursion (json) {
-    if (json.texture && json.texture.children) {
-      const children = json.texture.children
-      children.forEach(val => {
-        /********
-          TODO: 先取val的content，然后再递归判断是否还有子级
-          content需要判断类型
-          根据类型进行不同的间距换算
-      */
-        this.recursion(val)
+  recursion (modelType, current) {
+    /*
+      先对current进行处理
+      再去找current的children
+    */
+    const coor = new Coordinate(modelType)
+    if (current.length == 1) {
+      let position = current[0].transform
+      position[0] = coor.tabX
+      position[1] = coor.tabY
+    } else if (current.length > 1) {
+      current.forEach((val, ind) => {
+        if (ind >= 1) {
+          val.transform[0] = coor.tabX + current[ind - 1].transform[0]
+          val.transform[1] = coor.tabY
+        } else {
+          current[0].transform[0] = coor.tabX
+          current[0].transform[1] = coor.tabY
+        }
       })
-    } else {
-      // TODO: 没有children，直接计算rectangle
+    } else if (Object.prototype.toString.call(current) == '[object Object]') {
+      // TODO: 已经处理 是否不需要传递到这里？
     }
-    // const topic = eval(json.texture.type) // 主题类型
-    // console.log(json)
-    juade(json)
-
+    if (!current.children || current.children.length == 0) return false
+    else {
+      // console.log('递归');
+      this.recursion(modelType, current.children)
+    }
   }
 }
 

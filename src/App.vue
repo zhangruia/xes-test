@@ -53,7 +53,7 @@ export default {
         },
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
-          // console.log(1111111111111111111111111);  
+          // console.log(1111111111111111111111111);
           // console.log(this.rootStageObj );
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;

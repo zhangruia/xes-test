@@ -1,5 +1,7 @@
 import { Coordinates } from './data/coordinate.js'//引入坐标数据
 import { nest } from './nest.js'//引入处理嵌套关系方法
+import { GetData } from './getData.js'
+
 export function ligature (mainJson) {
   let coordinates = new Coordinates(mainJson);
   let coordinate;
@@ -68,7 +70,8 @@ export function ligature (mainJson) {
     if (children[i].children) {
       //处理children里面嵌套了children
       nest(children[i].children)
+      const modelType = mainJson.pages[0].modelType
+      new GetData(modelType, children[i], children[i].children)
     }
   }
 }
-

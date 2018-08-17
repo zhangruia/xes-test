@@ -66,12 +66,12 @@
           }
         },
         {
-          "name": "stem1",
+          "name": "test_option1",
+          "conName": "Choice",
           "visible": true,
-          "conName": "Ligature",
           "alpha": 1,
-          "groupType": "ligature_stem",
-          "matchItems": ["answer1"],
+          "groupType": "choice",
+          "isRight": true,
           "rectangle": [
             0,
             0,
@@ -184,80 +184,220 @@
           ],
           "texture": {
             "content": [
-              3
+              1
             ],
             "type": "4"
-          }
+          },
+          "children": [
+            {
+              "conName": "Text",
+              "rectangle": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "transform": [
+                20,
+                15,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "texture": {
+                "content": {
+                  "text": "2",
+                  "style": {
+                    "font-size": 46,
+                    "text-align": "center"
+                  }
+                },
+                "type": "3"
+              },
+              "id": 22,
+              "parentId": 2,
+              "children": [
+                {
+                  "conName": "Text",
+                  "rectangle": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "transform": [
+                    20,
+                    15,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "id": 222,
+                  "parentId": 22,
+                  "texture": {
+                    "content": {
+                      "text": "22",
+                      "style": {
+                        "font-size": 46,
+                        "text-align": "center"
+                      }
+                    },
+                    "type": "3"
+                  },
+                  "children": [
+                    {
+                      "conName": "Text",
+                      "rectangle": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "transform": [
+                        20,
+                        15,
+                        1,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "id": 2222,
+                      "parentId": 222,
+                      "texture": {
+                        "content": {
+                          "text": "222",
+                          "style": {
+                            "font-size": 46,
+                            "text-align": "center"
+                          }
+                        },
+                        "type": "3"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "conName": "Text",
+                  "rectangle": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "transform": [
+                    20,
+                    15,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "id": 222,
+                  "parentId": "22",
+                  "texture": {
+                    "content": {
+                      "text": "22(22)",
+                      "style": {
+                        "font-size": 46,
+                        "text-align": "center"
+                      }
+                    },
+                    "type": "3"
+                  }
+                }
+              ]
+            },
+            {
+              "conName": "Text",
+              "rectangle": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "transform": [
+                60,
+                15,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "texture": {
+                "content": {
+                  "text": "3",
+                  "style": {
+                    "font-size": 46,
+                    "text-align": "center"
+                  }
+                },
+                "type": "3"
+              },
+              "id": 22,
+              "parentId": 2,
+              "children": [
+                {
+                  "conName": "Text",
+                  "rectangle": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "transform": [
+                    20,
+                    15,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "texture": {
+                    "content": {
+                      "text": "33",
+                      "style": {
+                        "font-size": 46,
+                        "text-align": "center"
+                      }
+                    },
+                    "type": "3"
+                  },
+                  "id": 33,
+                  "parentId": 22
+                }
+              ]
+            }
+          ],
+          "id": 2,
+          "parentId": 1
         },
         {
-          "name": "stem3",
-          "conName": "Ligature",
+          "name": "test_option1",
+          "conName": "Choice",
           "visible": true,
           "alpha": 1,
-          "groupType": "ligature_stem",
-          "matchItems": ["answer3"],
-          "rectangle": [
-            0,
-            0,
-            250,
-            250
-          ],
-          "transform": [
-            360,
-            530,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "texture": {
-            "content": [
-              4
-            ],
-            "type": "4"
-          }
-        },
-        {
-          "name": "answer3",
-          "conName": "Ligature",
-          "visible": true,
-          "alpha": 1,
-          "groupType": "ligature_answer",
-          "matchItems": ["stem3"],
-          "rectangle": [
-            0,
-            0,
-            250,
-            250
-          ],
-          "transform": [
-            1300,
-            530,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "texture": {
-            "content": [
-              5
-            ],
-            "type": "4"
-          }
-        },
-        {
-          "name": "stem4",
-          "conName": "Ligature",
-          "visible": true,
-          "alpha": 1,
-          "groupType": "ligature_stem",
-          "matchItems": ["answer4"],
+          "groupType": "choice",
+          "rightAnswer": "10",
           "rectangle": [
             0,
             0,
@@ -308,10 +448,13 @@
           ],
           "texture": {
             "content": [
-              7
+              1
             ],
             "type": "4"
-          }
+          },
+          "children": [],
+          "id": 3,
+          "parentId": 1
         }
       ]
     }
