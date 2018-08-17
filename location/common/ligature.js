@@ -33,8 +33,14 @@ export function ligature (mainJson) {
             children[i].rectangle = [0, 0, 1920, 1080];
             children[i].transform = [0, 0, 1, 1, 0, 0, 0, 0, 0];
         } else if (children[i].conName == 'Text') {
-            children[i].rectangle = [0, 0, 0, 40];
-            children[i].transform = [200, 100, 1, 1, 0, 0, 0, 0, 0];
+            //让最外层题干文字水平居中
+                var text = (children[i].texture.content.text).split('');
+                var size = children[i].texture.content.style.fontSize;
+                var length = text.length * size;
+                var textX = (children[0].rectangle[2] - length) / 2;
+                children[i].rectangle = [0, 0, 0, 40];
+                children[i].transform[0] = textX;
+                children[i].transform[1] = 150;
         } else if (children[i].name == 'submit_btn') {
             children[i].rectangle = [0, 0, 210, 80];
             children[i].transform = [1500, 900, 1, 1, 0, 0, 0, 0, 0];
@@ -46,6 +52,9 @@ export function ligature (mainJson) {
                 children[i].transform[1] = stemY;
                 stemX = stemX + spaceX;
                 stemY = stemY + spaceY;
+                if (children[i].groupType !== 'ligature_stem') {
+                    stemX = stemX + children[i].rectangle[3];
+                }
             }
             if (children[i].groupType == 'ligature_answer') {
                 children[i].transform[0] = answerX;
@@ -55,8 +64,8 @@ export function ligature (mainJson) {
             }
         }
         if (children[i].children) {
+            //如果children里面嵌套了children
             nest(children[i].children)
-            // console.log(children[i].children)
         }
     }
 }

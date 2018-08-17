@@ -91,7 +91,7 @@
           ],
           "texture": {
             "content": [
-              1
+              3
             ],
             "type": "4"
           },
@@ -119,6 +119,7 @@
                 "content": {
                   "text": "A",
                   "style": {
+                    "fill": "red",
                     "fontSize": 46,
                     "textAlign": "center"
                   }
@@ -311,7 +312,7 @@
             "content": {
               "text": "让我们根据这个月 许多、莉莉、和阿丘的值日天数来选一选吧！这个月谁的值日最多",
               "style": {
-                "fill": "red",
+                "fill": "blue",
                 "position": "absolute",
                 "left": 200,
                 "top": 100,

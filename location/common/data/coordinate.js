@@ -13,7 +13,7 @@ export class Coordinates {
                 width = width + imgWidth;
             }
         }
-        var spacex = (children[0].rectangle[2] - width - begin * 2) / (index - 1) + imgWidth;
+        var spacex = (children[0].rectangle[2] - width - begin * 2) / (index - 1);
         //选择题数据
         this.coordinate1 = {
             spaceX: spacex,
@@ -26,16 +26,16 @@ export class Coordinates {
         }
             //填空题数据
         this.coordinate2 = {
-            spaceX: 300,
+            spaceX: spacex,
             spaceY: 0,
-            stemX:400,
+            stemX:begin,
             stemY:700,
             answerX:0,
             answerY:0,
             modelType: 2
         }
             //分类题
-        this.coordinate3 = {
+        this.coordinate3 = {//未处理
             spaceX: 400,
             spaceY: 0,
             stemX:300,
