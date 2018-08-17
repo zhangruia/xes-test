@@ -1,4 +1,4 @@
-class Text{//文本类
+export class Text{//文本类
     constructor(texture){
         this.conName='Text';
         this.rectangle=[];

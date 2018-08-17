@@ -28,11 +28,12 @@ export const traverseChildren=(children)=>{
             console.log("捕获了id="+id+"的富文本,即将送入富文本解析函数...");
             children[i].conName='Container';//容器的构造名
             children[i]=richText(children[i]);
+            continue;
         }else{
             //修改type,只考虑文本和图片
             children[i].texture.type = textureType == 0 ? 3 : 4 ;
         }
-        if(child.children!=""){
+        if(child.children!=""&&children[i].conName!="Container"){
             // children[i].children.parentId=id;
             console.log("即将遍历id="+id+"的子children")
             console.log("=======================周期==========================")

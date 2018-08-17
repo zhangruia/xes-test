@@ -2,7 +2,7 @@ import {Image} from '../constructor/Image';
 import {Text} from '../constructor/Text';
 import {Box} from '../constructor/Box';
 import {newId} from '../common/common';
- 
+import { splitText } from './splitText'
 //              texture：
                     // type:
         //              STAGE: "1",
@@ -32,61 +32,72 @@ export const richText=(child)=>{
     
     // ===========================上面处理属性，下面处理富文本==================================
 
-    let str=child.texture.content;
     
-    let arr=str.split("\n");//按\n切开富文本
-    arr.forEach(function(elem,i,arr){
-        if(elem==""){//去数组中空元素
-            arr.splice(i,1);
-            return ;
-        }
-        if(elem.indexOf("$$")!=-1){
-            let newArr=arr[i].split("$$");
-            newArr.forEach(function(elem,i,arr){
-                if(elem==""){//去数组中空元素
-                    newArr.splice(i,1);
-                }
-            })
-            arr.splice(i,1,...newArr);
-        }
-       
-        // if(elem)
-        // if(elem!="<br>"){//将元素按<br>切开
-        //     arr[i]=arr[i].replace(/\<br\>$/,"\\n");
-        //     let newArr=arr[i].split("$$");
-        //     arr.splice(i,1,...newArr);
-        //     if(/^\<img/.test(arr[i])){//判断是元素是否为img标签
-        //         let imgObj=new RImage();
-        //         let imgs=arr[i].split(" ");
-        //         for(let prop of imgs){
-        //             if(/^src=/.test(prop)){//取src、ext
-        //                 imgObj.src=prop.split("=")[1];
-        //                 imgObj.ext=imgObj.src.slice(imgObj.src.lastIndexOf(".")+1,-1)
-        //             }else if(/^data-resourceId=/.test(prop)){//取resourceId
-        //                 imgObj.resourceId=prop.split("=")[1];
-        //             }else if (/^data-width=/.test(prop)){//取宽
-        //                 imgObj.width=prop.split("=")[1];
-        //             }else if (/^data-height=/.test(prop)){//取高
-        //                 imgObj.height=prop.split("=")[1].slice(0,-1);
-        //             }
-        //         }
-        //         if(imgObj)resource.add(imgObj);//当前content富文本图片信息为添加到resourceList数组
+    // let arr=str.split("\n");//按\n切开富文本
+    
+    // arr.forEach(function(elem,i,arr){
+        //     if(elem==""){//去数组中空元素
+        //         arr.splice(i,1);
+        //         return ;
         //     }
-        // }
-    })
+        
+        //     if(!/^\s*<br>\s*$/.test(elem)){
+            
+            //     }
+            
+            //     if(elem.indexOf("$$")!=-1){
+                //         let newArr=arr[i].split("$$");
+                //         newArr.forEach(function(elem,i,arr){
+                    //             if(elem==""){//去数组中空元素
+                    //                 newArr.splice(i,1);
+                    //             }
+                    //         })
+                    //         arr.splice(i,1,...newArr);
+                    //     }
+                    
+                    //     // if(elem)
+                    //     // if(elem!="<br>"){//将元素按<br>切开
+                    //     //     arr[i]=arr[i].replace(/\<br\>$/,"\\n");
+                    //     //     let newArr=arr[i].split("$$");
+                    //     //     arr.splice(i,1,...newArr);
+                    //     //     if(/^\<img/.test(arr[i])){//判断是元素是否为img标签
+                    //     //         let imgObj=new RImage();
+                    //     //         let imgs=arr[i].split(" ");
+                    //     //         for(let prop of imgs){
+                        //     //             if(/^src=/.test(prop)){//取src、ext
+                        //     //                 imgObj.src=prop.split("=")[1];
+                        //     //                 imgObj.ext=imgObj.src.slice(imgObj.src.lastIndexOf(".")+1,-1)
+                        //     //             }else if(/^data-resourceId=/.test(prop)){//取resourceId
+                        //     //                 imgObj.resourceId=prop.split("=")[1];
+                        //     //             }else if (/^data-width=/.test(prop)){//取宽
+                        //     //                 imgObj.width=prop.split("=")[1];
+                        //     //             }else if (/^data-height=/.test(prop)){//取高
+                        //     //                 imgObj.height=prop.split("=")[1].slice(0,-1);
+                        //     //             }
+                        //     //         }
+                        //     //         if(imgObj)resource.add(imgObj);//当前content富文本图片信息为添加到resourceList数组
+                        //     //     }
+                        //     // }
+                        // })
+//   =====================================分界线==============================================       
+
+    let str=child.texture.content;
+    let arr =splitText(str);
     arr.forEach(function(elem,i,arr){
+        let obj={};
         if(/[\u4e00-\u9fa5]+/.test(elem)){
             console.log("我遇到文本啦");
             let texture={};
             texture.content=elem;
             //如果日后富文本中解析出style可以在这里添加style
             //判断是否有br
-            let obj=new Text(texture);
+            obj=new Text(texture);
+            console.log(obj);   
         }else if(/\<img/.test(arr[i])){
             console.log("我遇到图片啦");
-            
-            //         let imgs=arr[i].split(" ");
-            //         for(let prop of imgs){
+                
+                                //         let imgs=arr[i].split(" ");
+                                //         for(let prop of imgs){
             //             if(/^src=/.test(prop)){//取src、ext
             //                 imgObj.src=prop.split("=")[1];
             //                 imgObj.ext=imgObj.src.slice(imgObj.src.lastIndexOf(".")+1,-1)
@@ -103,12 +114,16 @@ export const richText=(child)=>{
             console.log("我遇到单独的标签啦");
             let length=child.children.length;
             child.children[length-1].isWrap=parseInt(child.children[length-1].isWrap)+1;
+            let obj={};
         }else{
             console.log("我遇到公式啦！")
             //吃完饭回来把公式搞定！
+            let obj={};
+
 
         }
         child.children.push(obj)
+        console.log("push过一次")
     })
     console.log("即将输出arr")
     console.log(arr);
