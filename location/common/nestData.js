@@ -1,6 +1,6 @@
 import { style } from "./style";
 
-export function nest (children) {
+export function nestData (children) {
   if (children[0]){
     children[0].transform[0] = 20;
     children[0].transform[1] = 15;
