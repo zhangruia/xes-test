@@ -1,4 +1,4 @@
-import { style } from "./style";
+import { style } from "../method/style";
 
 export function nestData (children) {
   if (children[0]){

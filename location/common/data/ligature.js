@@ -1,4 +1,15 @@
+import basic from '../basic.json'
 export function ligature (page) {
+  let submith, submitw, submity, submitx;
+  for (let i in basic.modelType) {
+    if (basic.modelType[i] == page.modelType) {
+      // console.log(basic[i])
+      submitx = basic[i].submitX;
+      submitw = basic[i].submitW;
+      submith = basic[i].submitH;
+      submity = basic[i].submitY;
+    }
+  }
   //连线题数据
   let Rchildren = page.children;
   let Rindex = 0;
@@ -15,6 +26,7 @@ export function ligature (page) {
     }
   }
   let Rspacey = (Rchildren[0].rectangle[3] - Rheight - Rbegin * 2) / (Rindex - 1);
+  console.log(Rspacey)
   let Lchildren = page.children;
   let Lindex = 0;
   let Lheight = 0;
@@ -37,9 +49,9 @@ export function ligature (page) {
     answerx: answerX,
     answerY: Rbegin,
     modelType: 4,
-    submitX: 1600,
-    submitY: 900,
-    submitW: 240,
-    submitH: 80
+    submitX: submitx,
+    submitY: submity,
+    submitW: submitw,
+    submitH: submith
   }
 }

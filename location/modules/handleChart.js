@@ -20,7 +20,7 @@ function handleChart (modelType, json) {
   }
   const totalW = (fontLen * basic.common.fontSize) + (punctuationLen * basic.common.punctuaSize) + (trimLen * basic.common.trimSize)
 
-  let a = 1 // 假设为modelType值
+  let a = 10 // 假设为modelType值
   for (let i in basic.modelType) {
     if (basic.modelType[i] === a) {
       console.log(basic[i]); // gap中的值

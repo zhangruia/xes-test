@@ -6,10 +6,10 @@
     "ligature": 4
   },
   "common": {
-    "pageW": 1000,
-    "pageH": 200,
+    "pageW": 1920,
+    "pageH": 1080,
     "bgX": 0,
-    "bgY": 10,
+    "bgY": 0,
     "warpW": 400,
     "warpH": 300,
     "fontSize": 16,
@@ -17,19 +17,27 @@
     "trimSize": 8
   },
   "gap": {
-    "submitX": 20,
-    "submitY": 100
+    "submitX": 1600,
+    "submitY": 950,
+    "submitH": 80,
+    "submitW": 240
   },
   "classify": {
-    "submitX": 40,
-    "submitY": 200
+    "submitX": 1600,
+    "submitY": 950,
+    "submitH": 80,
+    "submitW": 240
   },
   "choice": {
-    "submitX": 60,
-    "submitY": 300
+    "submitX": 1600,
+    "submitY": 950,
+    "submitH": 80,
+    "submitW": 240
   },
   "ligature": {
-    "submitX": 80,
-    "submitY": 400
+    "submitX": 1600,
+    "submitY": 950,
+    "submitH": 80,
+    "submitW": 240
   }
 }
