@@ -1,0 +1,35 @@
+{
+  "modelType": {
+    "gap": 1,
+    "classify": 2,
+    "choice": 3,
+    "ligature": 4
+  },
+  "common": {
+    "pageW": 1000,
+    "pageH": 200,
+    "bgX": 0,
+    "bgY": 10,
+    "warpW": 400,
+    "warpH": 300,
+    "fontSize": 16,
+    "punctuaSize": 10,
+    "trimSize": 8
+  },
+  "gap": {
+    "submitX": 20,
+    "submitY": 100
+  },
+  "classify": {
+    "submitX": 40,
+    "submitY": 200
+  },
+  "choice": {
+    "submitX": 60,
+    "submitY": 300
+  },
+  "ligature": {
+    "submitX": 80,
+    "submitY": 400
+  }
+}

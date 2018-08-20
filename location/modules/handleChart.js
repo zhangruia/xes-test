@@ -1,9 +1,8 @@
-import { Coordinate } from '../common/basic'
+import basic from '../common/basic.json'
 
 function handleChart (modelType, json) {
-  const basic = new Coordinate(modelType);
-  const warpW = basic.warpW;
-  const warpH = basic.warpH;
+  const warpW = basic.common.warpW;
+  const warpH = basic.common.warpH;
   let fontLen = 0; // 文字个数
   let punctuationLen = 0; // 标点符号个数
   let trimLen = 0; // 空格个数
@@ -19,26 +18,40 @@ function handleChart (modelType, json) {
     else if (trimReg.test(i)) trimLen += 1
     else console.log(i);
   }
-  const totalW = (fontLen * basic.fontSize) + (punctuationLen * basic.punctuaSize) + (trimLen * basic.trimSize)
+  const totalW = (fontLen * basic.common.fontSize) + (punctuationLen * basic.common.punctuaSize) + (trimLen * basic.common.trimSize)
+
+  let a = 1 // 假设为modelType值
+  for (let i in basic.modelType) {
+    if (basic.modelType[i] === a) {
+      console.log(basic[i]); // gap中的值
+    }
+  }
 
   if (warpW > totalW) return false
   else {
     let wid = 0;
-    let residue = ''
+    let accomm = ''; // 可容纳内容
+    let residue = ''; // 需要剪裁内容
     for (let i of text) {
-      if (fontReg.test(i)) wid += basic.fontSize
-      else if (punctuaReg.test(i)) wid += basic.punctuaSize
-      else if (trimReg.test(i)) wid += basic.trimSize
+      if (fontReg.test(i)) wid += basic.common.fontSize
+      else if (punctuaReg.test(i)) wid += basic.common.punctuaSize
+      else if (trimReg.test(i)) wid += basic.common.trimSize
       else console.log(i);
 
       if (warpW - wid < 20) {
         // current.transform
         residue += i
+      } else {
+        accomm += i
+        json.texture.content.text = accomm
+        json.transform[0] = 500
+        json.transform[1] = 200
       }
     }
-    let newObj = Object.assign({}, json)
-    newObj.texture.content.text = residue
-    console.log(newObj);
+    let newObj = JSON.stringify(json)
+    let a = JSON.parse(newObj)
+    a.texture.content.text = residue
+    // console.log(a);
   }
 
 }
