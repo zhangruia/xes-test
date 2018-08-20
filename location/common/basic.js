@@ -8,6 +8,10 @@
     ** modelType  -> 1选择  2填空  3分类  4连线
     ** submitX    -> 提交按钮的位置
     ** tabX       -> padding距离
+    ** warpH      -> 中间舞台容器大小
+    ** fontSize   -> 字体大小
+    ** punctuaSize -> 标点符号大小
+    ** trimSize    -> 空格大小
 */
 
 class Coordinate {
@@ -26,6 +30,11 @@ class Coordinate {
         contentY: 0,
         submitX: 0,
         submitY: 100,
+        warpW: 400,
+        warpH: 300,
+        fontSize: 16,
+        punctuaSize: 10,
+        trimSize: 8,
         tabX: 30,
         tabY: 30
       }
@@ -44,6 +53,11 @@ class Coordinate {
         contentY: 0,
         submitX: 0,
         submitY: 100,
+        warpW: 400,
+        warpH: 300,
+        fontSize: 16,
+        punctuaSize: 10,
+        trimSize: 8,
         tabX: 30,
         tabY: 30
       }
@@ -62,6 +76,11 @@ class Coordinate {
         contentY: 0,
         submitX: 0,
         submitY: 100,
+        warpW: 400,
+        warpH: 300,
+        fontSize: 16,
+        punctuaSize: 10,
+        trimSize: 8,
         tabX: 30,
         tabY: 30
       }
@@ -80,6 +99,11 @@ class Coordinate {
         contentY: 0,
         submitX: 0,
         submitY: 100,
+        warpW: 400,
+        warpH: 300,
+        fontSize: 16,
+        punctuaSize: 10,
+        trimSize: 8,
         tabX: 30,
         tabY: 30
       }

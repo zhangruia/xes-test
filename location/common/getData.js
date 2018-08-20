@@ -1,5 +1,6 @@
 import { juade } from './juadeMold'
 import { Coordinate } from './basic'
+import { handleChart } from '../modules/handleChart'
 
 class GetData {
   constructor (modelType, current) {
@@ -8,6 +9,7 @@ class GetData {
 
   // 取值进行判断值类型
   recursion (modelType, current) {
+    if (current.name === 'stem') handleChart(modelType, current)
     /*
       先对current进行处理
       再去找current的children
