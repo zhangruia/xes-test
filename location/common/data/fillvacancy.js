@@ -6,7 +6,7 @@ export function fillvacancy (page) {
     let begin = 400;
     let imgWidth = 0;
     for (var i = 0; i < children.length; i++) {
-      if (children[i].groupType == 'choice' || children[i].groupType == 'blank') {
+      if (children[i].conName == 'FillVacancy') {
         imgWidth = children[i].rectangle[2]
         index = index + 1;
         width = width + imgWidth;
@@ -19,9 +19,13 @@ export function fillvacancy (page) {
       RspaceY: 0,
       stemX: begin,
       stemY: 700,
-      answerX: 0,
+      answerx: 0,
       answerY: 0,
-      modelType: 2
+      modelType: 2,
+      submitX: 1600,
+      submitY: 900,
+      submitW: 240,
+      submitH: 80
     }
   // }
       //填空题数据

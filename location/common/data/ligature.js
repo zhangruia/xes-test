@@ -6,7 +6,7 @@ export function ligature (page) {
   let Rbegin = 130;
   let RbeginX = 360;
   let RimgWidth = 0;
-  let answerx = Rchildren[0].rectangle[2] - RbeginX;
+  let answerX = Rchildren[0].rectangle[2] - RbeginX;
   for (var i = 0; i < Rchildren.length; i++) {
     if (Rchildren[i].groupType == 'ligature_answer') {
       RimgWidth = Rchildren[i].rectangle[3]
@@ -34,8 +34,12 @@ export function ligature (page) {
     RspaceY: Rspacey,//y轴图片间距
     stemX: 360,//x容器坐标
     stemY: Lbegin,//y容器坐标
-    answerX: answerx,
+    answerx: answerX,
     answerY: Rbegin,
-    modelType: 4
+    modelType: 4,
+    submitX: 1600,
+    submitY: 900,
+    submitW: 240,
+    submitH: 80
   }
 }

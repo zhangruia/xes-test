@@ -13,7 +13,8 @@ export const  translate=(main,resource)=>{
     // // console.log(main);
     // for(let i in main.pages){
     //     main.pages[i].remark="测试备注"+main.pages[i].id;
-    //     main.pages[i].modelType="还不知道是多少哟";
+    //     main.pages[i].mo
+        // delType="还不知道是多少哟";
     //     main.pages[i].children=traverseChildren(main.pages[i].children);
     // }
     // resource=resource.resource; 
