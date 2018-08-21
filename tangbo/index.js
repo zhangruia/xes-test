@@ -8,6 +8,7 @@ export const  translate=(main,resourceJson)=>{
     let resource=new Resource(resourceJson);
     // console.log(resource);
     for(let i in main.pages){//如果有两个舞台却只有一个返回值.....如果看到思考一下....
+        if(main.pages[i].remark!=undefined)continue;
         main.pages[i].remark="测试备注"+main.pages[i].id;
         main.pages[i].modelType=4; //瞎写的哟
         let result=traverseChildren(main.pages[i].children,resource);

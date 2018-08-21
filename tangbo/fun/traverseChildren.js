@@ -7,8 +7,6 @@ export const traverseChildren=(children,resource)=>{
         let content=child.texture.content;
         let id = child.id;
         let textureType=children[i].texture.type;
-       
-        
         console.log("正在遍历id="+id+"的children...")
 
         //添加conName
