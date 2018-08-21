@@ -1,6 +1,7 @@
 import { FillVacancy } from "./fillvacancy_obj";
 import { Choice } from './choice_obj'
 import { Ligature } from "./ligature_obj";
+import { Default } from './default_obj'
 
 export class Coordinates {//坐标系
   constructor (page) {
@@ -11,7 +12,7 @@ export class Coordinates {//坐标系
     } else if (page.modelType == 4) {
       this.coordinate = new Ligature(page)
     } else {
-      this.coordinate = new Choice(page)
+      this.coordinate = new Default(page)
     }
   }
 }

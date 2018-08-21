@@ -1,19 +1,19 @@
-import { FatherCoordinates } from './father.js'
+import { FatherCoordinates } from './father'
 
-export class Choice extends FatherCoordinates {
+export class Default extends FatherCoordinates {
   constructor (page) {
     super()
-    this.compute(page)
+    this.compute(page);
     let children = page.children;
     let index = 0;
     let width = 0;
     let begin = 0;
     let imgWidth = 0;
     for (var i = 0; i < children.length; i++) {
-      if (children[i].conName == 'Choice') {
+      if(children[i].conName !== 'Sprite' && children[i].conName !== 'Text') {
         imgWidth = children[i].rectangle[2]
-        index = index + 1;
         width = width + imgWidth;
+        index = index + 1;
       }
     }
     let spacex = (children[0].rectangle[2] - width - begin * 2) / (index + 1);
@@ -25,6 +25,6 @@ export class Choice extends FatherCoordinates {
     // console.log(spacex)
     this.spaceX = spacex;
     this.stemX = begin;
-    this.stemY = 600;
+    this.stemY = 300;
   }
 }

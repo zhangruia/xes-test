@@ -1,5 +1,5 @@
-import { Coordinates } from './father.js'
-export class FillVacancy extends Coordinates {
+import { FatherCoordinates } from './father.js'
+export class FillVacancy extends FatherCoordinates {
   constructor (page) {
     super();
     this.compute(page);

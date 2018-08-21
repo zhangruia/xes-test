@@ -4,6 +4,7 @@ import { Text } from './Text'
 import { FillVacancy } from './FillVacancy'
 import { Ligature } from './Ligature'
 import { Choice } from './Choice'
+import { Default } from './Default'
 
 export {
   submit_btn,
@@ -11,5 +12,6 @@ export {
   Text,
   Ligature,
   Choice,
-  FillVacancy
+  FillVacancy,
+  Default
 }

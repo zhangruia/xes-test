@@ -1,12 +1,13 @@
 import { Coordinates } from './data/index.js'//引入坐标数据
-import { nestData } from './nestData.js'//引入处理嵌套关系方法
+import { BgImg, submit_btn, Text, FillVacancy, Ligature, Choice, Default } from '../method/index.js'//处理不同类型的方法
 import { style } from '../method/style.js'//处理样式
-import { BgImg, submit_btn, Text, FillVacancy, Ligature, Choice } from '../method/index.js'//处理不同类型的方法
+import { nestData } from './nestData.js'//引入处理嵌套关系方法
 import { GetData } from './getData.js'
 
 export function modifyData (mainJson) {
   for (var i = 0; i < mainJson.pages.length; i++) {//循环pages
     let { coordinate } = new Coordinates(mainJson.pages[i]);
+    console.log(coordinate)
     let children = mainJson.pages[i].children;
     for (var i = 0; i < children.length; i++) {
       children[i].transform = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -34,7 +35,7 @@ export function modifyData (mainJson) {
           FillVacancy(children[i], coordinate);
         } else {
           //未知题型处理
-          Choice(children[i], coordinate);
+          Default(children[i], coordinate);
         }
       }
       if (children[i].children) {

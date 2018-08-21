@@ -1,6 +1,6 @@
-import { Coordinates } from './father.js'
+import { FatherCoordinates } from './father.js'
 
-export class Ligature extends Coordinates {
+export class Ligature extends FatherCoordinates {
   constructor (page) {
     super()
     this.compute(page)
@@ -38,5 +38,6 @@ export class Ligature extends Coordinates {
     this.stemY = Lbegin;
     this.answerx = answerX;
     this.answerY = Rbegin;
+    console.log(this)
   }
 }
