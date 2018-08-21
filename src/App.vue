@@ -14,12 +14,12 @@ import {canvasStage} from 'xes_canvas_renderer';
 import { PixiExporter } from "xeditor-convertor";
 import {pageSizeFun} from "../static/preload";
 import { GetData } from '../location/index'
-import mainJson from "../static/main.json";
+import mainJson from "../static/main选择.json";
 import resourceJson from "../static/resource";
 import mainJson1 from "../static/main1";
 import resourceJson1 from "../static/resource1";
 import {translate} from "../tangbo/index";
-import { ligature } from '../location/common/ligature.js';
+import { modifyData } from '../location/common/modifyData.js';
 export default {
   name: 'App',
   components: {
@@ -32,7 +32,8 @@ export default {
     }
   },
   created(){
-    ligature(mainJson);
+    var data = modifyData(mainJson);
+    console.log(data)
     this.inFun();
     // new GetData(mainJson)
   },
