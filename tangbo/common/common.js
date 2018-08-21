@@ -24,6 +24,12 @@ let maxId=getMaxId(mainJson).id;
 export const newId=()=>{
     return ++maxId;
 }
+// new resource对象
+// export function init(resourceJosn){
+//     resource=new Resource(resourceJosn);
+//     return resource;
+// }
+// let resource;
 
 export let resource=new Resource(resourceJson);
 
@@ -41,7 +47,7 @@ export const getConName=(child)=>{
             return "Sprite"
         }else{//"可以添加type值，目前只有text和sprite，以及选择填空两种题型
             console.log("没有获取到type")
-            return ;
+            return "";
         }
     }
 }

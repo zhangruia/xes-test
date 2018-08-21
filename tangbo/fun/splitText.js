@@ -10,15 +10,15 @@ export function splitText(str){
         indexArr.push(aa);
         if(aa[0]=="<img"||aa[0]=="<br"){
             let bb=[];
-            bb[0]=">"
+            bb[0]=">";
             bb['index']=str.indexOf(">",aa.index);
-            indexArr.push(bb)
+            indexArr.push(bb);
         }
     }
-    if(indexArr[0]["index"]!=0){
+    if(indexArr[0]["index"]!=0){//确保从0开始slice
         let ee=[];
         ee["index"]=0;
-        indexArr.unshift(ee);//需要判断一下是否为0  
+        indexArr.unshift(ee); 
     }
     // console.log(indexArr);
     let i=0;

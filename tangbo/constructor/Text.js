@@ -1,10 +1,10 @@
 export class Text{//文本类
     constructor(texture){
         this.conName='Text';
+        this.texture=texture;
+        this.isWrap=0;
         this.rectangle=[];
         this.transform=[];
-        this.texture=texture;
-        this.type=3;
-        this.isWrap=0;
+        // this.type=3;
     }
 }
