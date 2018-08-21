@@ -1,4 +1,4 @@
-export function text (children) {
+export function Text (children) {
   let text = (children.texture.content.text).split('');
   let size = children.texture.content.style.fontSize;
   let length = text.length * size;

@@ -1,7 +1,7 @@
-import { Coordinates } from './data/coordinate.js'//引入坐标数据
+import { Coordinates } from './data/index.js'//引入坐标数据
 import { nestData } from './nestData.js'//引入处理嵌套关系方法
 import { style } from '../method/style.js'//处理样式
-import { bgImg, submit_btn, text, fillvacancy, ligature, choice } from '../method/index.js'//处理不同类型的方法
+import { BgImg, submit_btn, Text, FillVacancy, Ligature, Choice } from '../method/index.js'//处理不同类型的方法
 import { GetData } from './getData.js'
 
 export function modifyData (mainJson) {
@@ -14,30 +14,34 @@ export function modifyData (mainJson) {
       children[i].rectangle[1] = 0;
       if (children[i].name == 'bgImg' && children[i].conName == 'Sprite') {
         //背景图片
-        bgImg(children[i]);
+        BgImg(children[i]);
       } else if (children[i].name == 'submit_btn' && children[i].conName == 'Sprite') {
         //按钮
         submit_btn(children[i], coordinate)
       } else if (children[i].conName == 'Text') {
         //文本，让最外层题干文字水平居中
         style(children[i]);
-        text(children[i])
+        Text(children[i]);
       } else {
         if (children[i].conName == 'Ligature') {
-          ligature(children[i], coordinate)
+        //处理连线题
+          Ligature(children[i], coordinate);
         } else if (children[i].conName == 'Choice') {
-          choice(children[i], coordinate)
+          //处理选择题
+          Choice(children[i], coordinate);
         } else if (children[i].conName == 'FillVacancy') {
-          fillvacancy(children[i], coordinate)
+          //处理填空题
+          FillVacancy(children[i], coordinate);
         } else {
-          choice(children[i], coordinate)
+          //未知题型处理
+          Choice(children[i], coordinate);
         }
       }
       if (children[i].children) {
         //处理children里面嵌套了children
-        nestData(children[i].children)
-        const modelType = mainJson.pages[0].modelType
-        new GetData(modelType, children[i], children[i].children)
+        nestData(children[i].children);
+        const modelType = mainJson.pages[0].modelType;
+        new GetData(modelType, children[i], children[i].children);
       }
     }
   }

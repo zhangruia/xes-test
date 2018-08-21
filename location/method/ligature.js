@@ -1,4 +1,4 @@
-export function ligature (children, coordinate) {
+export function Ligature (children, coordinate) {
   let { spaceX, spaceY, RspaceY, stemX, stemY, answerx, answerY } = coordinate;
   let answerX = 0;
   if (children.groupType == 'ligature_stem') {
