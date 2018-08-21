@@ -1,9 +1,9 @@
 import { FatherCoordinates } from './father.js'
-
+//处理连线题
 export class Ligature extends FatherCoordinates {
   constructor (page) {
-    super()
-    this.compute(page)
+    super();
+    this.compute(page);
     let Rchildren = page.children;
     let Rindex = 0;
     let Rheight = 0;
@@ -13,7 +13,7 @@ export class Ligature extends FatherCoordinates {
     let answerX = Rchildren[0].rectangle[2] - RbeginX;
     for (var i = 0; i < Rchildren.length; i++) {
       if (Rchildren[i].groupType == 'ligature_answer') {
-        RimgWidth = Rchildren[i].rectangle[3]
+        RimgWidth = Rchildren[i].rectangle[3];
         Rindex = Rindex + 1;
         Rheight = Rheight + RimgWidth;
       }
@@ -38,6 +38,6 @@ export class Ligature extends FatherCoordinates {
     this.stemY = Lbegin;
     this.answerx = answerX;
     this.answerY = Rbegin;
-    console.log(this)
+    // console.log(this)
   }
 }

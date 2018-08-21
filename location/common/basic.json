@@ -17,25 +17,25 @@
     "trimSize": 8
   },
   "gap": {
-    "submitX": 1600,
+    "submitX": 1650,
     "submitY": 950,
     "submitH": 80,
     "submitW": 240
   },
   "classify": {
-    "submitX": 1600,
+    "submitX": 1650,
     "submitY": 950,
     "submitH": 80,
     "submitW": 240
   },
   "choice": {
-    "submitX": 1600,
+    "submitX": 1650,
     "submitY": 950,
     "submitH": 80,
     "submitW": 240
   },
   "ligature": {
-    "submitX": 1600,
+    "submitX": 1650,
     "submitY": 950,
     "submitH": 80,
     "submitW": 240

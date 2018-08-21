@@ -1,8 +1,8 @@
 import { FatherCoordinates } from './father'
-
+//处理未知的题型
 export class Default extends FatherCoordinates {
   constructor (page) {
-    super()
+    super();
     this.compute(page);
     let children = page.children;
     let index = 0;
@@ -22,7 +22,6 @@ export class Default extends FatherCoordinates {
     } else {
       begin = spacex;
     }
-    // console.log(spacex)
     this.spaceX = spacex;
     this.stemX = begin;
     this.stemY = 300;

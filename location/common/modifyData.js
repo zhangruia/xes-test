@@ -7,7 +7,7 @@ import { GetData } from './getData.js'
 export function modifyData (mainJson) {
   for (var i = 0; i < mainJson.pages.length; i++) {//循环pages
     let { coordinate } = new Coordinates(mainJson.pages[i]);
-    console.log(coordinate)
+    // console.log(coordinate)
     let children = mainJson.pages[i].children;
     for (var i = 0; i < children.length; i++) {
       children[i].transform = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -15,10 +15,10 @@ export function modifyData (mainJson) {
       children[i].rectangle[1] = 0;
       if (children[i].name == 'bgImg' && children[i].conName == 'Sprite') {
         //背景图片
-        BgImg(children[i]);
+        BgImg(children[i], coordinate);
       } else if (children[i].name == 'submit_btn' && children[i].conName == 'Sprite') {
         //按钮
-        submit_btn(children[i], coordinate)
+        submit_btn(children[i], coordinate);
       } else if (children[i].conName == 'Text') {
         //文本，让最外层题干文字水平居中
         style(children[i]);
