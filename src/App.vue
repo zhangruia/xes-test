@@ -33,7 +33,7 @@ export default {
   },
   created(){
     var data = modifyData(mainJson);
-    console.log(data)
+    // console.log(data)
     this.inFun();
     // new GetData(mainJson)
   },
@@ -43,9 +43,10 @@ export default {
     
       // var src=translate(mainJson1,resourceJson1);
       // console.log(parseJson(src.main));
-      // console.log("================src.main====================")
-      // console.log(src.main);
+      console.log("================src.main====================")
+      console.log(src.main);
       // console.log(src.resource)
+      
       let pixi = new PixiExporter(
         src.main,
         src.resource,
