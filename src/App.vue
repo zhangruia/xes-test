@@ -50,8 +50,8 @@ export default {
         src.main,
         src.resource,
         (current, all) => {
-          console.log("资源加载个数：" + current);
-          console.log("资源总个数：" + all);
+          // console.log("资源加载个数：" + current);
+          // console.log("资源总个数：" + all);
         },
         () => {
           this.rootStageObj = pixi.pixiApp.stage;

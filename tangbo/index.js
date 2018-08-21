@@ -14,8 +14,9 @@ export const  translate=(main,resourceJson)=>{
         main.pages[i].children=result.children;
         resource=result.resource;
     }
-    console.log(main)
+    // console.log(main)
     resource=resource.resource; 
-    console.log(resource)
+    // console.log(resource)
     return {main,resource};
 }
+       
