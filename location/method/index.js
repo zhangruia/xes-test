@@ -1,15 +1,15 @@
-import { bgImg } from './bgImg'
+import { BgImg } from './BgImg'
 import { submit_btn } from './submit_btn'
-import { text } from './text'
-import { fillvacancy } from './fillvacancy'
-import { ligature } from './ligature'
-import { choice } from './choice'
+import { Text } from './Text'
+import { FillVacancy } from './FillVacancy'
+import { Ligature } from './Ligature'
+import { Choice } from './Choice'
 
 export {
   submit_btn,
-  bgImg,
-  text,
-  ligature,
-  choice,
-  fillvacancy
+  BgImg,
+  Text,
+  Ligature,
+  Choice,
+  FillVacancy
 }
