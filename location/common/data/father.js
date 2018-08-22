@@ -18,7 +18,8 @@ export class FatherCoordinates {//坐标系
     this.bgImgY = 0//Y
     this.bgImgH = 0//高
     this.bgImgW = 0//宽
-    this.height = 0//第一排和第二排答案的间距
+    this.height = 0//第一排和第二排答案的间距最高的元素高度
+    this.heightB = 0//第二排最高元素的高度
     this.stemXtwo = 0//第二排的x轴起始坐标
     this.spaceXtwo = 0//第二排x轴间距
     this.index = 0//第几个开始换行
