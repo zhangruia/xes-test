@@ -1,20 +1,23 @@
 {
   "modelType": {
-    "gap": 1,
-    "classify": 2,
-    "choice": 3,
+    "gap": 2,
+    "classify": 3,
+    "choice": 1,
     "ligature": 4
   },
   "common": {
     "pageW": 1920,
     "pageH": 1080,
     "bgX": 0,
-    "bgY": 0,
-    "warpW": 400,
-    "warpH": 300,
-    "fontSize": 16,
-    "punctuaSize": 10,
-    "trimSize": 8
+    "bgY": 10,
+    "fontSize": 30,
+    "warpW": 995,
+    "warpH": 660,
+    "letterSize": 20,
+    "punctuaSize": 30,
+    "trimSize": 8,
+    "space": 20,
+    "lineH": 25
   },
   "gap": {
     "submitX": 1650,
@@ -32,7 +35,8 @@
     "submitX": 1650,
     "submitY": 950,
     "submitH": 80,
-    "submitW": 240
+    "submitW": 240,
+    "stemTop": 200
   },
   "ligature": {
     "submitX": 1650,

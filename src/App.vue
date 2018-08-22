@@ -33,20 +33,22 @@ export default {
   },
   created(){
     var data = modifyData(mainJson);
-    // console.log(data)
     this.inFun();
-    // new GetData(mainJson)
+    const modelType = mainJson.pages[0].modelType
+    new GetData(modelType, null, !mainJson.pages[0].texture?
+                                  mainJson.pages[0].children:
+                                  mainJson.pages[0], null)
   },
   methods:{
      inFun() {
       var src=translate(mainJson,resourceJson);
-    
+
       // var src=translate(mainJson1,resourceJson1);
       // console.log(parseJson(src.main));
-      console.log("================src.main====================")
-      console.log(src.main);
+      // console.log("================src.main====================")
+      // console.log(src.main);
       // console.log(src.resource)
-      
+
       let pixi = new PixiExporter(
         src.main,
         src.resource,

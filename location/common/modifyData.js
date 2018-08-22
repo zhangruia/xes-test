@@ -40,9 +40,7 @@ export function modifyData (mainJson) {
       }
       if (children[i].children) {
         //处理children里面嵌套了children
-        nestData(children[i].children);
-        const modelType = mainJson.pages[0].modelType;
-        new GetData(modelType, children[i], children[i].children);
+        nestData(children[i].children)
       }
     }
   }
