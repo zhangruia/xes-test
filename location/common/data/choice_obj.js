@@ -51,9 +51,9 @@ export class Choice extends FatherCoordinates {
     this.spaceX = spacex;
     this.stemX = begin;
     this.stemY = 500;
-    console.log(this)
-    console.log(this.stemX)
-    console.log(this.stemXtwo)
-    console.log(begin)
+    // console.log(this)
+    // console.log(this.stemX)
+    // console.log(this.stemXtwo)
+    // console.log(begin)
   }
 }

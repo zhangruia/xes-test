@@ -1,9 +1,6 @@
-exports.handleImg = handleImg
-// var imgJson = require('../../static/resource')
-var x = 0;
-var y = 0;
+import basic from '../common/basic.json'
+
 function handleImg (json) {
-  
   // console.log(json.texture.content[0]);
   // console.log(imgJson.list);
   // var img = '';
@@ -15,4 +12,17 @@ function handleImg (json) {
   // }
   // console.log(img)
   // return img
+  // console.log(prev);
+  // console.log(json);
+
+  // if (basic.common.warpW > totalWid) {
+  //   console.log('yet');
+  // } else {
+  //   console.log('not');
+  // }
+}
+
+
+export {
+  handleImg
 }

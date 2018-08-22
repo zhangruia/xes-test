@@ -2,7 +2,7 @@ var i = 0;
 export function Choice (children, coordinate) {
   i++;
   let { spaceX, spaceY, stemX, stemY, height, stemXtwo, spaceXtwo, index } = coordinate;
-  console.log(coordinate)
+  // console.log(coordinate)
   if (i <= index) {
     children.transform[0] = stemX;
     children.transform[1] = stemY;
