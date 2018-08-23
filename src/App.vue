@@ -28,11 +28,14 @@ export default {
   data(){
     return{
       showPage: false,
-      rootStageObj: {}
+      rootStageObj: {},
+      listJson: null
     }
   },
   created(){
-    var data = modifyData(mainJson);
+    this.listJson = modifyData(mainJson);
+    console.log(mainJson);
+    console.log(this.listJson);
     this.inFun();
     const modelType = mainJson.pages[0].modelType
     new GetData(modelType, null, !mainJson.pages[0].texture?
@@ -56,6 +59,7 @@ export default {
           // console.log("资源加载个数：" + current);
           // console.log("资源总个数：" + all);
         },
+        
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
           // console.log(1111111111111111111111111);

@@ -6,7 +6,7 @@ export class Choice extends FatherCoordinates {
     this.compute(page);
     let children = page.children;
     let index = 0, width = 0, begin = 0, begintwo = 0, imgWidth = 0, spacextwo = 0, height = 0, top = 0, heightB = 0;
-    for (var i = 0; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
       if (children[i].conName == 'Choice') {
         if (children[i].rectangle[2] > height) {
           height = children[i].rectangle[2];
@@ -23,7 +23,7 @@ export class Choice extends FatherCoordinates {
       index = 0;
       width = 0;
       imgWidth = 0;
-      for (var i = 0; i < children.length; i++) {
+      for (let i = 0; i < children.length; i++) {
         if (children[i].conName == 'Choice') {
           if (children[i].rectangle[2] > height && i <= top) {
             height = children[i].rectangle[2];

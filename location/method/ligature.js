@@ -1,5 +1,5 @@
 export function Ligature (children, coordinate) {
-  let { spaceX, spaceY, RspaceY, stemX, stemY, answerx, answerY } = coordinate;
+  let {spaceX, spaceY, RspaceY, stemX, stemY, answerx, answerY} = coordinate;
   let answerX = 0;
   if (children.groupType == 'ligature_stem') {
     children.transform[0] = stemX;

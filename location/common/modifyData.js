@@ -5,10 +5,12 @@ import { nestData } from './nestData.js'//引入处理嵌套关系方法
 import { GetData } from './getData.js'
 
 export function modifyData (mainJson) {
-  for (var i = 0; i < mainJson.pages.length; i++) {//循环pages
-    let { coordinate } = new Coordinates(mainJson.pages[i]);
+  for (var j = 0; j < mainJson.pages.length; j++) {//循环pages
+    // console.log('1111111111111')
+    let { coordinate } = new Coordinates(mainJson.pages[j]);
     // console.log(coordinate)
-    let children = mainJson.pages[i].children;
+    // console.log(coordinate)
+    let children = mainJson.pages[j].children;
     for (var i = 0; i < children.length; i++) {
       children[i].transform = [0, 0, 0, 0, 0, 0, 0, 0, 0];
       children[i].rectangle[0] = 0;
@@ -22,7 +24,7 @@ export function modifyData (mainJson) {
       } else if (children[i].conName == 'Text') {
         //文本，让最外层题干文字水平居中
         style(children[i]);
-        Text(children[i]);
+        // Text(children[i]);
       } else {
         if (children[i].conName == 'Ligature') {
         //处理连线题
@@ -40,7 +42,7 @@ export function modifyData (mainJson) {
       }
       if (children[i].children) {
         //处理children里面嵌套了children
-        nestData(children[i].children)
+        // nestData(children[i].children)
       }
     }
   }
