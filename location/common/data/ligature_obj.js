@@ -35,6 +35,5 @@ export class Ligature extends FatherCoordinates {
     this.stemY = Lbegin;
     this.answerx = answerX;
     this.answerY = Rbegin;
-    // console.log(this)
   }
 }

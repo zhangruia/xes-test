@@ -6,10 +6,7 @@ import { GetData } from './getData.js'
 
 export function modifyData (mainJson) {
   for (var j = 0; j < mainJson.pages.length; j++) {//循环pages
-    // console.log('1111111111111')
     let { coordinate } = new Coordinates(mainJson.pages[j]);
-    // console.log(coordinate)
-    // console.log(coordinate)
     let children = mainJson.pages[j].children;
     for (var i = 0; i < children.length; i++) {
       children[i].transform = [0, 0, 0, 0, 0, 0, 0, 0, 0];

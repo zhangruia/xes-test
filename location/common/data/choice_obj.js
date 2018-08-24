@@ -5,11 +5,11 @@ export class Choice extends FatherCoordinates {
     super();
     this.compute(page);
     let children = page.children;
-    let index = 0, width = 0, begin = 0, begintwo = 0, imgWidth = 0, spacextwo = 0, height = 0, top = 0, heightB = 0;
+    let index = 0, width = 0, begin = 0, begintwo = 0, imgWidth = 0, spacextwo = 0, height = 0, buttom = 0, top = 0, heightB = 0;
     for (let i = 0; i < children.length; i++) {
       if (children[i].conName == 'Choice') {
-        if (children[i].rectangle[2] > height) {
-          height = children[i].rectangle[2];
+        if (children[i].rectangle[3] > height) {
+          height = children[i].rectangle[3];
         }
         imgWidth = children[i].rectangle[2];
         index = index + 1;
@@ -17,39 +17,36 @@ export class Choice extends FatherCoordinates {
       }
     }
     let spacex = (children[0].rectangle[2] - width - begin * 2) / (index + 1);
-    if (spacex <= 60) {
+    if (spacex <= 180) {
       top = Math.ceil(index / 2)
-      let buttom = Math.floor(index / 2)
+      buttom = Math.floor(index / 2)
       index = 0;
       width = 0;
       imgWidth = 0;
-      for (let i = 0; i < children.length; i++) {
-        if (children[i].conName == 'Choice') {
-          if (children[i].rectangle[2] > height && i <= top) {
-            height = children[i].rectangle[2];
-          } else if (children[i].rectangle[2] > heightB && i > top) {
-            heightB = children[i].rectangle[2];
+      for (let j = 0; j < children.length; j++) {
+        if (children[j].conName == 'Choice') {
+          if (children[j].rectangle[3] > height && j <= top) {
+            height = children[j].rectangle[3];
+          } else if (children[j].rectangle[3] > heightB && j > top) {
+            heightB = children[j].rectangle[3];
           }
           index = index + 1;
-          imgWidth = children[i].rectangle[2];
+          imgWidth = children[j].rectangle[2];
           width = width + imgWidth;
           if (index == top) {
             spacex = (children[0].rectangle[2] - width - begin * 2) / (top + 1);
             begin = top == 1? (children[0].rectangle[2] - imgWidth) / 2: spacex;
-            // console.log(begin)
             width = 0;
           }
         }
       }
       spacextwo = (children[0].rectangle[2] - width - begintwo * 2) / (buttom + 1);
       begintwo = buttom == 1? (children[0].rectangle[2] - imgWidth) / 2: spacextwo;
-      // console.log(index)
     } else {
       begin = index == 1? (children[0].rectangle[2] - imgWidth) / 2: spacex;
       top = index
     }
-    // console.log(spacex)
-    this.height = height;
+    this.height = height; 
     this.heightB = heightB;
     this.stemXtwo = begintwo;
     this.spaceXtwo = spacextwo

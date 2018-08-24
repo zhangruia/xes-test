@@ -5,5 +5,4 @@ export function Default (children, coordinate) {
   children.transform[1] = stemY;
   coordinate.stemX = stemX + spaceX + children.rectangle[2];
   coordinate.stemY = stemY + spaceY;
-  // console.log(coordinate)
 }

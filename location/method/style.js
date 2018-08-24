@@ -13,6 +13,5 @@ export function style (children) {
         delete style[k];
       }
     }
-    // console.log(style)
   }
 }
