@@ -34,8 +34,8 @@ export default {
   },
   created(){
     this.listJson = modifyData(mainJson);
-    console.log(mainJson);
-    console.log(this.listJson);
+    // console.log(mainJson);
+    // console.log(this.listJson);
     this.inFun();
   },
   methods:{

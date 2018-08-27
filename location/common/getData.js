@@ -25,8 +25,10 @@ export class GetData {
     if (Object.prototype.toString.call(current) == '[object Object]') {
       this.moldCurrent(modelType, prev, current, parent)
       this.childCurrent(modelType, prev ,current)
+      // console.log(parent);
       return false
     } else {
+      // console.log(current);
       current.map((item, index) => {
         // 处理选择题图片选项的摆放方式
         if (item.conName == 'Choice') {
@@ -43,7 +45,7 @@ export class GetData {
               *判断index的原因：
               * 如果当前对象不是第一个，需要知道前一个对象的数据
            */
-          this.moldCurrent(modelType, current[index-1], item, null)
+          this.moldCurrent(modelType, current[index-1], item, parent)
           this.childCurrent(modelType, current[index-1], item)
         } else {
           this.moldCurrent(modelType, null, item, current)
@@ -90,7 +92,7 @@ export class GetData {
       // 填空题
     } else if (item.conName === 'Text') {
       // 文本处理方式
-      return handleChart(modelType, prev, item, parent);
+      handleChart(modelType, prev, item, parent);
     } else if (item.conName === 'Sprite') {
       // 图片处理方式
     } else if (item.conName === 'Container') {
