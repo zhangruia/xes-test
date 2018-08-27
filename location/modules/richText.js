@@ -1,22 +1,32 @@
-function richText (prev, richtext) {
-  for (let i in richtext.children) {
-    let child = richtext.children
-    if (prev) {
-      const [prevX, prevY] = prev.transform
-      if (i == 0) {
-        child[i].transform[0] = 0
-        child[i].transform[1] = prevY+20
-        // console.log(child[i].transform);
+import { handleChart } from './handleChart'
+import { handleImg } from './handleImg'
+
+function richText (modelType, prev, richtext, parent) {
+  const child = richtext.children;
+  child.map((item, index) => {
+    if (item.conName === 'Text') {
+      if (index === 0) {
+        // handleChart(modelType, null, item, parent)
       } else {
-        // console.log(i);
+        // handleChart(modelType, child[index - 1], item, parent)
+        if (index == child.length - 1) richtext.rectangle[2] = item.transform[0] + item.rectangle[2]
       }
-      // console.log(richtext.children[i]);
-      // console.log(prev.transform);
-    } else {
-      richtext.children[0].transform[0] = 0
-    }
-  }
+      // console.log(item.transform);
+    } else if (item.conName === 'Sprite') {
+      if (index === 0) {
+        // handleImg(modelType, null, item, parent)
+      } else {
+        // handleImg(modelType, child[index - 1], item, parent)
+        if (index == child.length - 1) richtext.rectangle[2] = item.transform[0] + item.rectangle[2]
+      }
+      // console.log(item.transform);
+    } else console.log('residue' + item.conName);
+  })
+
+  return richtext
+
 }
+
 
 export {
   richText

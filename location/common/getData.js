@@ -1,6 +1,5 @@
-import { juade } from './juadeMold'
 import basic from './basic.json'
-// import { Coordinate } from './basic'
+import { juade } from './juadeMold'
 import { handleChart } from '../modules/handleChart'
 import { handleImg } from '../modules/handleImg'
 import { richText } from '../modules/richText'
@@ -16,42 +15,54 @@ let choiceLen = 0,
     *** current -> 当前对象
   */
 
-class GetData {
+export class GetData {
   constructor (modelType, prev, current, parent) {
-    this.recursion(modelType, prev, current, parent)
+    return this.initial(modelType, prev, current, parent)
   }
 
   // 取值进行判断值类型
-  recursion (modelType, prev, current, parent) {
+  initial (modelType, prev, current, parent) {
     if (Object.prototype.toString.call(current) == '[object Object]') {
       this.moldCurrent(modelType, prev, current, parent)
-      this.childCurrent(modelType, prev ,current, 0)
+      this.childCurrent(modelType, prev ,current)
       return false
     } else {
       current.map((item, index) => {
         // 处理选择题图片选项的摆放方式
-        if (item.conName.indexOf('Choice')) {
-          handleImg(current)
+        if (item.conName == 'Choice') {
+          // TODO: 目前不知选择题是如何处理图片的放置情况，暂搁置当下
+          // handleImg(current)
+        } else if (item.conName === 'Container') {
+          // TODO: 本应放在moldCurrent当中，但目前需要当前内容的parent，暂放置当下
+          this.moldCurrent(modelType, current[index-1], item, current)
+          return false
         }
         if (index !== 0) {
+          /*
+              ****
+              *判断index的原因：
+              * 如果当前对象不是第一个，需要知道前一个对象的数据
+           */
           this.moldCurrent(modelType, current[index-1], item, null)
-          this.childCurrent(modelType, current[index-1], item, index)
+          this.childCurrent(modelType, current[index-1], item)
         } else {
           this.moldCurrent(modelType, null, item, current)
-          this.childCurrent(modelType, null, item, index)
+          this.childCurrent(modelType, null, item)
         }
       })
+    }
+    return {
+      current
     }
   }
 
   // 判断当前类型
   moldCurrent (modelType, prev, item, parent) {
-    // console.log(item);
     if (item.name === 'bgImg') {
-      item.rectangle[2] = basic.common.pageW
-      item.rectangle[3] = basic.common.pageH
-      item.transform[0] = 0
-      item.transform[1] = 0
+      // item.rectangle[2] = basic.common.pageW
+      // item.rectangle[3] = basic.common.pageH
+      // item.transform[0] = 0
+      // item.transform[1] = 0
       return false
     }
     if (item.conName === 'Choice') {
@@ -79,33 +90,28 @@ class GetData {
       // 填空题
     } else if (item.conName === 'Text') {
       // 文本处理方式
-      // console.log(item);
-      // console.log(parent);
-      handleChart(modelType, prev, item, parent);
+      return handleChart(modelType, prev, item, parent);
     } else if (item.conName === 'Sprite') {
       // 图片处理方式
     } else if (item.conName === 'Container') {
       // 富文本的处理方式
+      return richText(modelType, prev, item, parent)
     } else console.log('beat all', item);
   }
 
   // 判断当前对象的children
-  childCurrent (modelType, prev, item, index) {
+  childCurrent (modelType, prev, item) {
     if (!item.children || item.children.length === 0) return false
     else {
       const child = item.children
       // 当前对象有children
       if (child.length >= 1) {
         child.map((val, ind) => {
-          if (ind == 0) this.recursion(modelType, null, val, item)
-          else this.recursion(modelType, child[ind - 1], val, null)
+          if (ind == 0) this.initial(modelType, null, val, item)
+          else this.initial(modelType, child[ind - 1], val, item)
         })
       }
     }
   }
 
-}
-
-export {
-  GetData
 }

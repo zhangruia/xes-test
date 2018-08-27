@@ -16,8 +16,12 @@
     "letterSize": 20,
     "punctuaSize": 30,
     "trimSize": 8,
+    "numberSize": 10,
     "space": 20,
-    "lineH": 25
+    "fontpadleft": 20,
+    "fontpadtop": 10,
+    "imgpadleft": 10,
+    "lineH": 35
   },
   "gap": {
     "submitX": 1650,
