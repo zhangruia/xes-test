@@ -23,6 +23,7 @@ export class FatherCoordinates {//坐标系
     this.stemXtwo = 0  //第二排的x轴起始坐标
     this.spaceXtwo = 0  //第二排x轴间距
     this.index = 0  //第几个开始换行
+    this.count = 0  //计数，第二个舞台重新计数
     this.compute= function (page) {
       this._compute_submit(page)
       this._compute_space(page)

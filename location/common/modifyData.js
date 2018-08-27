@@ -12,6 +12,10 @@ export function modifyData (mainJson) {
       children[i].transform = [0, 0, 0, 0, 0, 0, 0, 0, 0];
       children[i].rectangle[0] = 0;
       children[i].rectangle[1] = 0;
+      if (children[i].conName == 'Container') {
+        //Container容器
+        
+      }
       if (children[i].name == 'bgImg' && children[i].conName == 'Sprite') {
         //背景图片
         BgImg(children[i], coordinate);
@@ -26,7 +30,7 @@ export function modifyData (mainJson) {
         if (children[i].conName == 'Ligature') {
         //处理连线题
           Ligature(children[i], coordinate);
-        } else if (children[i].conName == 'Choice') {
+        } else if (children[i].conName == 'Choice' || children[i].conName == 'Container') {
           //处理选择题
           Choice(children[i], coordinate);
         } else if (children[i].conName == 'FillVacancy') {

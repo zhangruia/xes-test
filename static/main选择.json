@@ -193,7 +193,7 @@
         },
         {
           "name": "test_option3",
-          "conName": "Choice",
+          "conName": "Container",
           "visible": true,
           "alpha": 1,
           "groupType": "choice",
