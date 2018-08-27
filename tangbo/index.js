@@ -4,6 +4,7 @@ import { traverseChildren } from './fun/traverseChildren'
 // import { resource } from './common/common'
 require('xes-ligature');
 export const  translate=(main,resourceJson)=>{
+  // console.log(Resource);
     // console.log("=============================index.js导出成功=================================")
     let resource=new Resource(resourceJson);
     // console.log(resource);
@@ -16,8 +17,7 @@ export const  translate=(main,resourceJson)=>{
         resource=result.resource;
     }
     // console.log(main)
-    resource=resource.resource; 
+    resource=resource.resource;
     // console.log(resource)
     return {main,resource};
 }
-       

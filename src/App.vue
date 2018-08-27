@@ -13,7 +13,7 @@ require('xes-ligature');
 import {canvasStage} from 'xes_canvas_renderer';
 import { PixiExporter } from "xeditor-convertor";
 import {pageSizeFun} from "../static/preload";
-import { GetData } from '../location/index'
+import { ergodic } from '../location/index'
 import mainJson from "../static/main选择.json";
 import resourceJson from "../static/resource";
 import mainJson1 from "../static/main1";
@@ -34,20 +34,16 @@ export default {
   created(){
     var data = modifyData(mainJson);
     this.inFun();
-    const modelType = mainJson.pages[0].modelType
-    new GetData(modelType, null, !mainJson.pages[0].texture?
-                                  mainJson.pages[0].children:
-                                  mainJson.pages[0], null)
   },
   methods:{
      inFun() {
       var src=translate(mainJson,resourceJson);
-
+      let render = ergodic(mainJson);
       // var src=translate(mainJson1,resourceJson1);
       // console.log(parseJson(src.main));
       // console.log("================src.main====================")
       // console.log(src.main);
-      // console.log(src.resource)
+      // console.log(render)
 
       let pixi = new PixiExporter(
         src.main,

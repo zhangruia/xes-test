@@ -22,7 +22,7 @@ export function modifyData (mainJson) {
       } else if (children[i].conName == 'Text') {
         //文本，让最外层题干文字水平居中
         style(children[i]);
-        Text(children[i]);
+        // Text(children[i]);
       } else {
         if (children[i].conName == 'Ligature') {
         //处理连线题
@@ -40,7 +40,7 @@ export function modifyData (mainJson) {
       }
       if (children[i].children) {
         //处理children里面嵌套了children
-        nestData(children[i].children)
+        // nestData(children[i].children)
       }
     }
   }
