@@ -1,5 +1,5 @@
 import basic from '../../common/basic.json'
-import { setRectangle } from '../information/setRectangle'
+import { setRectangle } from './information/setRectangle'
 
 const warpW = basic.common.warpW; // 舞台中央的宽度
 const fontReg    = /[\u4e00-\u9fa5]+/;

@@ -1,5 +1,5 @@
-import basic from '../common/basic.json'
-import { isWarp } from './handleChart/isWarp'
+import basic from '../../common/basic.json'
+import { isWarp } from './isWarp'
 
 // rule
 const fontReg    = /[\u4e00-\u9fa5]+/;

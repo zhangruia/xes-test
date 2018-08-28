@@ -1,10 +1,10 @@
 import basic from '../../common/basic.json'
 import { countWidth } from './countWidth'
-import { prevInformation } from '../information/prevInformation'
-import { parentInformation } from '../information/parentInformation'
+import { prevInformation } from './information/prevInformation'
+import { parentInformation } from './information/parentInformation'
 import { cuttingObj } from './cuttingObj'
-import { setRectangle } from '../information/setRectangle'
-import { setTransform } from '../information/setTransform'
+import { setRectangle } from './information/setRectangle'
+import { setTransform } from './information/setTransform'
 
 export const isWarp = function (forceWarp, prev, current, parent) {
   const warpLen = current.isWarp ? current.isWarp : 0

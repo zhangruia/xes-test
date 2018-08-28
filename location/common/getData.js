@@ -1,8 +1,6 @@
 import basic from './basic.json'
-import { juade } from './juadeMold'
-import { handleChart } from '../modules/handleChart'
-import { handleImg } from '../modules/handleImg'
-import { richText } from '../modules/richText'
+import { handleChart } from '../modules/handleChart/handleChart.js'
+import { richText } from '../modules/richText/richText'
 
 let choiceLen = 0,
     totalWid  = 0,
