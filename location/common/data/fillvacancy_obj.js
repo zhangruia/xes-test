@@ -3,7 +3,7 @@ import { FatherCoordinates } from './father.js'
 export class FillVacancy extends FatherCoordinates {
   constructor (page) {
     super();
-    this.compute(page);
+    // this.compute(page);
     this.count = 0;
     let children = page.children;
     let index = 0, width = 0, begin = 0, begintwo = 0, imgWidth = 0, spacextwo = 0, height = 0, top = 0, heightB = 0;

@@ -75,7 +75,7 @@
           "rectangle": [
             0,
             0,
-            150,
+            1100,
             150
           ],
           "transform": [
@@ -91,7 +91,7 @@
           ],
           "texture": {
             "content": [
-              1
+              2
             ],
             "type": "4"
           },

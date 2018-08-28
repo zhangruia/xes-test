@@ -18,33 +18,27 @@ export function modifyData (mainJson) {
       }
       if (children[i].name == 'bgImg' && children[i].conName == 'Sprite') {
         //背景图片
-        BgImg(children[i], coordinate);
+        BgImg(children[i]);
       } else if (children[i].name == 'submit_btn' && children[i].conName == 'Sprite') {
         //按钮
-        submit_btn(children[i], coordinate);
+        submit_btn(children[i]);
       } else if (children[i].conName == 'Text') {
         //文本，让最外层题干文字水平居中
         style(children[i]);
         // Text(children[i]);
       } else {
-        if (children[i].conName == 'Ligature') {
-        //处理连线题
-          Ligature(children[i], coordinate);
-        } else if (children[i].conName == 'Choice' || children[i].conName == 'Container') {
+        // if (children[i].conName == 'Choice' || children[i].conName == 'Container') {
           //处理选择题
           Choice(children[i], coordinate);
-        } else if (children[i].conName == 'FillVacancy') {
-          //处理填空题
-          FillVacancy(children[i], coordinate);
-        } else {
+        // } else {
           //未知题型处理
-          Default(children[i], coordinate);
-        }
+          // Default(children[i], coordinate);
+        // }
       }
-      if (children[i].children) {
+      // if (children[i].children) {
         //处理children里面嵌套了children
         // nestData(children[i].children)
-      }
+      // }
     }
   }
   return mainJson;

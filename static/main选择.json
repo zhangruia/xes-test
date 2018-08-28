@@ -193,7 +193,7 @@
         },
         {
           "name": "test_option3",
-          "conName": "Container",
+          "conName": "Choice",
           "visible": true,
           "alpha": 1,
           "groupType": "choice",
@@ -512,8 +512,8 @@
           "rectangle": [
             0,
             0,
-            250,
-            150
+            1200,
+            250
           ],
           "transform": [
             0,
@@ -622,11 +622,10 @@
             "content": {
               "text": "让我们根据这个月 许多、莉莉、和阿丘的值日天数来选一选吧！这个月谁的值日最多",
               "style": {
-                "fill": "blue",
                 "position": "absolute",
                 "left": 200,
                 "top": 100,
-                "font-size": 40
+                "font-size": 0
               }
             },
             "type": "3"

@@ -3,7 +3,7 @@ import { FatherCoordinates } from './father.js'
 export class Ligature extends FatherCoordinates {
   constructor (page) {
     super();
-    this.compute(page);
+    // this.compute(page);
     let children = page.children;
     let Rindex = 0;
     let Rheight = 0;

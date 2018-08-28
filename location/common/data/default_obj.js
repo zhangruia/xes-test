@@ -3,7 +3,7 @@ import { FatherCoordinates } from './father'
 export class Default extends FatherCoordinates {
   constructor (page) {
     super();
-    this.compute(page);
+    // this.compute(page);
     let children = page.children;
     let index = 0;
     let width = 0;
