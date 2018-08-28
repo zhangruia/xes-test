@@ -4,8 +4,8 @@ import { isWarp } from './isWarp'
 let forceWarp = false
 
 export const cuttingObj = function (iswarp, prev, current, parent) {
-  let ledal = admissible(iswarp, prev, current, parent)
-  // console.log(ledal);
+
+  let ledal = admissible(forceWarp, iswarp, prev, current, parent)
   if (ledal.residue == '') {
     forceWarp = false
     return false
@@ -16,7 +16,7 @@ export const cuttingObj = function (iswarp, prev, current, parent) {
     let newObj = JSON.stringify(current)
     newObj = JSON.parse(newObj)
     newObj.texture.content.text = ledal.residue
-    if (Object.prototype.toString.call(parent) == '[object Object]') return false
+    // if (Object.prototype.toString.call(parent) == '[object Object]') return false
     parent.children.map((item, ind) => {
       if (parent.children[ind].texture.content.text == ledal.accomm) {
         parent.children.splice(ind + 1, 0, newObj)

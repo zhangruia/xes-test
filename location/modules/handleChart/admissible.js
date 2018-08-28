@@ -1,13 +1,14 @@
 import basic from '../../common/basic.json'
 import { setRectangle } from '../information/setRectangle'
 
+const warpW = basic.common.warpW; // 舞台中央的宽度
 const fontReg    = /[\u4e00-\u9fa5]+/;
 const letterReg  = /[A-Za-z]/;
 const punctuaReg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/;
 const trimReg    = /\s/;
 const numberReg  = /\d/;
 
-export const admissible = function (iswarp, prev, current, parent) {
+export const admissible = function (forceWarp, iswarp, prev, current, parent) {
   let accomm = ''; // 可容纳内容
   let residue = ''; // 需要剪裁内容
   let wid = 0;
@@ -15,10 +16,12 @@ export const admissible = function (iswarp, prev, current, parent) {
 
   let totalWid = null
   if (iswarp) {
-    if (parent) totalWid = parent.rectangle[2]
+    if (parent) totalWid = parent.rectangle?parent.rectangle[2]:warpW
   } else {
-    if (prev && !forceWarp) parent ? (totalWid = parent.rectangle[2] - prev.rectangle[2]) : (totalWid = warpW - prev.rectangle[2])
-    else parent ? totalWid = parent.rectangle[2] : totalWid = warpW
+    if (prev && !forceWarp) parent ?
+    (totalWid = (parent.rectangle ? parent.rectangle[2]:warpW) - prev.rectangle[2]) :
+    (totalWid = warpW - prev.rectangle[2])
+    else parent ? totalWid = (parent.rectangle?parent.rectangle[2]:warpW) : totalWid = warpW
   }
 
   for (let i of text) {
@@ -44,15 +47,15 @@ export const admissible = function (iswarp, prev, current, parent) {
     residue: residue
   }
 
-  let style = current.texture.content.style['fontSize']
-  hei = style ? style : basic.common.fontSize
-
-  setRectangle(current, wid, hei)
-
-  return {
-    currentWid: wid,
-    currentHei: hei,
-    accomm: accomm,
-    residue: residue
-  }
+  // let style = current.texture.content.style['fontSize']
+  // hei = style ? style : basic.common.fontSize
+  //
+  // setRectangle(current, wid, hei)
+  //
+  // return {
+  //   currentWid: wid,
+  //   currentHei: hei,
+  //   accomm: accomm,
+  //   residue: residue
+  // }
 }

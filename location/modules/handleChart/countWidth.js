@@ -8,19 +8,20 @@ const numberReg  = /\d/;
 const warpW = basic.common.warpW; // 舞台中央的宽度
 
 export const countWidth = function (forceWarp, iswarp, prev, text, parent) {
+  // console.log(parent);
   let wid = 0;
 
   let totalWid = null
   if (iswarp) {
     // 如果iswarp，不需要知道prev的数据
     if (parent) {
-      totalWid = parent ? parent.rectangle[2] : warpW
+      totalWid = parent ? (parent.rectangle?parent.rectangle[2]:warpW) : warpW
     }
   } else {
     if (prev && !forceWarp) {
-      totalWid = parent ? (parent.rectangle[2] - prev.rectangle[2]) : (warpW - prev.rectangle[2])
+      totalWid = parent ? ((parent.rectangle?parent.rectangle[2]:warpW) - prev.rectangle[2]) : (warpW - prev.rectangle[2])
     } else {
-      totalWid = parent ? parent.rectangle[2] : warpW
+      totalWid = parent ? (parent.rectangle?parent.rectangle[2]:warpW) : warpW
     }
   }
   for (let i of text) {

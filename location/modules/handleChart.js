@@ -1,5 +1,4 @@
 import basic from '../common/basic.json'
-import { cuttingObj } from './handleChart/cuttingObj'
 import { isWarp } from './handleChart/isWarp'
 
 // rule
@@ -18,16 +17,14 @@ function handleChart (modelType, prev, current, parent) {
   if (current.name == 'stem') {
     for (let i in basic.modelType) {
       if (basic.modelType[i] == modelType) {
-        // current.texture.content.style['fontSize'] = basic.common.fontSize
-        // isWarp(null, current, null)
+        if (prev.conName !== 'Text') isWarp(forceWarp, null, current, parent)
+        else isWarp(forceWarp, prev, current, parent)
       }
     }
   } else if (current.name && current.name.indexOf('submit') != -1) {
     // TODO: 提交文字可直接确定位置，不需要写其他操作
     for (let i of basic.modelType) {
       if (basic.modelType[i] == modelType) {
-        // current.transform[0] = basic[i].submitX
-        // current.transform[1] = basic[i].submitY
       }
     }
   } else {
@@ -65,8 +62,8 @@ function handleChart (modelType, prev, current, parent) {
 //     })
 //   }
 // }
-// //
-// // // 获取当前可容纳内容以及超出内容
+
+// 获取当前可容纳内容以及超出内容
 // function getLedalContent (iswarp, prev, current, parent){
 //   let accomm = ''; // 可容纳内容
 //   let residue = ''; // 需要剪裁内容
@@ -104,8 +101,8 @@ function handleChart (modelType, prev, current, parent) {
 //     residue: residue
 //   }
 // }
-// //
-// // // 当前文字是否要求换行
+
+// 当前文字是否要求换行
 // function isWarp (prev, current, parent) {
 //   const warpLen = current.isWarp ? current.isWarp : 0
 //   if (warpLen <= 0) {
@@ -162,8 +159,8 @@ function handleChart (modelType, prev, current, parent) {
 //
 //   return current
 // }
-// //
-// // 可容纳的宽度计算
+
+// 可容纳的宽度计算
 // function countWidth (iswarp, prev, text, parent) {
 //   let wid = 0;
 //
@@ -198,7 +195,7 @@ function handleChart (modelType, prev, current, parent) {
 //   }
 //   return wid
 // }
-// //
+//
 // function parentInformation (parent) {
 //   let parentW, parentH, parentX, parentY;
 //   parentW = parent.rectangle[2]
@@ -212,7 +209,7 @@ function handleChart (modelType, prev, current, parent) {
 //     parentY
 //   }
 // }
-//
+
 // function prevInformation (prev) {
 //   let prevW, prevH, prevX, prevY;
 //   prevW = prev.rectangle[2]
@@ -226,7 +223,7 @@ function handleChart (modelType, prev, current, parent) {
 //     prevY
 //   }
 // }
-// //
+//
 // function position (current, w, h, x, y) {
 //   if (w) current.rectangle[2] = w
 //   if (h) current.rectangle[3] = h
