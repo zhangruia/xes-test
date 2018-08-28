@@ -1,5 +1,4 @@
-import { handleChart } from './handleChart'
-import { handleImg } from './handleImg'
+import { handleChart } from '../handleChart/handleChart'
 
 function richText (modelType, prev, richtext, parent) {
   const child = richtext.children;

@@ -6,7 +6,7 @@ const ergodic = (mainJson) => {
     json.modelType,
     null,
     json.children,
-    null
+    json
   )
   // console.log(data);
   return data
