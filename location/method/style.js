@@ -1,3 +1,4 @@
+
 export function style (children) {
   if (children.texture.content.style) {
     let style = children.texture.content.style;
@@ -13,6 +14,5 @@ export function style (children) {
         delete style[k];
       }
     }
-    // console.log(style)
   }
 }

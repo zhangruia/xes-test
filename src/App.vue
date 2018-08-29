@@ -13,8 +13,8 @@ require('xes-ligature');
 import {canvasStage} from 'xes_canvas_renderer';
 import { PixiExporter } from "xeditor-convertor";
 import {pageSizeFun} from "../static/preload";
-import { GetData } from '../location/index'
-import mainJson from "../static/main填空题.json";
+import { ergodic } from '../location/index'
+import mainJson from "../static/main选择.json";
 import resourceJson from "../static/resource";
 import mainJson1 from "../static/main1";
 import resourceJson1 from "../static/resource1";
@@ -29,7 +29,8 @@ export default {
   data(){
     return{
       showPage: false,
-      rootStageObj: {}
+      rootStageObj: {},
+      listJson: null
     }
   },
   created(){
@@ -53,9 +54,10 @@ export default {
         src.main,
         src.resource,
         (current, all) => {
-          console.log("资源加载个数：" + current);
-          console.log("资源总个数：" + all);
+          // console.log("资源加载个数：" + current);
+          // console.log("资源总个数：" + all);
         },
+
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
           console.log(this.rootStageObj)

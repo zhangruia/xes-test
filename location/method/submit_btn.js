@@ -1,7 +1,5 @@
-
-export function submit_btn (children, coordinate) {
-  // console.log(coordinate)
-  let { submitX, submitY, submitH, submitW } = coordinate
-  children.rectangle = [0, 0, submitW, submitH];
-  children.transform = [submitX, submitY, 0, 0, 0, 0, 0, 0, 0];
+import basic from '../common/basic.json'
+export function submit_btn (children) {
+  children.rectangle = [0, 0, basic.common.submitW, basic.common.submitH];
+  children.transform = [basic.common.submitX, basic.common.submitY, 0, 0, 0, 0, 0, 0, 0];
 }
