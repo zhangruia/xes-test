@@ -1,29 +1,17 @@
-import { handleChart } from '../handleChart/handleChart'
+import { isWarp } from './isWarp'
+import global from './global.json'
 
-function richText (modelType, prev, richtext, parent) {
-  const child = richtext.children;
-  child.map((item, index) => {
+let max = 0
+
+function richText (modelType, prev, child, parent) {
+  for(let i = 0; i < child.length; i += 1){
+    let item = child[i], index = i;
     if (item.conName === 'Text') {
-      if (index === 0) {
-        // handleChart(modelType, null, item, parent)
-      } else {
-        // handleChart(modelType, child[index - 1], item, parent)
-        if (index == child.length - 1) richtext.rectangle[2] = item.transform[0] + item.rectangle[2]
-      }
-      // console.log(item.transform);
+      isWarp('text', child[index - 1], item, parent)
     } else if (item.conName === 'Sprite') {
-      if (index === 0) {
-        // handleImg(modelType, null, item, parent)
-      } else {
-        // handleImg(modelType, child[index - 1], item, parent)
-        if (index == child.length - 1) richtext.rectangle[2] = item.transform[0] + item.rectangle[2]
-      }
-      // console.log(item.transform);
-    } else console.log('residue' + item.conName);
-  })
-
-  return richtext
-
+      isWarp('img', child[index - 1], item, parent)
+    } else console.log('unexpectedly：' + item.conName);
+  }
 }
 
 

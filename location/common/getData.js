@@ -94,8 +94,10 @@ export class GetData {
     } else if (item.conName === 'Sprite') {
       // 图片处理方式
     } else if (item.conName === 'Container') {
+      // console.log(item);
       // 富文本的处理方式
-      return richText(modelType, prev, item, parent)
+      const child = item.children
+      richText(modelType, prev, child, item)
     } else console.log('beat all', item);
   }
 
