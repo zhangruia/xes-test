@@ -1,79 +1,77 @@
-import mainJson from "../../static/main1";
-import resourceJson from "../../static/resource1";
-import { Resource } from "../constructor/Resource"
-
-export const getMaxId=(data)=>{//获取最大各种id
-    let idObj={};
-    let traverse=(data)=>{
+let maxId;
+let modelType;
+export const getMaxId = (data) => {//获取最大各种id
+    let idObj = {};
+    let traverse = (data) => {
         for (let a in data) {
-            if (typeof(data[a]) == "object") {
-                traverse(data[a]); 
+            if (typeof (data[a]) == "object") {
+                traverse(data[a]);
             } else {
-                if(a=="id" || a.indexOf("Id")!=-1){
-                    idObj[a] = (idObj[a] == undefined ? 0 : idObj[a] ) < data[a] ? data[a] : idObj[a];
+                if (a == "id" || a.indexOf("Id") != -1) {
+                    idObj[a] = (idObj[a] == undefined ? 0 : idObj[a]) < data[a] ? data[a] : idObj[a];
                 }
-            }   
+            }
         }
     }
     traverse(data);
-    return idObj;
+    maxId=idObj.id;
 }
 
-// console.log(maxId);
-let maxId=getMaxId(mainJson).id;
-export const newId=()=>{
+export const newId = () => {
     return ++maxId;
 }
-// new resource对象
-// export function init(resourceJosn){
-//     resource=new Resource(resourceJosn);
-//     return resource;
-// }
-// let resource;
 
-export let resource=new Resource(resourceJson);
-
-export const getConName=(child)=>{
-    let name = child.name;
-    let type =  child.texture.type;
-    if(name.indexOf("test_option")!=-1){
+export const getConName = (child) => {
+    let name = child.name ;
+    let type = child.texture.type ;
+    if (name.indexOf("test_option") != -1) {
+        modelType = 1;
         return "Choice";
-    }else if (name.indexOf("test_blank")!=-1){
+    } else if (name.indexOf("test_blank") != -1) {
+        modelType = 2;
         return "FillVacanvy";
-    }else{
-        if(type=="0"){
+    } else {
+        if (type == "0") {
             return "Text";
-        }else if(type=="1"){
-            return "Sprite"
-        }else{//"可以添加type值，目前只有text和sprite，以及选择填空两种题型
-            console.log("没有获取到type")
-            return "";
+        } else if (type == "1") {
+            return "Sprite";
+        } else {//"可以添加type值，目前只有text和sprite，以及选择填空两种题型
+        console.log("没有获取到type")
+        return "";
         }
     }
 }
 
+export const getModelType=()=>{
+    return modelType;
+}
 
+export const toText=(str)=>{
+    return str.replace(/[\u4e00-\u9fa5]/g,function(key){
+        return unescape(key.replace(/\\u/g, "%u"))
+    })
+}
 
-export const toJSON=(p,z)=>{//对象转JSON
-    let  c = z || {};
+export const toJSON = (p, z) => {//对象转JSON
+    let c = z || {};
     for (let i in p) {
-        if(! p.hasOwnProperty(i)){
+        if (!p.hasOwnProperty(i)) {
             continue;
         }
         if (typeof p[i] === 'object') {
-            if(p[i].constructor===Array){
-              c['"' + i + '"']=[];
-              toJSON(p[i], c['"'+i+'"'])
-            }else{  
-              c[i]={};
-              toJSON(p[i], c[i]);
+            if (p[i].constructor === Array) {
+                c['"' + i + '"'] = [];
+                toJSON(p[i], c['"' + i + '"'])
+            } else {
+                c[i] = {};
+                toJSON(p[i], c[i]);
             }
         } else {
-            if(c.constructor===Array){
-                c[i]=p[i];
-              }else{
-                c['"' + i + '"']=p[i]
-              }
+            if (c.constructor === Array) {
+                c[i] = p[i];
+            } else {
+                c['"' + i + '"'] = p[i]
+            }
         }
     }
     return c;

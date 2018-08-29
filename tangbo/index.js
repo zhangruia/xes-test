@@ -1,22 +1,31 @@
 import {Resource} from './constructor/Resource'
-import {newId,toJSON} from './common/common.js'
+import {getMaxId,getModelType} from './common/common.js'
 import { traverseChildren } from './fun/traverseChildren'
-// import { resource } from './common/common'
 require('xes-ligature');
 export const  translate=(main,resourceJson)=>{
-    // console.log("=============================index.js导出成功=================================")
-    let resource=new Resource(resourceJson);
-    // console.log(resource);
-    for(let i in main.pages){//如果有两个舞台却只有一个返回值.....如果看到思考一下....
+    getMaxId(resourceJson);
+    let promiseArr = [];
+    let resource = new Resource(resourceJson);
+    let result;
+    for(let i in main.pages){
         if(main.pages[i].remark!=undefined)continue;
-        main.pages[i].remark="测试备注"+main.pages[i].id;
-        main.pages[i].modelType=4; //瞎写的哟
-        let result=traverseChildren(main.pages[i].children,resource);
-        main.pages[i].children=result.children;
-        resource=result.resource;
+        main.pages[i].remark = "测试备注"+main.pages[i].id;
+        main.pages[i].width = 1920; //
+        main.pages[i].height = 1080; //
+        let res = traverseChildren(main.pages[i].children,resource,promiseArr);
+        main.pages[i].modelType = getModelType(); //
+        // main.pages[i].children = res.children;
+        result=res;
     }
-    console.log(main)
-    resource=resource.resource; 
-    console.log(resource)
-    return {main,resource};
+    result.promiseArr.push(
+        new Promise((resolve,reject)=>{
+             resolve(main)
+        })
+    )
+    return Promise.all(result.promiseArr).then((data)=>{
+        let obj={};
+        obj.main=data[promiseArr.length-1];
+        obj.resource=data[promiseArr.length-2].resource;
+        return obj;
+    })
 }

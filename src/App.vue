@@ -18,6 +18,7 @@ import mainJson from "../static/main填空题.json";
 import resourceJson from "../static/resource";
 import mainJson1 from "../static/main1";
 import resourceJson1 from "../static/resource1";
+
 import {translate} from "../tangbo/index";
 import { modifyData } from '../location/common/modifyData.js';
 export default {
@@ -32,21 +33,22 @@ export default {
     }
   },
   created(){
-    var data = modifyData(mainJson);
+    // var data = modifyData(mainJson);
     // console.log(data)
-    this.inFun();
+    // this.inFun();
+     translate(mainJson1,resourceJson1).then((data)=>{
+      //  change(data.main,data.resource)
+       this.inFun(data)
+       console.log(data)
+      });
     // new GetData(mainJson)
   },
   methods:{
-     inFun() {
-      var src=translate(mainJson1,resourceJson1);
-    
-      // var src=translate(mainJson1,resourceJson1);
-      // console.log(parseJson(src.main));
-      console.log("================src.main====================")
-      console.log(src.main);
+     inFun(src) {
+      console.log("================src.main和src.resource====================")
+      // console.log(src.main);
       // console.log(src.resource)
-      
+        // var data = modifyData(src.main);
       let pixi = new PixiExporter(
         src.main,
         src.resource,
@@ -56,8 +58,7 @@ export default {
         },
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
-          // console.log(1111111111111111111111111);
-          // console.log(this.rootStageObj );
+          console.log(this.rootStageObj)
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
         }
