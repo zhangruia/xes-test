@@ -1,20 +1,23 @@
 let maxId;
 let modelType;
 export const getMaxId = (data) => {//获取最大各种id
-    let idObj = {};
+    // let idObj = {};
+    let max=0;
     let traverse = (data) => {
         for (let a in data) {
             if (typeof (data[a]) == "object") {
                 traverse(data[a]);
             } else {
                 if (a == "id" || a.indexOf("Id") != -1) {
-                    idObj[a] = (idObj[a] == undefined ? 0 : idObj[a]) < data[a] ? data[a] : idObj[a];
+                    max=data[a]>max?data[a]:max;
+                    maxId=max;
+                    // idObj[a] = (idObj[a] == undefined ? 0 : idObj[a]) < data[a] ? data[a] : idObj[a];
                 }
             }
         }
     }
     traverse(data);
-    maxId=idObj.id;
+    // maxId=idObj.id;
 }
 
 export const newId = () => {
