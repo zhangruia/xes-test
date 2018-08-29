@@ -18,9 +18,9 @@
     "trimSize": 8,
     "numberSize": 10,
     "space": 20,
-    "fontpadleft": 20,
-    "fontpadtop": 10,
-    "imgpadleft": 10,
+    "fontpadleft": 0,
+    "fontpadtop": 0,
+    "imgpadleft": 0,
     "lineH": 35
   },
   "gap": {
