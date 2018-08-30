@@ -12,17 +12,12 @@ const isCut = function (prev, current, iscut, y) {
 }
 
 export const setTransform = function (prev, current, iscut, maxHei) {
+  console.log(maxHei);
   const isWarp = current.isWarp ? current.isWarp : 0
   if (isWarp > 1) {
     const line = basic.common.lineH * (isWarp - 1)
-    if (iscut) {
-      isCut(prev, current, iscut, maxHei+line)
-    }
-    else {
-      isCut(prev, current, iscut, line)
-    }
+    isCut(prev, current, iscut, maxHei+line)
   } else {
-    // console.log(maxHei);
     isCut(prev, current, iscut, maxHei)
   }
 }

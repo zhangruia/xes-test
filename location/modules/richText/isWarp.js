@@ -19,7 +19,7 @@ let warpFun = function (current) {
   const isWarp = current.isWarp ? current.isWarp : 0
   if (isWarp > 1) {
     const line = basic.common.lineH * (isWarp - 1)
-    len.push(current.rectangle[3] + line)
+    len.push(current.rectangle[3]+line)
   } else {
     len.push(current.rectangle[3])
   }
@@ -81,6 +81,6 @@ export const isWarp = function (type, prev, current, parent) {
       global.forceWarp,
       maxHei
     )
-    console.log(maxHei);
   }
+  setRectangle(parent,warpW, maxHei+Math.max.apply(Math,len))
 }

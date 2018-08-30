@@ -368,13 +368,11 @@
                 0,
                 0
               ],
-              "isWarp": 0,
+              "isWarp": 1,
               "texture": {
                 "content": {
                   "text": "杀你个魂也丢来魄也落",
-                  "style": {
-                    "fontSize": 30
-                  }
+                  "style": {}
                 },
                 "type": "3"
               }
