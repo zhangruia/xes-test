@@ -1,4 +1,4 @@
-export const styleChange = (children)=>{
+export const styleChange = (children)=>{//修改样式的格式
     if (children.texture.style) {
       let style = children.texture.style;
       for (let k in style) {

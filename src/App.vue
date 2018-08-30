@@ -34,28 +34,19 @@ export default {
     }
   },
   created(){
-    // var data = modifyData(mainJson);
-    // console.log(data)
-    // this.inFun();
      translate(mainJson1,resourceJson1).then((data)=>{
-      //  change(data.main,data.resource)
        this.inFun(data)
        console.log(data)
       });
-    // new GetData(mainJson)
   },
   methods:{
      inFun(src) {
-      console.log("================src.main和src.resource====================")
-      // console.log(src.main);
-      // console.log(src.resource)
-        // var data = modifyData(src.main);
       let pixi = new PixiExporter(
         src.main,
         src.resource,
         (current, all) => {
-          // console.log("资源加载个数：" + current);
-          // console.log("资源总个数：" + all);
+          console.log("资源加载个数：" + current);
+          console.log("资源总个数：" + all);
         },
 
         () => {

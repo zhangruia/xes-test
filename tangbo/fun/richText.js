@@ -10,7 +10,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
     let sw=true;
     let str=child.texture.content;
     str=toText(str);
-    let arr=splitText(str);
+    let arr=splitText(str);//拆分后富文本数组
     arr.forEach(function(elem,i,arr){
         let mobj = {};
         let robj = {};
@@ -76,5 +76,5 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
         type:4
     }
     delete child.content;
-    return {child,resource,promiseArr};
+    return {child,resource,promiseArr};//返回所有的异步请求去index.js中执行
 }

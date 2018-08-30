@@ -20,11 +20,11 @@ export const getMaxId = (data) => {//获取最大各种id
     // maxId=idObj.id;
 }
 
-export const newId = () => {
+export const newId = () => {//获取新的resource Max id
     return ++maxId;
 }
 
-export const getConName = (child) => {
+export const getConName = (child) => {//获取conName
     let name = child.name ;
     let type = child.texture.type ;
     if (name.indexOf("test_option") != -1) {
@@ -45,11 +45,11 @@ export const getConName = (child) => {
     }
 }
 
-export const getModelType=()=>{
+export const getModelType=()=>{//获取modelType
     return modelType;
 }
 
-export const toText=(str)=>{
+export const toText=(str)=>{//富文本Unicode转中文
     return str.replace(/[\u4e00-\u9fa5]/g,function(key){
         return unescape(key.replace(/\\u/g, "%u"))
     })

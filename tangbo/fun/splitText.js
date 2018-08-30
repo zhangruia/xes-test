@@ -1,9 +1,9 @@
 
-export function splitText(str){
+export function splitText(str){//切割字符串
     let nReg = /\n/g;
-    str = str.replace(nReg,"");//去掉所有的\n
+    str = str.replace(nReg,"");
     
-    let indexArr = [];//接收tagreg.exec返回的数组
+    let indexArr = [];
     let tagReg = /<br|<img|\$\$/g;
     for(let i = 0,length = str.length;i<length;i++){//exec查找出所有的切割点的下标
         let aa =  tagReg.exec(str);
@@ -30,8 +30,8 @@ export function splitText(str){
         if(indexArr[i][0] == ">"){
             indexArr[i]["index"] = indexArr[i]["index"]+1;
         }
-            let cc = str.slice(indexArr[i]["index"],indexArr[i+1]["index"]);
-            if(!/^\s*$/.test(cc)){
+        let cc = str.slice(indexArr[i]["index"],indexArr[i+1]["index"]);
+        if(!/^\s*$/.test(cc)){
             result.push(cc);
         }
         // indexArr[i+1][0]==">"?i+=2:i++;

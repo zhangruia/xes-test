@@ -21,9 +21,8 @@ export const traverseChildren=(children,resource,promiseArr)=>{
         }
         //修改name
         children[i].name = child.name+child.id;
-
         if(content.indexOf("<br>") != -1 || content.indexOf("\n") != -1 || content.indexOf("$$") != -1 || content.indexOf("<img") != -1){
-            children[i].conName = 'Container';//容器的构造名
+            children[i].conName = 'Container';
             let result = richText(children[i],resource,promiseArr);
             // children[i] = result.child;
             // console.log(children[i])
@@ -44,6 +43,7 @@ export const traverseChildren=(children,resource,promiseArr)=>{
             }
             children[i].texture.type = textureType == 0 ? 3 : 4 ;
         }
+        //子children继续遍历
         if(child.children.length>0 && children[i].conName != "Container"){
             traverseChildren(children[i].children,resource,promiseArr);
         }
