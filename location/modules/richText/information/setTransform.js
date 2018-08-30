@@ -12,7 +12,6 @@ const isCut = function (prev, current, iscut, y) {
 }
 
 export const setTransform = function (prev, current, iscut, maxHei) {
-  console.log(maxHei);
   const isWarp = current.isWarp ? current.isWarp : 0
   if (isWarp > 1) {
     const line = basic.common.lineH * (isWarp - 1)

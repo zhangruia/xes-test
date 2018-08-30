@@ -34,8 +34,10 @@ export default {
     }
   },
   created(){
-     translate(mainJson,resourceJson).then((data)=>{
+     translate(mainJson1,resourceJson1).then((data)=>{
        ergodic(data.main)
+       console.log(111);
+       // console.log(this.inFun(data.main));
        this.inFun(data.main,data.resource)
      });
   },

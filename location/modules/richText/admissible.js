@@ -24,8 +24,9 @@ const contSize = function (value) {
 }
 
 const fontSize = function (wid, current, size) {
-  const font = current.texture.content.style
-  if (font.fontSize) {
+  const content = current.texture.content
+  const fontState = content.hasOwnProperty('style')
+  if (fontState && font.hasOwnProperty('fontSize')) {
     wid += font.fontSize
   } else {
     wid += size
