@@ -34,16 +34,16 @@ export default {
     }
   },
   created(){
-     translate(mainJson1,resourceJson1).then((data)=>{
-       this.inFun(data)
+     translate(mainJson,resourceJson).then((data)=>{
        console.log(data)
+       this.inFun(data.main,data.resource)
       });
   },
   methods:{
-     inFun(src) {
+     inFun(main,resource) {
       let pixi = new PixiExporter(
-        src.main,
-        src.resource,
+        main,
+        resource,
         (current, all) => {
           console.log("资源加载个数：" + current);
           console.log("资源总个数：" + all);

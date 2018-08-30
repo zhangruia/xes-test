@@ -3,12 +3,19 @@ import {getMaxId,getModelType} from './common/common.js'
 import { traverseChildren } from './fun/traverseChildren'
 require('xes-ligature');
 export const  translate=(main,resourceJson)=>{
+    if(main.pages[0].modelType !=undefined){
+        return new Promise(function(resolve){
+            let data={};
+            data.main=main;
+            data.resource=resourceJson;
+            resolve(data)
+        })
+    }
     getMaxId(resourceJson);
     let promiseArr = [];
     let resource = new Resource(resourceJson);
     let result;
     for(let i in main.pages){
-        if(main.pages[i].remark!=undefined)continue;
         main.pages[i].remark = "测试备注"+main.pages[i].id;
         main.pages[i].width = 1920; //
         main.pages[i].height = 1080; //
