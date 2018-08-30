@@ -35,9 +35,9 @@ export default {
   },
   created(){
      translate(mainJson,resourceJson).then((data)=>{
-       console.log(data)
+       ergodic(data.main)
        this.inFun(data.main,data.resource)
-      });
+     });
   },
   methods:{
      inFun(main,resource) {
@@ -45,13 +45,12 @@ export default {
         main,
         resource,
         (current, all) => {
-          console.log("资源加载个数：" + current);
-          console.log("资源总个数：" + all);
+          // console.log("资源加载个数：" + current);
+          // console.log("资源总个数：" + all);
         },
 
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
-          console.log(this.rootStageObj)
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
         }
