@@ -29,30 +29,29 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             mobj = new Text(texture);
             // console.log(mobj);   
         } else if (/\<img/.test(arr[i])) {//图片
-            console.log(elem)
             let imgObj = {};
             let rid = newId();
             imgObj.id = rid;
-            let imgs=arr[i].split(" ");
+            let imgs = arr[i].split(" ");
             for (let prop of imgs) {
                 if (/^src=/.test(prop)) {
-                    let src=prop.split("=")[1];
+                    let src = prop.split("=")[1];
                     src=src.slice(1,-1);
-                    if(src.indexOf("http")==-1){
-                        imgObj.host=resource.resource.list[0].host;
-                        imgObj.src="."+src.slice(src.indexOf("/"));
+                    if(src.indexOf("http") == -1){
+                        imgObj.host = resource.resource.list[0].host;
+                        imgObj.src = "."+src.slice(src.indexOf("/"));
                     }else{
-                        imgObj.host=src.slice(0,src.indexOf("com")+3);
-                        imgObj.src="."+src.slice(src.indexOf("com")+3);
+                        imgObj.host = src.slice(0,src.indexOf("com")+3);
+                        imgObj.src = "."+src.slice(src.indexOf("com")+3);
                     }
-                    imgObj.name=src.slice(src.lastIndexOf('/')+1,src.lastIndexOf('.'))+rid;
-                    imgObj.ext = imgObj.src.slice(imgObj.src.lastIndexOf(".")+1,-1)
+                    imgObj.name = src.slice(src.lastIndexOf('/')+1,src.lastIndexOf('.'))+rid;
+                    imgObj.ext = imgObj.src.slice(imgObj.src.lastIndexOf(".") + 1 )
                 } else if (/^data-resourceId=/.test(prop)) {
-                    imgObj.resourceId=prop.split("=")[1];
+                    imgObj.resourceId = prop.split("=")[1];
                 } else if (/^data-width=/.test(prop)) {
-                    imgObj.width=prop.split("=")[1];
+                    imgObj.width = parseInt(prop.split("=")[1]);
                 } else if (/^data-height=/.test(prop)) {
-                    imgObj.height=prop.split("=")[1].slice(0,-1);
+                    imgObj.height = parseInt(prop.split("=")[1].slice(0,-1));
                 }
             }
             robj = new rImage(imgObj);

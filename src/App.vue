@@ -38,7 +38,7 @@ export default {
     }
   },
   created(){
-     translate(mainJsonC2,resourceJsonC2).then((data)=>{
+     translate(mainJsonC3,resourceJsonC3).then((data)=>{
        console.log(data);
        this.inFun(data.main,data.resource)
        ergodic(data.main)
