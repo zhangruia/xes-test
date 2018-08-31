@@ -10,11 +10,8 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
     let sw=true;
     let str=child.texture.content;
     str=toText(str);
-    console.log(str)
     let arr=splitText(str);//拆分后富文本数组
-    console.log(arr);
     arr.forEach(function(elem,i,arr){
-
         let mobj = {};
         let robj = {};
         let texture = {};

@@ -7,7 +7,7 @@ export const traverseChildren=(children,resource,promiseArr)=>{
 
         let child = children[i];
         children[i].rectangle=[0,0,0,0];
-        children[i].transform=[0,0,0,0,0,0,0,0];
+        children[i].transform=[0,0,0,0,0,0,0,0,0];
         let content = child.texture.content;
         if(content)children[i].content=toText(content);
         let textureType = children[i].texture.type;

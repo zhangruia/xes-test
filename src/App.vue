@@ -38,10 +38,10 @@ export default {
     }
   },
   created(){
-     translate(mainJsonC3,resourceJsonC3).then((data)=>{
+     translate(mainJsonC1,resourceJsonC1).then((data)=>{
        console.log(data);
-       this.inFun(data.main,data.resource)
        ergodic(data.main)
+       this.inFun(data.main,data.resource)
      });
   },
   methods:{
@@ -50,8 +50,8 @@ export default {
         main,
         resource,
         (current, all) => {
-          // console.log("资源加载个数：" + current);
-          // console.log("资源总个数：" + all);
+          console.log("资源加载个数：" + current);
+          console.log("资源总个数：" + all);
         },
 
         () => {
