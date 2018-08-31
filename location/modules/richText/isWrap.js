@@ -18,10 +18,11 @@ let wrapFun = function (current) {
   const isWrap = current.isWrap ? current.isWrap : 0
   if (isWrap > 1) {
     const line = basic.common.lineH * (isWrap - 1)
-    len.push(current.rectangle[3]+line)
+    const top = basic.common.fontpadtop * (isWrap - 1)
+    len.push(current.rectangle[3] + line + top)
     widthLen.push(current.rectangle[2])
   } else {
-    len.push(current.rectangle[3])
+    len.push(current.rectangle[3]+basic.common.fontpadtop)
     widthLen.push(current.rectangle[2])
   }
 }
