@@ -36,13 +36,13 @@ export default {
   created(){
      translate(mainJson1,resourceJson1).then((data)=>{
        ergodic(data.main)
-       console.log(111);
-       // console.log(this.inFun(data.main));
        this.inFun(data.main,data.resource)
+       console.log(data.main)
      });
   },
   methods:{
      inFun(main,resource) {
+       console.log(main)
       let pixi = new PixiExporter(
         main,
         resource,
@@ -53,6 +53,7 @@ export default {
 
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
+          window.abc = this.rootStageObj
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
         }

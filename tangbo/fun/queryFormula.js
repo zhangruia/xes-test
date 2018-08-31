@@ -27,11 +27,11 @@ export const getSvg=(rid,elem,resource,rectangle,rImage)=>{//封装公式请求/
                 config.width=data.width;
                 resource.add(new rImage(fobj));
                 if(rectangle){
-                    rectangle[0]=data.width*9;
-                    rectangle[1]=data.height*9;
+                    rectangle[2]=data.width*9;
+                    rectangle[3]=data.height*9;
                 }
                 resolve(resource);
-            },
+            }, 
             error: function (err) {
                 reject(err)
             }

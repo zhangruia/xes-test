@@ -83,4 +83,14 @@ export const isWarp = function (type, prev, current, parent) {
     )
   }
   setRectangle(parent,warpW, maxHei+Math.max.apply(Math,len))
+  parent.transform[0] = 0
+  parent.transform[1] = 0
+  parent.transform[2] = 0
+  parent.transform[3] = 0
+  parent.transform[4] = 0
+  parent.transform[5] = 0
+  parent.transform[6] = 0
+  parent.transform[7] = 0
+  // parent.transform[0] = 0
+  // parent.transform[1] = 0
 }
