@@ -55,10 +55,10 @@ export const isWrap = function (type, prev, current, parent) {
         wrapFun(current)
         setTransform(prevData, current, global.forceWarp, maxHei)
       }
-      console.log('当前内容：', current.texture.content.text);
-      console.log('当前内容宽高：', current.rectangle);
-      console.log('当前内容坐标：', current.transform);
-      console.log('--------------分割-----------------------------------');
+      // console.log('当前内容：', current.texture.content.text);
+      // console.log('当前内容宽高：', current.rectangle);
+      // console.log('当前内容坐标：', current.transform);
+      // console.log('--------------分割-----------------------------------');
     } else {
       const font = current.texture.content
       const size = font.hasOwnProperty('fontSize') ? font.fontSize : basic.common.fontSize
@@ -68,10 +68,10 @@ export const isWrap = function (type, prev, current, parent) {
       setRectangle(current, admiss.width, size)
       wrapFun(current)
       setTransform(prev, current, true, maxHei)
-      console.log('当前内容：', current.texture.content.text);
-      console.log('当前内容宽高：', current.rectangle);
-      console.log('当前内容坐标：', current.transform);
-      console.log('--------------分割-----------------------------------');
+      // console.log('当前内容：', current.texture.content.text);
+      // console.log('当前内容宽高：', current.rectangle);
+      // console.log('当前内容坐标：', current.transform);
+      // console.log('--------------分割-----------------------------------');
     }
   } else if (type == 'img') {
     if (prev) {
@@ -112,10 +112,10 @@ export const isWrap = function (type, prev, current, parent) {
       global.forceWarp,
       maxHei
     )
-    console.log('当前内容：', current.texture.content);
-    console.log('当前内容宽高：', current.rectangle);
-    console.log('当前内容坐标：', current.transform);
-    console.log('--------------分割-----------------------------------');
+    // console.log('当前内容：', current.texture.content);
+    // console.log('当前内容宽高：', current.rectangle);
+    // console.log('当前内容坐标：', current.transform);
+    // console.log('--------------分割-----------------------------------');
   }
   setRectangle(parent,globalWid, maxHei+Math.max.apply(Math,len))
   parent.transform[0] = 0

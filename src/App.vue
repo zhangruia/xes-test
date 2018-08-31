@@ -39,9 +39,9 @@ export default {
   },
   created(){
      translate(mainJsonC2,resourceJsonC2).then((data)=>{
-       console.log(data);
-      //  ergodic(data.main)
+       ergodic(data.main)
        this.inFun(data.main,data.resource)
+       console.log(data.main.pages[0].children);
      });
   },
   methods:{
@@ -50,8 +50,8 @@ export default {
         main,
         resource,
         (current, all) => {
-          console.log("资源加载个数：" + current);
-          console.log("资源总个数：" + all);
+          // console.log("资源加载个数：" + current);
+          // console.log("资源总个数：" + all);
         },
 
         () => {

@@ -24,13 +24,24 @@ const contSize = function (value) {
 }
 
 const fontSize = function (wid, current, size) {
-  const content = current.texture.content
+  let content = current.texture.content
   const fontState = content.hasOwnProperty('style')
-  if (fontState && font.hasOwnProperty('fontSize')) {
-    wid += font.fontSize
-  } else {
+  // if (fontState && font.hasOwnProperty('fontSize')) {
+  //   wid += font.fontSize
+  // } else {
+  //   wid += size
+  // }
+
+  if (fontState && content.style.hasOwnProperty('fontSize')) wid += content.style.fontSize;
+  else {
     wid += size
+    if (fontState) content.style.fontSize = basic.common.fontSize;
+    else {
+      content.style = {}
+      content.style["fontSize"] = basic.common.fontSize
+    }
   }
+
   return wid
 }
 
