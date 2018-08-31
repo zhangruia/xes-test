@@ -14,13 +14,10 @@ import {canvasStage} from 'xes_canvas_renderer';
 import { PixiExporter } from "xeditor-convertor";
 import {pageSizeFun} from "../static/preload";
 import { ergodic } from '../location/index'
-import mainJson from "../static/main选择.json";
-import resourceJson from "../static/resource";
 import mainJson1 from "../static/main1";
 import resourceJson1 from "../static/resource1";
 
 import {translate} from "../tangbo/index";
-import { modifyData } from '../location/common/modifyData.js';
 export default {
   name: 'App',
   components: {
@@ -35,14 +32,14 @@ export default {
   },
   created(){
      translate(mainJson1,resourceJson1).then((data)=>{
-       ergodic(data.main)
+
        this.inFun(data.main,data.resource)
-       console.log(data.main)
+       ergodic(data.main)
+       console.log(data.main.pages[0].children[2]);
      });
   },
   methods:{
      inFun(main,resource) {
-       console.log(main)
       let pixi = new PixiExporter(
         main,
         resource,
@@ -53,7 +50,7 @@ export default {
 
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
-          window.abc = this.rootStageObj
+          window.abc = this.rootStageObj.children[2];
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
         }

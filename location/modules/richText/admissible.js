@@ -55,7 +55,6 @@ export const admissible = function (current, maxWid) {
       residue += text[i]
     }
   }
-
   return {
     accomm: accomm,
     residue: residue,
