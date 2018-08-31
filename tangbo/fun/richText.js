@@ -49,7 +49,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                 } else if (/^data-width=/.test(prop)) {
                     imgObj.width = parseInt(prop.split("=")[1]);
                 } else if (/^data-height=/.test(prop)) {
-                    imgObj.height = parseInt(prop.split("=")[1].slice(0,-1));
+                    imgObj.height = parseInt(prop.split("=")[1]);
                 }
             }
             robj = new rImage(imgObj);
