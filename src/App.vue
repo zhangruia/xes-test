@@ -34,7 +34,7 @@ export default {
     }
   },
   created(){
-     translate(mainJson,resourceJson).then((data)=>{
+     translate(mainJson1,resourceJson1).then((data)=>{
        console.log(data)
        this.inFun(data.main,data.resource)
       });
