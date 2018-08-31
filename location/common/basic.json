@@ -16,7 +16,7 @@
     "bgX": 0,
     "bgY": 10,
     "fontSize": 16,
-    "warpW": 345,
+    "warpW": 400,
     "warpH": 660,
     "letterSize": 10,
     "punctuaSize": 10,
@@ -24,7 +24,7 @@
     "numberSize": 10,
     "space": 20,
     "fontpadleft": 0,
-    "fontpadtop": 0,
+    "fontpadtop": 20,
     "imgpadleft": 0,
     "lineH": 35
   },
