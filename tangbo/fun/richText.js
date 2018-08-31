@@ -7,11 +7,12 @@ import { getSvg } from './queryFormula';
 
 
 export const richText = (child,resource,promiseArr) => {//富文本解析
-    let sw=true;
+    
     let str=child.texture.content;
     str=toText(str);
     let arr=splitText(str);//拆分后富文本数组
     arr.forEach(function(elem,i,arr){
+        let sw=true;
         let mobj = {};
         let robj = {};
         let texture = {};
@@ -73,9 +74,6 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             promiseArr.push(
                 getSvg(rid,elem,resource,rectangle,rImage)
             )
-            
-            
-            
         }
         if(mobj.conName != undefined && sw)child.children.push(mobj);
         if(robj.id != undefined )resource.add(robj);

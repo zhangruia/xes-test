@@ -38,9 +38,9 @@ export default {
     }
   },
   created(){
-     translate(mainJsonC1,resourceJsonC1).then((data)=>{
+     translate(mainJsonC2,resourceJsonC2).then((data)=>{
        console.log(data);
-       ergodic(data.main)
+      //  ergodic(data.main)
        this.inFun(data.main,data.resource)
      });
   },
