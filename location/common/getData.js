@@ -33,7 +33,6 @@ export class GetData {
           // TODO: 目前不知选择题是如何处理图片的放置情况，暂搁置当下
           // handleImg(current)
         } else if (item.conName === 'Container') {
-          // TODO: 本应放在moldCurrent当中，但目前需要当前内容的parent，暂放置当下
           this.moldCurrent(modelType, current[index-1], item, current)
           return false
         }
@@ -89,15 +88,15 @@ export class GetData {
     } else if (item.conName === 'FillVacancy') {
       // 填空题
     } else if (item.conName === 'Text') {
+      // console.log(item);
       // 文本处理方式
-      handleChart(modelType, prev, item, parent);
+      // handleChart(modelType, prev, item, parent);
     } else if (item.conName === 'Sprite') {
       // 图片处理方式
     } else if (item.conName === 'Container') {
-      // console.log(item);
       // 富文本的处理方式
       const child = item.children
-      richText(modelType, prev, child, item)
+      richText(child, item)
     } else console.log('beat all', item);
   }
 

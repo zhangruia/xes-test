@@ -1,9 +1,8 @@
 import { isWarp } from './isWarp'
-import global from './global.json'
 
 let max = 0
 
-function richText (modelType, prev, child, parent) {
+function richText (child, parent) {
   for(let i = 0; i < child.length; i += 1){
     let item = child[i], index = i;
     if (item.conName === 'Text') {

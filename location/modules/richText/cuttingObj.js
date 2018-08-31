@@ -1,7 +1,4 @@
 import { admissible } from './admissible'
-import global from './global.json'
-
-// let forceWarp = false
 
 export const cuttingObj = function (admissible, current, parent) {
     if (admissible.residue == '') return false

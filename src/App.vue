@@ -35,23 +35,25 @@ export default {
   },
   created(){
      translate(mainJson1,resourceJson1).then((data)=>{
-       console.log(data)
+       ergodic(data.main)
        this.inFun(data.main,data.resource)
-      });
+       console.log(data.main)
+     });
   },
   methods:{
      inFun(main,resource) {
+       console.log(main)
       let pixi = new PixiExporter(
         main,
         resource,
         (current, all) => {
-          console.log("资源加载个数：" + current);
-          console.log("资源总个数：" + all);
+          // console.log("资源加载个数：" + current);
+          // console.log("资源总个数：" + all);
         },
 
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
-          console.log(this.rootStageObj)
+          window.abc = this.rootStageObj
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
         }
