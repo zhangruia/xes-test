@@ -8,8 +8,8 @@ import global from './global.json'
 
 const warpW = basic.common.warpW
 
-let maxWid = 0, maxHei = 0, width = 0;
-let len = []
+let maxWid = 0, maxHei = 0, globalWid = 0;
+let len = [], widthLen = [];
 let max = function (array) {
   return Math.max.apply(Math, array)
 }
@@ -19,8 +19,10 @@ let wrapFun = function (current) {
   if (isWrap > 1) {
     const line = basic.common.lineH * (isWrap - 1)
     len.push(current.rectangle[3]+line)
+    widthLen.push(current.rectangle[2])
   } else {
     len.push(current.rectangle[3])
+    widthLen.push(current.rectangle[2])
   }
 }
 
@@ -41,7 +43,10 @@ export const isWrap = function (type, prev, current, parent) {
         setTransform(prevData, current, global.forceWarp, maxHei)
       } else {
         maxHei += Math.max.apply(Math, len)
+        let max = Math.max.apply(Math, widthLen)
+        globalWid = (globalWid <= max) ? max : globalWid
         len = []
+        widthLen = []
         maxWid = warpW
         let admiss = admissible(current, maxWid)
         cuttingObj(admiss, current, parent)
@@ -75,12 +80,18 @@ export const isWrap = function (type, prev, current, parent) {
       if (current.isWrap > 0) {
         global.forceWarp = true
         maxHei += Math.max.apply(Math, len)
+        let max = Math.max.apply(Math, widthLen)
+        globalWid = (globalWid <= max) ? max : globalWid
         len = []
+        widthLen = []
         wrapFun(current)
       } else if (imgwid > maxWid) {
         global.forceWarp = true
         maxHei += Math.max.apply(Math, len)
+        let max = Math.max.apply(Math, widthLen)
+        globalWid = (globalWid <= max) ? max : globalWid
         len = []
+        widthLen = []
         wrapFun(current)
       } else {
         global.forceWarp = false
@@ -103,7 +114,7 @@ export const isWrap = function (type, prev, current, parent) {
     console.log('当前内容坐标：', current.transform);
     console.log('--------------分割-----------------------------------');
   }
-  setRectangle(parent,warpW, maxHei+Math.max.apply(Math,len))
+  setRectangle(parent,globalWid, maxHei+Math.max.apply(Math,len))
   parent.transform[0] = 0
   parent.transform[1] = 200
 }
