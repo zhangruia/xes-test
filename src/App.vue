@@ -16,7 +16,14 @@ import {pageSizeFun} from "../static/preload";
 import { ergodic } from '../location/index'
 import mainJson1 from "../static/main1";
 import resourceJson1 from "../static/resource1";
-
+import mainJsonC1 from "../static/main_ceshi1";
+import mainJsonC2 from "../static/main_ceshi2";
+import mainJsonC3 from "../static/main_ceshi3";
+import mainJsonC4 from "../static/main_ceshi4";
+import resourceJsonC1 from "../static/resource_ceshi1";
+import resourceJsonC2 from "../static/resource_ceshi2";
+import resourceJsonC3 from "../static/resource_ceshi3";
+import resourceJsonC4 from "../static/resource_ceshi4";
 import {translate} from "../tangbo/index";
 export default {
   name: 'App',
