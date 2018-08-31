@@ -38,11 +38,10 @@ export default {
     }
   },
   created(){
-     translate(mainJson1,resourceJson1).then((data)=>{
-
+     translate(mainJsonC2,resourceJsonC2).then((data)=>{
+       console.log(data);
        this.inFun(data.main,data.resource)
        ergodic(data.main)
-       console.log(data.main.pages[0].children[2]);
      });
   },
   methods:{
