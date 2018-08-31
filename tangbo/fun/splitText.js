@@ -1,6 +1,6 @@
 
 export function splitText(str){//切割字符串
-    let nReg = /\n/g;
+    let nReg = /\n|\r/g;
     str = str.replace(nReg,"");
     
     let indexArr = [];

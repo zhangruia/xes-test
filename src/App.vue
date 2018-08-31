@@ -18,7 +18,14 @@ import mainJson from "../static/main选择.json";
 import resourceJson from "../static/resource";
 import mainJson1 from "../static/main1";
 import resourceJson1 from "../static/resource1";
-
+import mainJsonC1 from "../static/main_ceshi1";
+import mainJsonC2 from "../static/main_ceshi2";
+import mainJsonC3 from "../static/main_ceshi3";
+import mainJsonC4 from "../static/main_ceshi4";
+import resourceJsonC1 from "../static/resource_ceshi1";
+import resourceJsonC2 from "../static/resource_ceshi2";
+import resourceJsonC3 from "../static/resource_ceshi3";
+import resourceJsonC4 from "../static/resource_ceshi4";
 import {translate} from "../tangbo/index";
 import { modifyData } from '../location/common/modifyData.js';
 export default {
@@ -34,7 +41,7 @@ export default {
     }
   },
   created(){
-     translate(mainJson1,resourceJson1).then((data)=>{
+     translate(mainJsonC4,resourceJsonC4).then((data)=>{
        console.log(data)
        this.inFun(data.main,data.resource)
       });

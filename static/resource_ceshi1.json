@@ -1,0 +1,12 @@
+{
+    "version": "0.0.1", 
+    "list": [
+        {
+            "id": 0, 
+            "ext": "json", 
+            "name": "main", 
+            "host": "https://testmv.xesimg.com/courseware_pages", 
+            "src": "./6c3a663cde037e2a51e80d261602b388/main.json"
+        }
+    ]
+}

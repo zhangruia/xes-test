@@ -24,15 +24,24 @@ export const  translate=(main,resourceJson)=>{
         // main.pages[i].children = res.children;
         result=res;
     }
-    result.promiseArr.push(
-        new Promise((resolve,reject)=>{
-             resolve(main)
+    if(result.promiseArr.length>0){
+        result.promiseArr.push(
+            new Promise((resolve,reject)=>{
+                 resolve(main)
+            })
+        )
+        return Promise.all(result.promiseArr).then((data)=>{
+            let obj={};
+            obj.main=data[promiseArr.length-1];
+            obj.resource=data[promiseArr.length-2].resource;
+            return obj;
         })
-    )
-    return Promise.all(result.promiseArr).then((data)=>{
-        let obj={};
-        obj.main=data[promiseArr.length-1];
-        obj.resource=data[promiseArr.length-2].resource;
-        return obj;
-    })
+    }else{
+        return new Promise(function(resolve){
+            let obj={};
+            obj.main=main;
+            obj.resource=resource.resource
+            resolve(obj)
+        })
+    }
 }
