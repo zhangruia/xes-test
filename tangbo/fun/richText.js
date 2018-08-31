@@ -9,7 +9,6 @@ import { getSvg } from './queryFormula';
 export const richText = (child,resource,promiseArr) => {//富文本解析
     let sw=true;
     let str=child.texture.content;
-    console.log(str)
     str=toText(str);
     let arr=splitText(str);//拆分后富文本数组
     arr.forEach(function(elem,i,arr){
