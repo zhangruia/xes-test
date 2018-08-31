@@ -77,7 +77,9 @@ export const isWrap = function (type, prev, current, parent) {
     if (prev) {
       const prevData = prevInformation(prev)
       maxWid = basic.common.warpW - prevData.prevX - prevData.prevW
-      let imgwid = current.rectangle[3]
+      // console.log(prevData.prevX, prevData.prevW);
+      let imgwid = current.rectangle[2]
+      // console.log(imgwid, maxWid);
       if (current.isWrap > 0) {
         global.forceWarp = true
         maxHei += Math.max.apply(Math, len)
@@ -101,7 +103,7 @@ export const isWrap = function (type, prev, current, parent) {
     } else {
       wrapFun(current)
       maxWid = basic.common.warpW
-      let imgwid = current.rectangle[3]
+      let imgwid = current.rectangle[2]
       global.forceWarp = true
     }
     setTransform(
