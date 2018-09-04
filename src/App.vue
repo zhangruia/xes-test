@@ -38,10 +38,13 @@ export default {
     }
   },
   created(){
-     translate(mainJson1,resourceJson1).then((data)=>{
+     translate(mainJsonC2,resourceJsonC2).then((data)=>{
        ergodic(data.main)
        this.inFun(data.main,data.resource)
-       console.log(data.main.pages[0].children);
+       console.log(data.main);
+       console.log(data.resource);
+      // data.main.pages[0].children[2].rectangle[2] = 400
+      // data.main.pages[0].children[2].rectangle[3] = 1000
      });
   },
   methods:{
