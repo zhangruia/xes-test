@@ -2,7 +2,6 @@ import {rImage,mImage} from '../constructor/Image';
 import {Text} from '../constructor/Text';
 import {newId,toText} from '../common/common';
 import { splitText } from './splitText';
-import $ from './jquery-1.11.3';
 import { getSvg } from './queryFormula';
 
 

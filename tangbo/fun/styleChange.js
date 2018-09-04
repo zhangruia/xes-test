@@ -26,3 +26,24 @@ export const styleChange = (children)=>{//修改样式的格式
     }
   }
   
+  
+export const splitStyle=(style)=>{//独立的切割内联sytle方法，可添加筛选文本style方法
+    let styleArr=style.split(/:|;/);
+    if(styleArr[styleArr.length-1]=="")styleArr.pop();
+    let styleObj={};
+    for(let i = 0,length=styleArr.length;i<length;i+=2){
+        styleObj[styleArr[i]]=styleArr[i+1]
+    }
+    return styleObj;
+}
+
+
+export const inheritStyle=(styleArr)=>{//独立的方法  继承styleArr中所有的style
+    let inherit = {};
+    for(let i = 0,length = styleArr.length;i < length;i++){
+        for(let key in styleArr[i]){
+            inherit[key] = styleArr[i][key]
+        }
+    }
+    return inherit;
+}
