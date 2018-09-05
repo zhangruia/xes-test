@@ -1,6 +1,5 @@
-export const styleChange = (children)=>{//修改样式的格式
-    if (children.texture.style) {
-      let style = children.texture.style;
+export const styleTransform = (style)=>{//修改样式的格式
+    if(style){
       for (let k in style) {
         if (k.indexOf('-') != '-1') {
           style[k.replace(/\-[a-z]/g, function(all, letter){
@@ -20,11 +19,10 @@ export const styleChange = (children)=>{//修改样式的格式
         }else if (k == 'textAlign') {
           style['align'] = style['textAlign'];
           delete style['textAlign'];
-        }
-        
+        }//这里添加else可以过滤所有其他样式
       }
     }
-  }
+}
   
   
 export const splitStyle=(style)=>{//独立的切割内联sytle方法，可添加筛选文本style方法
@@ -34,6 +32,7 @@ export const splitStyle=(style)=>{//独立的切割内联sytle方法，可添加
     for(let i = 0,length=styleArr.length;i<length;i+=2){
         styleObj[styleArr[i]]=styleArr[i+1]
     }
+    styleTransform(styleObj);
     return styleObj;
 }
 

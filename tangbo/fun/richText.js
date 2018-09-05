@@ -3,33 +3,41 @@ import {Text} from '../constructor/Text';
 import {newId,toText} from '../common/common';
 import { splitText } from './splitText';
 import { getSvg } from './queryFormula';
-
+import { splitTag } from './splitTag';
+import { traverseRTArr } from './traverseRTArr'
 
 export const richText = (child,resource,promiseArr) => {//富文本解析
     
     let str=child.texture.content;
     str=toText(str);
-    let arr=splitText(str);//拆分后富文本数组
+    let tagArr=splitTag(str);
+    console.log(tagArr)
+    let arr=traverseRTArr(tagArr)
+    console.log(arr)
+    // let arr=splitText(str);//拆分后富文本数组
     arr.forEach(function(elem,i,arr){
         let sw=true;
         let mobj = {};
         let robj = {};
         let texture = {};
         let config = {};
-        if (/[\u4e00-\u9fa5]+/.test(elem)) {//文本
+        // console.log(elem)
+        if (elem.type == 3) {//文本
             texture.content = {};
-            texture.content.text = elem;
+            texture.content.text = elem.content;
             texture.type = 3;
+            texture.content.style = elem.style || {};
+            texture.content.specialStyle=elem.specialStyle || "normal";
             //如果日后富文本中解析出style可以在这里添加style
             // texture.content.style={}
             //判断是否有br
             mobj = new Text(texture);
-            // console.log(mobj);   
-        } else if (/\<img/.test(arr[i])) {//图片
+        } else if (elem.type == 4) {//图片
             let imgObj = {};
             let rid = newId();
             imgObj.id = rid;
-            let imgs = arr[i].split(" ");
+            console.log(elem)
+            let imgs = elem.tag.split(" ");
             for (let prop of imgs) {
                 if (/^src=/.test(prop)) {
                     let src = prop.split("=")[1];
@@ -50,16 +58,17 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                 } else if (/^data-height=/.test(prop)) {
                     imgObj.height = parseInt(prop.split("=")[1]);
                 }
+                //处理一下style
             }
             robj = new rImage(imgObj);
             texture.content = [rid];
             texture.type = 4;
             imgObj.texture = texture;
             mobj = new mImage(imgObj)//
-        } else if(/^\s*\<br\s*$/.test(elem)){//br标签
+        } else if(elem.type == 5){//br标签
             let length=child.children.length;
             if (length > 0) child.children[length-1].isWrap = child.children[length-1].isWrap + 1;
-        } else {//公式
+        } else if(elem.type == 6){//公式
             let rid = newId();
             texture.content = [rid];
             texture.type = 4;
@@ -67,11 +76,9 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             mobj = new mImage(config);
             sw=false;
             child.children.push(mobj);
-            // 10.99.2.153
-            // 192.168.21.203:
             let rectangle = child.children[child.children.length-1].rectangle;
             promiseArr.push(
-                getSvg(rid,elem,resource,rectangle,rImage)
+                getSvg(rid,elem.content,resource,rectangle,rImage)
             )
         }
         if(mobj.conName != undefined && sw)child.children.push(mobj);

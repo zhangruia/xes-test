@@ -4,7 +4,7 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
     let styleArr = [];//存需要继承的style
     let contentStyle = [];//有文本和样式的最终输出
     tagArr.forEach(function(elem,i,arr){
-        let type=elem.type
+        let type=elem.type;
         if(type == 1){
             findArr.push(elem.tag);
             styleArr.push({})
@@ -28,10 +28,8 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
             obj.type = elem.type;
             obj.style = inheritStyle(styleArr);
             contentStyle.push(obj);
-        }else if(type == 4){
+        }else if(type == 4 || type == 5|| type == 6){
             contentStyle.push(elem);
-        }else if(type == 5){
-
         }
     })
     console.log(contentStyle)

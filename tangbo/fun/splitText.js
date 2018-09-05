@@ -1,4 +1,7 @@
 
+//由splitTag和traverseRTArr 替代, 暂不适用
+//该方法适用于无 嵌套关系以及多标签的简单富文本
+
 export function splitText(str){//切割字符串
     let nReg = /\n|\r/g;
     str = str.replace(nReg,"");

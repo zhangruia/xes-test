@@ -1,6 +1,6 @@
 import { richText } from './richText';
 import { getConName, toText } from '../common/common'
-import { styleChange } from './styleChange'
+import { styleTransform } from './styleChange'
 export const traverseChildren=(children,resource,promiseArr)=>{
     //遍历children
     for(let i in children){
@@ -11,7 +11,7 @@ export const traverseChildren=(children,resource,promiseArr)=>{
         let content = child.texture.content;
         if(content)children[i].content=toText(content);
         let textureType = children[i].texture.type;
-        styleChange(children[i]);
+        styleTransform(children[i].texture.style);
         let conName = getConName(child);
         children[i].conName = conName;
          //添加groupType//添加对应的正确选项属性
