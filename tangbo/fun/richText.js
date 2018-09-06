@@ -70,7 +70,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             child.children.push(mobj);
             let rectangle = child.children[child.children.length-1].rectangle;
             promiseArr.push(
-                getSvg(rid,elem.content,resource,rectangle,rImage)
+                getSvg(rid,elem.content,resource,rectangle,rImage,elem.style.fontSize)
             )
         }
         if(mobj.conName != undefined && sw)child.children.push(mobj);

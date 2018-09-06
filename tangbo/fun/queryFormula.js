@@ -1,6 +1,7 @@
 
 import $ from './jquery-1.11.3';
-export const getSvg=(rid,elem,resource,rectangle,rImage)=>{//封装公式请求//返回promise
+export const getSvg=(rid,elem,resource,rectangle,rImage,fontSize=16)=>{//封装公式请求//返回promise
+    console.log(fontSize)
     return new Promise(function(resolve,reject){
         $.ajax({
             url: "http://10.99.2.153:4000/mathhandle/jax",
@@ -27,8 +28,8 @@ export const getSvg=(rid,elem,resource,rectangle,rImage)=>{//封装公式请求/
                 config.width=data.width;
                 resource.add(new rImage(fobj));
                 if(rectangle){
-                    rectangle[2]=parseInt(data.width)*9;
-                    rectangle[3]=parseInt(data.height)*9;
+                    rectangle[2]=parseInt(data.width)*(9/16*parseInt(fontSize));
+                    rectangle[3]=parseInt(data.height)*(9/16*parseInt(fontSize));
                 }
                 resolve(resource);
             }, 
