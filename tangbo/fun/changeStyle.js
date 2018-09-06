@@ -1,9 +1,9 @@
 export const styleTransform = (style)=>{//修改样式的格式
     if(style){
       for (let k in style) {
-        if (k.indexOf('-') != '-1') {
-          style[k.replace(/\-[a-z]/g, function(all, letter){
-            return letter.toUpperCase();
+        if (k.indexOf('-') != -1) {
+          style[k.replace(/\-[a-z]/g, function(item){
+            return item.slice(1).toUpperCase();
           })] = style[k];
           delete style[k];
         }

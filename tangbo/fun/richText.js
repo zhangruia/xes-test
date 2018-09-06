@@ -11,7 +11,6 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
     let str=child.texture.content;
     str=toText(str);
     let tagArr=splitTag(str);
-    console.log(tagArr)
     let arr=traverseRTArr(tagArr)
     console.log(arr)
     // let arr=splitText(str);//拆分后富文本数组
@@ -28,6 +27,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             texture.type = 3;
             texture.content.style = elem.style || {};
             texture.content.specialStyle=elem.specialStyle || "normal";
+            console.log(elem.style)
             //如果日后富文本中解析出style可以在这里添加style
             // texture.content.style={}
             //判断是否有br
@@ -36,8 +36,9 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             let imgObj = {};
             let rid = newId();
             imgObj.id = rid;
-            console.log(elem)
+            console.log(elem.tag)
             let imgs = elem.tag.split(" ");
+            console.log(imgs)
             for (let prop of imgs) {
                 if (/^src=/.test(prop)) {
                     let src = prop.split("=")[1];
@@ -57,14 +58,14 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                     imgObj.width = parseInt(prop.split("=")[1]);
                 } else if (/^data-height=/.test(prop)) {
                     imgObj.height = parseInt(prop.split("=")[1]);
+                    console.log(prop.split("=")[1])
                 }
-                //处理一下style
             }
             robj = new rImage(imgObj);
             texture.content = [rid];
             texture.type = 4;
             imgObj.texture = texture;
-            mobj = new mImage(imgObj)//
+            mobj = new mImage(imgObj)
         } else if(elem.type == 5){//br标签
             let length=child.children.length;
             if (length > 0) child.children[length-1].isWrap = child.children[length-1].isWrap + 1;

@@ -1,6 +1,6 @@
 import { richText } from './richText';
 import { getConName, toText } from '../common/common'
-import { styleTransform } from './styleChange'
+import { styleTransform } from './changeStyle'
 export const traverseChildren=(children,resource,promiseArr)=>{
     //遍历children
     for(let i in children){
