@@ -39,11 +39,28 @@ export class HandleText extends Common {
     }
     return nextwid
   }
-  fontSize (wid, current, size) {
+  fontSize (wid, current, size, text) {
     let content = current.texture.content
     const fontState = content.hasOwnProperty('style')
-    if (fontState && content.style.hasOwnProperty('fontSize')) wid += content.style.fontSize;
-    else wid += size;
+    if (fontState && content.style.hasOwnProperty('fontSize')) {
+      if (this.fontReg.test(text)) {
+        wid += content.style.fontSize;
+      } else if (this.letterReg.test(text)) {
+        wid += content.style.fontSize * 0.5;
+      } else if (this.chinesePunctuaReg.test(text)) {
+        if (/[\“\”]/.test(text)) wid += content.style.fontSize * 0.3;
+        else wid += content.style.fontSize * 0.9;
+      } else if (this.englishPunctuaReg.test(text)) {
+        if (/[\_]/.test(text)) wid += content.style.fontSize * 0.6;
+        else wid += content.style.fontSize * 0.3;
+      } else if (/\．/.test(text)) {
+        wid += content.style.fontSize * 0.9;
+      } else if (this.trimReg.test(text)) {
+        wid += content.style.fontSize * 0.3;
+      } else if (this.numberReg.test(text)) {
+        wid += content.style.fontSize * 0.4;
+      } else console.log(text);
+    } else wid += size;
     return wid
   }
   admissible (current, maxWid) {
@@ -58,31 +75,26 @@ export class HandleText extends Common {
       let nextsize = this.contSize(text[i])
       if (maxWid - wid >= nextsize) {
         if (this.fontReg.test(text[i])) {
-          wid = this.fontSize(wid, current, basic.common.fontSize)
+          wid = this.fontSize(wid, current, basic.common.fontSize, text[i])
         } else if (this.letterReg.test(text[i])) {
-          wid = this.fontSize(wid, current, basic.common.letterSize)
+          wid = this.fontSize(wid, current, basic.common.letterSize, text[i])
         } else if (this.chinesePunctuaReg.test(text[i])) {
-          wid = this.fontSize(wid, current, basic.common.chineseSize)
+          if (/[\“\”]/.test(text[i])) wid = this.fontSize(wid, current, basic.common.englishSize, text[i]);
+          else wid = this.fontSize(wid, current, basic.common.chineseSize, text[i]);
         } else if (this.englishPunctuaReg.test(text[i])) {
-          wid = this.fontSize(wid, current, basic.common.englishSize)
+          if (/\_/.test(text[i])) wid = this.fontSize(wid, current, basic.common.fontSize * 0.6, text[i])
+          else wid = this.fontSize(wid, current, basic.common.englishSize, text[i])
         } else if (/\．/.test(text[i])) {
-          wid = this.fontSize(wid, current, basic.common.chineseSize)
+          wid = this.fontSize(wid, current, basic.common.chineseSize, text[i])
         } else if (this.trimReg.test(text[i])) {
-          wid = this.fontSize(wid, current, basic.common.trimSize)
+          wid = this.fontSize(wid, current, basic.common.trimSize, text[i])
         } else if (this.numberReg.test(text[i])) {
-          wid = this.fontSize(wid, current, basic.common.numberSize)
+          wid = this.fontSize(wid, current, basic.common.numberSize, text[i])
         } else console.log(text[i]);
         accomm += text[i]
       } else {
         residue += text[i]
       }
-    }
-    let content = current.texture.content
-    const fontState = content.hasOwnProperty('style')
-    if (fontState) content.style.fontSize = basic.common.fontSize;
-    else {
-      content.style = {}
-      content.style["fontSize"] = basic.common.fontSize
     }
     return {
       accomm: accomm,
@@ -90,26 +102,36 @@ export class HandleText extends Common {
       width: wid
     }
   }
+  addFontSize (current) {
+    let content = current.texture.content
+    const fontState = content.hasOwnProperty('style')
+    if (fontState) content.style.fontSize = basic.common.fontSize;
+    else {
+      content.style = {}
+      content.style["fontSize"] = basic.common.fontSize
+    }
+  }
   cuttingObj (admissible, current, parent) {
-      if (admissible.residue == '') return false
-      else {
-        current.texture.content.text = admissible.accomm
-        let newObj = JSON.stringify(current)
-        newObj = JSON.parse(newObj)
-        newObj['force'] = true
-        newObj.texture.content.text = admissible.residue
-        parent.children.map((item, ind) => {
-          if (parent.children[ind].texture.content.text == admissible.accomm) {
-            parent.children.splice(ind + 1, 0, newObj)
-          }
-        })
-      }
+    if (admissible.residue == '') return false
+    else {
+      current.texture.content.text = admissible.accomm
+      let newObj = JSON.stringify(current)
+      newObj = JSON.parse(newObj)
+      newObj['force'] = true
+      newObj.texture.content.text = admissible.residue
+      parent.children.map((item, ind) => {
+        if (parent.children[ind].texture.content.text == admissible.accomm) {
+          parent.children.splice(ind + 1, 0, newObj)
+        }
+      })
+    }
   }
   firstObj (prev, current, parent) {
     const font = current.texture.content
     const size = font.hasOwnProperty('fontSize') ? font.fontSize : basic.common.fontSize
     Global.maxWid = this.warpW
     let admiss = this.admissible(current, Global.maxWid)
+    this.addFontSize(current)
     this.cuttingObj(admiss, current, parent)
     super.setRectangle(current, admiss.width, size)
     super.handleWrap(current)
@@ -126,6 +148,7 @@ export class HandleText extends Common {
       this.curMaxHei = 0
       Global.maxWid = this.warpW - this.prevData.prevX - this.prevData.prevW
       let admiss = this.admissible(current, Global.maxWid)
+      this.addFontSize(current)
       this.cuttingObj(admiss, current, parent)
       super.setRectangle(current, admiss.width, size)
       super.handleWrap(current)
@@ -142,6 +165,7 @@ export class HandleText extends Common {
       Global.allPrev = []
       Global.maxWid = this.warpW
       let admiss = this.admissible(current, Global.maxWid)
+      this.addFontSize(current)
       this.cuttingObj(admiss, current, parent)
       super.setRectangle(current, admiss.width, size)
       super.handleWrap(current)
