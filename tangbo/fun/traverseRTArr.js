@@ -40,7 +40,10 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
             obj.type = elem.type;
             obj.style = inheritStyle(styleArr);
             contentStyle.push(obj);
-        }else if(type == 4 || type == 5|| type == 6){
+        }else if(type == 4 || type == 5){
+            contentStyle.push(elem);
+        }else if(type == 6){
+            elem.style=inheritStyle(styleArr);
             contentStyle.push(elem);
         }
     })
