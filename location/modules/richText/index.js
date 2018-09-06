@@ -2,7 +2,7 @@ import { isWrap } from './isWrap'
 
 let max = 0
 
-function richText (child, parent) {
+function rich (child, parent) {
   for(let i = 0; i < child.length; i += 1){
     let item = child[i], index = i;
     if (item.conName === 'Text') {
@@ -15,5 +15,5 @@ function richText (child, parent) {
 
 
 export {
-  richText
+  rich
 }

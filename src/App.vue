@@ -14,6 +14,7 @@ import {canvasStage} from 'xes_canvas_renderer';
 import { PixiExporter } from "xeditor-convertor";
 import {pageSizeFun} from "../static/preload";
 import { ergodic } from '../location/index'
+import { getData } from '../location/modules/optimize/index'
 import mainJson1 from "../static/main1";
 import resourceJson1 from "../static/resource1";
 import mainJsonC1 from "../static/main_ceshi1";
@@ -39,12 +40,8 @@ export default {
   },
   created(){
      translate(mainJsonC2,resourceJsonC2).then((data)=>{
-       ergodic(data.main)
+       getData(data.main)
        this.inFun(data.main,data.resource)
-       console.log(data.main);
-       console.log(data.resource);
-      // data.main.pages[0].children[2].rectangle[2] = 400
-      // data.main.pages[0].children[2].rectangle[3] = 1000
      });
   },
   methods:{
@@ -59,7 +56,7 @@ export default {
 
         () => {
           this.rootStageObj = pixi.pixiApp.stage;
-          window.abc = this.rootStageObj.children[2];
+          window.abc = this.rootStageObj
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
         }

@@ -1,4 +1,4 @@
-import { richText } from '../modules/richText/richText'
+import { rich } from '../modules/richText/index'
 
 export class GetData {
   constructor (current, parent) {
@@ -10,7 +10,7 @@ export class GetData {
     current.map((value, index) => {
       if (value.conName == 'Container') {
         const child = value.children
-        richText(child, value)
+        rich(child, value)
       }
     })
   }
