@@ -68,12 +68,12 @@ export class HandleText extends Common {
     let residue = ''; // 需要剪裁内容
     let hei = 30;
     let wid = 0;
-    let test = true
-    const text = current.texture.content.text
-
+    let test = true;
+    let sw = false;
+    const text = current.texture.content.text;
     for (let i = 0; i < text.length; i++){
       let nextsize = this.contSize(text[i])
-      if (maxWid - wid >= nextsize) {
+      if (maxWid - wid >= nextsize && !sw) {
         if (this.fontReg.test(text[i])) {
           wid = this.fontSize(wid, current, basic.common.fontSize, text[i])
         } else if (this.letterReg.test(text[i])) {
@@ -93,6 +93,7 @@ export class HandleText extends Common {
         } else console.log(text[i]);
         accomm += text[i]
       } else {
+        sw = true
         residue += text[i]
       }
     }
@@ -105,7 +106,8 @@ export class HandleText extends Common {
   addFontSize (current) {
     let content = current.texture.content
     const fontState = content.hasOwnProperty('style')
-    if (fontState) content.style.fontSize = basic.common.fontSize;
+    if (fontState && content.style.hasOwnProperty('fontSize')) return false;
+    else if (fontState) content.style.fontSize = basic.common.fontSize;
     else {
       content.style = {}
       content.style["fontSize"] = basic.common.fontSize
@@ -139,8 +141,10 @@ export class HandleText extends Common {
   }
   isWrap (prev, current, parent) {
     current.force == undefined?Global.forceWrap=false:Global.forceWrap=true
-    const font = current.texture.content
-    const size = font.hasOwnProperty('fontSize') ? font.fontSize : basic.common.fontSize
+    const font = current.texture.content;
+    const size = (font.hasOwnProperty('style') &&
+    font.style.hasOwnProperty('fontSize')) ?
+    font.style.fontSize : basic.common.fontSize;
     if (current.isWrap > 0) Global.forceWrap = true
     if (!Global.forceWrap) {
       this.arrays = null
