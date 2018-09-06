@@ -15,7 +15,7 @@ export const splitTag=(str)=>{
         }
         if(key=="$")continue;
         if(fsw){
-            newFormula+=key;
+            newFormula += key;
         }
 
         if(key === "<" && !fsw){
@@ -54,11 +54,10 @@ export const splitTag=(str)=>{
                     tagObj.type = 5;//标签为br
                     tagObj.tag=newTag;
                 }else if(newTag.indexOf("style") != -1){
-                    
                     tagObj.type = 2;//标签且有样式
                     tagObj.tag = newTag.split(" ")[0];
                     let fromi = newTag.indexOf("\'") == -1 ? newTag.indexOf("\"",newTag.indexOf("style")+7):newTag.indexOf("\'",newTag.indexOf("style")+7);
-                    let style = newTag.slice(newTag.indexOf("style")+7,fromi);
+                    let  style = newTag.slice(newTag.indexOf("style")+7,fromi);
                     tagObj.style = splitStyle(style)
                 }else{
                     tagObj.tag = newTag.split(">")[0];

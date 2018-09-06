@@ -4,9 +4,11 @@ export const styleTransform = (style)=>{//修改样式的格式
         if (k.indexOf('-') != -1) {
           style[k.replace(/\-[a-z]/g, function(item){
             return item.slice(1).toUpperCase();
-          })] = style[k];
+          })] = style[k].indexOf("px") != -1 ? parseInt(style[k]) : style[k];
+
           delete style[k];
         }
+        
         if (k == 'color') {
           style['fill'] = style['color'];
           delete style['color'];

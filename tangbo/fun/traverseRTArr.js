@@ -5,7 +5,7 @@ import {inheritStyle} from './changeStyle';
         //  3  文本内容
         //  4  img标签 
         //  5  br标签 
-        //  6  $$公式 $$
+        //  6  $$公式$$
 export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
     let findArr = [];//存需要寻找结束标签的开始标签
     let styleArr = [];//存需要继承的style
@@ -32,8 +32,8 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
                     contentStyle[contentStyle.length-1].specialStyle = "b";
                 }
             }
-            if(findArr)findArr.pop();
-            if(styleArr)styleArr.pop();
+            findArr.pop();
+            styleArr.pop();
         }else if(type == 3){
             let obj = {};
             obj.content = elem.content;
@@ -44,6 +44,5 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
             contentStyle.push(elem);
         }
     })
-    console.log(contentStyle)
     return contentStyle;
 }

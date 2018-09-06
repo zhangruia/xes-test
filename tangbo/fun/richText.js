@@ -12,7 +12,6 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
     str=toText(str);
     let tagArr=splitTag(str);
     let arr=traverseRTArr(tagArr)
-    console.log(arr)
     // let arr=splitText(str);//拆分后富文本数组
     arr.forEach(function(elem,i,arr){
         let sw=true;
@@ -20,25 +19,18 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
         let robj = {};
         let texture = {};
         let config = {};
-        // console.log(elem)
         if (elem.type == 3) {//文本
             texture.content = {};
             texture.content.text = elem.content;
             texture.type = 3;
             texture.content.style = elem.style || {};
             texture.content.specialStyle=elem.specialStyle || "normal";
-            console.log(elem.style)
-            //如果日后富文本中解析出style可以在这里添加style
-            // texture.content.style={}
-            //判断是否有br
             mobj = new Text(texture);
         } else if (elem.type == 4) {//图片
             let imgObj = {};
             let rid = newId();
             imgObj.id = rid;
-            console.log(elem.tag)
             let imgs = elem.tag.split(" ");
-            console.log(imgs)
             for (let prop of imgs) {
                 if (/^src=/.test(prop)) {
                     let src = prop.split("=")[1];
@@ -58,7 +50,6 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                     imgObj.width = parseInt(prop.split("=")[1]);
                 } else if (/^data-height=/.test(prop)) {
                     imgObj.height = parseInt(prop.split("=")[1]);
-                    console.log(prop.split("=")[1])
                 }
             }
             robj = new rImage(imgObj);
