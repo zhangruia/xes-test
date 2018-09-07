@@ -20,16 +20,17 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
             styleArr.push(elem.style);
         }else if(type == 0){
             if(contentStyle){//判断特殊标签
+                let index=contentStyle.length-1;
                 if(elem.tag == "</sup"){
-                    contentStyle[contentStyle.length-1].specialStyle = "sup";
-                }else if(elem.tag == "</sub"){ 
-                    contentStyle[contentStyle.length-1].specialStyle = "sub";
+                    contentStyle[index].specialStyle = "sup";
+                }else if(elem.tag == "</sub"){
+                    contentStyle[index].specialStyle = "sub";
                 }else if(elem.tag == "</strong"){
-                    contentStyle[contentStyle.length-1].specialStyle = "strong";
+                    contentStyle[index].specialStyle = "strong";
                 }else if(elem.tag == "</i"){
-                    contentStyle[contentStyle.length-1].specialStyle = "i";
+                    contentStyle[index].specialStyle = "i";
                 }else if(elem.tag == "</b"){
-                    contentStyle[contentStyle.length-1].specialStyle = "b";
+                    contentStyle[index].specialStyle = "b";
                 }
             }
             findArr.pop();
