@@ -184,10 +184,10 @@ export class HandleText extends Common {
       this.firstObj(prev, current, parent)
       super.setTransform(prev, current, true, Global.maxHei)
     }
-    console.log(current.texture.content);
-    console.log(current.rectangle);
-    console.log(current.transform);
-    console.log('---------------------------------');
+    // console.log(current.texture.content);
+    // console.log(current.rectangle);
+    // console.log(current.transform);
+    // console.log('---------------------------------');
     if (Global.forceWrap) super.vertical(this.arrays, this.maxHei, this.curMaxHei)
   }
 }

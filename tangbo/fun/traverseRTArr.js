@@ -1,4 +1,4 @@
-import {inheritStyle} from './changeStyle';
+import { inheritStyle,addSpecialStyle} from './changeStyle';
    //  type=0  结束标签
         //  1  开始标签无样式
         //  2  开始标签含样式
@@ -12,29 +12,11 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
     let contentStyle = [];//有文本和样式的最终输出
     tagArr.forEach(function(elem,i,arr){
         let type=elem.type;
-        if(type == 1){
+        if(type == 1 || type == 2){
+          //可添加新的标签
             findArr.push(elem.tag);
-            styleArr.push({})
-        }else if(type == 2){
-            findArr.push(elem.tag);
-            styleArr.push(elem.style);
+            styleArr.push(elem.style)
         }else if(type == 0){
-            if(contentStyle){//判断特殊标签
-                let index=contentStyle.length-1;
-                if(elem.tag == "</sup"){
-                    contentStyle[index].specialStyle = "sup";
-                }else if(elem.tag == "</sub"){
-                    contentStyle[index].specialStyle = "sub";
-                }else if(elem.tag == "</strong"){
-                    contentStyle[index].specialStyle = "strong";
-                    contentStyle[index].style.fontWeight='bolder';
-                }else if(elem.tag == "</i"){
-                    contentStyle[index].specialStyle = "i";
-                    contentStyle[index].style.fontStyle='italic';
-                }else if(elem.tag == "</b"){
-                    contentStyle[index].specialStyle = "b";
-                }
-            }
             findArr.pop();
             styleArr.pop();
         }else if(type == 3){
@@ -42,6 +24,7 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
             obj.content = elem.content;
             obj.type = elem.type;
             obj.style = inheritStyle(styleArr);
+            addSpecialStyle(obj);
             contentStyle.push(obj);
         }else if(type == 4 || type == 5){
             contentStyle.push(elem);

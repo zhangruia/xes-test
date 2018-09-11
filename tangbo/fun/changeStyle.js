@@ -48,3 +48,27 @@ export const inheritStyle=(styleArr)=>{//独立的方法  继承styleArr中所�
     }
     return inherit;
 }
+
+export const addStyle=(newTag,tagObj)=>{
+  if(newTag.indexOf("<strong" ) != -1 || newTag.indexOf("<b" ) != -1){
+      tagObj.style.fontWeight='blod';
+  }else if(newTag.indexOf("<i" ) != -1){
+      tagObj.style.fontStyle='italic';
+  }else if(newTag.indexOf("<sup") != -1){
+      tagObj.style.verticalAlign = "sup";
+  }else if(newTag.indexOf("<sub") != -1){
+      tagObj.style.verticalAlign = "sub";
+  }else if(newTag.indexOf("<u") != -1 || newTag.indexOf("<ins") != -1){
+      tagObj.style.textDecoration = "underline";
+  }else if(newTag.indexOf("<del") != -1){
+      tagObj.style.textDecoration = "line-through;";
+  }
+}
+
+export const addSpecialStyle=(obj)=>{
+  if(obj.style.verticalAlign != undefined ){
+    obj.specialStyle = obj.style.verticalAlign
+  }else if(obj.style.textDecoration != undefined){
+    obj.specialStyle = obj.style.textDecoration
+  }
+}

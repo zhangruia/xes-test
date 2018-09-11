@@ -66,10 +66,10 @@ export class HandleImg extends Common {
       Global.forceWrap,
       Global.maxHei
     )
-    console.log(item.texture.content);
-    console.log(item.rectangle);
-    console.log(item.transform);
-    console.log('---------------------------------');
+    // console.log(item.texture.content);
+    // console.log(item.rectangle);
+    // console.log(item.transform);
+    // console.log('---------------------------------');
     if (Global.forceWrap) super.vertical(this.arrays, this.maxHei, this.curMaxHei)
   }
 }
