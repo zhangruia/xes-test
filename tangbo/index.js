@@ -17,10 +17,10 @@ export const  translate=(main,resourceJson)=>{
     let result;
     for(let i in main.pages){
         main.pages[i].remark = "测试备注"+main.pages[i].id;
-        main.pages[i].width = 1920; //
-        main.pages[i].height = 1080; //
+        main.pages[i].width = 1920; 
+        main.pages[i].height = 1080; 
         let res = traverseChildren(main.pages[i].children,resource,promiseArr);
-        main.pages[i].modelType = getModelType(); //
+        main.pages[i].modelType = getModelType(); 
         // main.pages[i].children = res.children;
         result=res;
     }

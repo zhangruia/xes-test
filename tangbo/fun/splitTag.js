@@ -1,12 +1,12 @@
-import {splitStyle} from "./changeStyle";
-export const splitTag=(str)=>{
+import { splitStyle } from "./changeStyle";
+export const splitTag=(str)=>{//切割富文本所有内容
     let newTag = "";//存标签
     let newContent = "";//存内容
     let newFormula="";
     let sw = false;//控制存标签/内容
     let fsw = false;//控制公式存储
     let tagArr = [];//以对象格式，放入数组，存所有数据
-    let tagReg=/<(?=\/?(div|span|img|strong|p|video|i|b|br|font|s|u))/;
+    let tagReg=/<(?=\/?(div|span|img|strong|p|i|b|br|font|s|u|a|footer|header|nav|))/;
     for (let i = 0,length=str.length;i<length;i++){
         let key=str[i];
         if(key=="$" && str[i+1]=="$"){
