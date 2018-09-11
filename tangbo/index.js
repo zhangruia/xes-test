@@ -3,6 +3,7 @@ import {getMaxId,getModelType} from './common/common.js'
 import { traverseChildren } from './fun/traverseChildren'
 require('xes-ligature');
 export const  translate=(main,resourceJson)=>{
+    console.log('引入成功')
     if(main.pages[0].modelType !=undefined){
         return new Promise(function(resolve){
             let data={};

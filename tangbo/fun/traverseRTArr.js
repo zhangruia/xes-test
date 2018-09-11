@@ -27,8 +27,10 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
                     contentStyle[index].specialStyle = "sub";
                 }else if(elem.tag == "</strong"){
                     contentStyle[index].specialStyle = "strong";
+                    contentStyle[index].style.fontWeight='bolder';
                 }else if(elem.tag == "</i"){
                     contentStyle[index].specialStyle = "i";
+                    contentStyle[index].style.fontStyle='italic';
                 }else if(elem.tag == "</b"){
                     contentStyle[index].specialStyle = "b";
                 }

@@ -3,7 +3,8 @@ import $ from './jquery-1.11.3';
 export const getSvg=(rid,elem,resource,rectangle,rImage,fontSize=16)=>{//封装公式请求//返回promise
     return new Promise(function(resolve,reject){
         $.ajax({
-            url: "http://10.99.2.153:4000/mathhandle/jax",
+            // url: "http://10.99.2.153:4000/mathhandle/jax",
+            url: "http://10.99.2.189:4000/mathhandle/jax",
             type: "get",
             data:{
                 "mathstr" : elem
