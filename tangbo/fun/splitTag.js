@@ -36,9 +36,9 @@ export const splitTag=(str)=>{//切割富文本所有内容
             tagObj.type=6;//公式
             tagObj.content=newFormula;
             tagArr.push(tagObj);
-            newFormula=""; 
+            newFormula="";
         }
-        
+
         if((newContent && sw)||(newTag && !sw) ){
             let tagObj = {};
             if(!sw){
@@ -68,7 +68,7 @@ export const splitTag=(str)=>{//切割富文本所有内容
                         tagObj.style = {};
                         addStyle(newTag,tagObj);
                         tagObj.type = 1;//仅有标签
-                        
+
                     }
                 }
                 tagArr.push(tagObj);

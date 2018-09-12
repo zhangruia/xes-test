@@ -53,6 +53,7 @@ export class HandleImg extends Common {
       this.arrays = null
       this.maxHei = 0
       this.curMaxHei = 0
+      Global.maxWid -= current.rectangle[2];
       super.handleWrap(current)
       Global.allPrev.push(current)
     }
@@ -64,12 +65,9 @@ export class HandleImg extends Common {
       prev?prevInformation(prev):null,
       item,
       Global.forceWrap,
-      Global.maxHei
+      Global.maxHei,
+      Global.maxHei + super.max(Global.len)
     )
-    // console.log(item.texture.content);
-    // console.log(item.rectangle);
-    // console.log(item.transform);
-    // console.log('---------------------------------');
     if (Global.forceWrap) super.vertical(this.arrays, this.maxHei, this.curMaxHei)
   }
 }
