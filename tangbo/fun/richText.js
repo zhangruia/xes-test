@@ -26,7 +26,8 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             texture.content.style = elem.style || {};
             texture.content.specialStyle=elem.specialStyle || "normal";
             mobj = new Text(texture);
-            
+            // console.log(texture.content.style)
+            // console.log(elem.content)
         } else if (elem.type == 4) {//图片
             let imgObj = {};
             let rid = newId();
