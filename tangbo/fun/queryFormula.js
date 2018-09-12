@@ -9,7 +9,6 @@ export const getSvg=(rid,elem,resource,rectangle,rImage,fontSize=16)=>{//封装�
             data:{
                 "mathstr" : elem
             },
-            // async:false,
             dataType:"json",
             success: function (data) {
                 let config={};

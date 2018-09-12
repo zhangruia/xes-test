@@ -1,4 +1,4 @@
-export const styleTransform = (style)=>{//修改样式的格式
+export const styleTransform = (style) => {//修改样式的格式
     if(style){
       for (let k in style) {
         if (k.indexOf('-') != -1) {
@@ -26,19 +26,19 @@ export const styleTransform = (style)=>{//修改样式的格式
 }
   
   
-export const splitStyle=(style)=>{//切割内联sytle方法，可添加筛选文本style方法
-    let styleArr=style.split(/:|;/);
-    if(styleArr[styleArr.length-1]=="")styleArr.pop();
-    let styleObj={};
-    for(let i = 0,length=styleArr.length;i<length;i+=2){
-        styleObj[styleArr[i]]=styleArr[i+1]
+export const splitStyle = (style) => {//切割内联sytle方法，可添加筛选文本style方法
+    let styleArr = style.split(/:|;/);
+    if(styleArr[styleArr.length-1] == "")styleArr.pop();
+    let styleObj = {};
+    for(let i = 0,length = styleArr.length;i < length;i += 2){
+        styleObj[styleArr[i]] = styleArr[i+1]
     }
     styleTransform(styleObj);
     return styleObj;
 }
 
 
-export const inheritStyle=(styleArr)=>{//继承styleArr中所有的style
+export const inheritStyle = (styleArr) => {//继承styleArr中所有的style
     let inherit = {};
     for(let i = 0,length = styleArr.length;i < length;i++){
         for(let key in styleArr[i]){
@@ -48,14 +48,12 @@ export const inheritStyle=(styleArr)=>{//继承styleArr中所有的style
     return inherit;
 }
 
-export const addStyle=(newTag,tagObj,pFontSize = 16)=>{//识别特殊标签  添加可继承样式
+export const addStyle = (newTag,tagObj,pFontSize = 16) => {//识别特殊标签  添加可继承样式
   if(newTag.indexOf("<strong" ) != -1 || newTag.indexOf("<b" ) != -1){
-      console.log("捕捉到一个strong")
       tagObj.style.fontWeight = "bold";
   }else if(newTag.indexOf("<i" ) != -1){
       tagObj.style.fontStyle='italic';
   }else if(newTag.indexOf("<sup") != -1){
-      console.log('捕捉到一个sup')
       tagObj.style.verticalAlign = "sup";
   }else if(newTag.indexOf("<sub") != -1){
       tagObj.style.verticalAlign = "sub";
@@ -85,7 +83,7 @@ export const addStyle=(newTag,tagObj,pFontSize = 16)=>{//识别特殊标签  添
 }
 
 
-export const addSpecialStyle=(obj)=>{//根据特殊标签的特殊style  为渲染模块添加特殊字段specialStyle
+export const addSpecialStyle = (obj) => {//根据特殊标签的特殊style  为渲染模块添加特殊字段specialStyle
   if(obj.style.verticalAlign != undefined ){
     obj.specialStyle = obj.style.verticalAlign
   }else if(obj.style.textDecoration != undefined){

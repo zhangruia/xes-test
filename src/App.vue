@@ -40,9 +40,9 @@ export default {
   },
   created(){
      translate(mainJsonC2,resourceJsonC2).then((data)=>{
+        getData(data.main)
        this.inFun(data.main,data.resource)
        console.log(data.main)
-       getData(data.main)
      });
   },
   methods:{

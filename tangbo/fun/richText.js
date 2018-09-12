@@ -1,7 +1,6 @@
 import {rImage,mImage} from '../constructor/Image';
 import {Text} from '../constructor/Text';
 import {newId,toText} from '../common/common';
-import { splitText } from './splitText';
 import { getSvg } from './queryFormula';
 import { splitTag } from './splitTag';
 import { traverseRTArr } from './traverseRTArr'
@@ -12,7 +11,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
     str=toText(str);
     let tagArr=splitTag(str);
     let arr=traverseRTArr(tagArr)
-    // let arr=splitText(str);//拆分后富文本数组
+    let brSw = 0 ;
     arr.forEach(function(elem,i,arr){
         let sw=true;
         let mobj = {};
@@ -21,13 +20,17 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
         let config = {};
         if (elem.type == 3) {//文本
             texture.content = {};
+            elem.content = elem.content.replace(/(&nbsp;)|(&copy;)/g,function(key){
+                if(key == "&nbsp;") return " ";
+                else if (key == "&copy;") return "©";
+
+            })
             texture.content.text = elem.content;
+
             texture.type = 3;
             texture.content.style = elem.style || {};
             texture.content.specialStyle=elem.specialStyle || "normal";
             mobj = new Text(texture);
-            // console.log(texture.content.style)
-            // console.log(elem.content)
         } else if (elem.type == 4) {//图片
             let imgObj = {};
             let rid = newId();
@@ -41,10 +44,10 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                         imgObj.host = resource.resource.list[0].host;
                         imgObj.src = "."+src.slice(src.indexOf("/"));
                     }else{
-                        imgObj.host = src.slice(0,src.indexOf("com")+3);
-                        imgObj.src = "."+src.slice(src.indexOf("com")+3);
+                        imgObj.host = src.slice(0,src.indexOf("com") + 3);
+                        imgObj.src = "." + src.slice(src.indexOf("com") + 3);
                     }
-                    imgObj.name = src.slice(src.lastIndexOf('/')+1,src.lastIndexOf('.'))+rid;
+                    imgObj.name = src.slice(src.lastIndexOf('/') + 1,src.lastIndexOf('.')) + rid;
                     imgObj.ext = imgObj.src.slice(imgObj.src.lastIndexOf(".") + 1 )
                 } else if (/^data-resourceId=/.test(prop)) {
                     imgObj.resourceId = prop.split("=")[1];
@@ -58,15 +61,20 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             texture.content = [rid];
             texture.type = 4;
             imgObj.texture = texture;
-            mobj = new mImage(imgObj)
+            mobj = new mImage(imgObj);
         } else if(elem.type == 5){//br标签
-            let length=child.children.length;
-            if (length > 0) child.children[length-1].isWrap = child.children[length-1].isWrap + 1;
+            brSw++;
+            // let length=child.children.length;
+            // if (length > 0) child.children[length-1].isWrap = child.children[length-1].isWrap + 1;
         } else if(elem.type == 6){//公式
             let rid = newId();
             texture.content = [rid];
             texture.type = 4;
             config.texture = texture;
+            if(brSw != 0 ){
+                config.isWrap = brSw;
+                brSw = 0;
+            }
             mobj = new mImage(config);
             sw=false;
             child.children.push(mobj);
@@ -75,8 +83,14 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                 getSvg(rid,elem.content,resource,rectangle,rImage,elem.style.fontSize)
             )
         }
-        if(mobj.conName != undefined && sw)child.children.push(mobj);
-        if(robj.id != undefined )resource.add(robj);
+        if(mobj.conName != undefined && sw){
+            if(brSw != 0 ){
+                mobj.isWrap = brSw;
+                brSw = 0;
+            }
+            child.children.push(mobj);
+        }
+        if(robj.id != undefined ){resource.add(robj);console.log(robj.id)}
     })
     child.texture = {
         content:"",
