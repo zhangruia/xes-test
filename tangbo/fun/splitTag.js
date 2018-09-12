@@ -22,7 +22,7 @@ export const splitTag=(str)=>{//切割富文本所有内容
             let tag = str[i] + str[i+1] + str[i+2] + str[i+3] + str[i+4] + str[i+5] + str[i+6];
             if(tagReg.test(tag))sw = true;
         }
-        if(!sw && key != " " && key != "\n" && !fsw){
+        if(!sw && key != " " && key != "\n" && key != "\r" && !fsw){
             newContent += key;
         }
         if(sw && !fsw){
@@ -36,12 +36,12 @@ export const splitTag=(str)=>{//切割富文本所有内容
             tagObj.type=6;//公式
             tagObj.content=newFormula;
             tagArr.push(tagObj);
-            newFormula=""; 
+            newFormula="";
         }
-        
+
         if((newContent && sw)||(newTag && !sw) ){
             let tagObj = {};
-            
+
             if(!sw){
                 //标签类
                 if(newTag.indexOf("<img") != -1){

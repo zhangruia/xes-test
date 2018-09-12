@@ -23,7 +23,9 @@ export class Common {
     array.map((item, index) => {
       const hei = item.rectangle[3]
       const flexHei = (curMaxHei - basic.common.fontpadtop - hei) / 2
-      item.transform[1] = prevMax + flexHei
+      if (!item.texture.content.specialStyle || item.texture.content.specialStyle=='normal') {
+        item.transform[1] = prevMax + flexHei
+      }
     })
   }
   max (array) {
@@ -31,23 +33,35 @@ export class Common {
   }
   handleWrap (current) {
     const isWrap = current.isWrap ? current.isWrap : 0
-    if (isWrap > 1) {
-      const line = basic.common.lineH * (isWrap - 1)
-      const top = basic.common.fontpadtop * (isWrap - 1)
-      Global.len.push(current.rectangle[3] + line + top)
+    if (isWrap > 1) { // 要求换多行
+      if (current.texture.type == 3) {
+        const lineH = basic.common.lineH; // 默认行高
+        const size = current.texture.content.style.fontSize // 文字大小
+        lineH > size ? Global.len.push(lineH) : Global.len.push(size)
+      } else {
+        Global.len.push(current.rectangle[3])
+      }
       Global.widthLen.push(current.rectangle[2])
     } else {
-      Global.len.push(current.rectangle[3] + basic.common.fontpadtop)
+      if (current.texture.type == 3) {
+        const lineH = basic.common.lineH;
+        const size = current.texture.content.style.fontSize
+        lineH > size ? Global.len.push(lineH) : Global.len.push(size)
+      } else {
+        Global.len.push(current.rectangle[3])
+      }
       Global.widthLen.push(current.rectangle[2])
     }
   }
-  setTransform (prev, current, iscut, maxHei) {
-    const isWarp = current.isWarp ? current.isWarp : 0
-    if (isWarp > 1) {
-      const line = basic.common.lineH * (isWarp - 1)
-      this.isCut(prev, current, iscut, maxHei + line)
+  setTransform (prev, current, iscut, prevMaxHei, maxHei) {
+    const isWrap = current.isWrap ? current.isWrap : 0
+    const curWid = maxHei - prevMaxHei
+    if (isWrap > 1) {
+      const line = basic.common.lineH * (isWrap - 1)
+      this.isCut(prev, current, iscut,
+        prevMaxHei + line + ((curWid - current.rectangle[3]) / 2))
     } else {
-      this.isCut(prev, current, iscut, maxHei)
+      this.isCut(prev, current, iscut, prevMaxHei)
     }
   }
   isCut (prev, current, iscut, y) {
@@ -64,5 +78,40 @@ export class Common {
     current.rectangle[1] = 0
     current.rectangle[2] = w
     current.rectangle[3] = h
+  }
+  positionTop (current, prevMax) {
+    current.transform[1] = prevMax
+  }
+  positionBottom (current, maxHei) {
+    current.transform[1] = maxHei
+  }
+  specialStyle (lineObj, prevMax, curMax) {
+    // let specialState = null;
+    // let normalArr = [], len = 0;
+    // let sup = false, sub = false;
+    // lineObj.map((val, ind) => {
+    //   const special = val.texture.content.specialStyle
+    //   // if (special == 'sup') {
+    //   //   if (!sup) Global.maxHei += basic.common.sub;
+    //   //   sup = true;
+    //   //   len += 1;
+    //   // // } else if (special == 'sub') {
+    //   // //   if (!sub) Global.maxHei += basic.common.sub;
+    //   // //   sub = true;
+    //   // //   val.transform[1] = curMax - basic.common.fontpadtop + basic.common.sub
+    //   // //   len += 1;
+    //   // } else {
+    //     normalArr.push(val)
+    //   // }
+    // })
+    // // 根据标签的状态更改剩余对象的y轴
+    // if (len) {
+    //   normalArr.map(val => {
+    //     const line = Global.maxHei - prevMax;
+    //     const curWidth = val.rectangle[3];
+    //     const width = (line - curWidth) / 2
+    //     val.transform[1] = width + prevMax
+    //   })
+    // }
   }
 }
