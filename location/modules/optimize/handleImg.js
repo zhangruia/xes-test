@@ -68,6 +68,13 @@ export class HandleImg extends Common {
       Global.maxHei,
       Global.maxHei + super.max(Global.len)
     )
-    if (Global.forceWrap) super.vertical(this.arrays, this.maxHei, this.curMaxHei)
+    if (Global.forceWrap) {
+      super.vertical(this.arrays, this.maxHei, this.curMaxHei)
+      this.specialStyle(this.arrays, this.maxHei, Global.maxHei)
+    }
+  }
+  specialStyle (lineObj, prevMax, curMax) {
+    super.specialStyle(lineObj, prevMax, curMax)
+    // if (Global.forceWrap) super.vertical(this.arrays, this.maxHei, this.curMaxHei)
   }
 }
