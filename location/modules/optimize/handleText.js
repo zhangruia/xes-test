@@ -58,7 +58,7 @@ export class HandleText extends Common {
       } else if (this.trimReg.test(text)) {
         wid += content.style.fontSize * 0.3;
       } else if (this.numberReg.test(text)) {
-        wid += content.style.fontSize * 0.4;
+        wid += content.style.fontSize * 0.6;
       } else {
         // console.log(text);
       }
@@ -66,6 +66,7 @@ export class HandleText extends Common {
     return wid
   }
   admissible (current, maxWid) {
+    console.log(current.texture.content.text, maxWid, 'hhhhhhhhhhhh');
     let accomm = '', // 可容纳内容
         residue = ''; // 需要剪裁内容
     let wid = 0;
@@ -99,6 +100,7 @@ export class HandleText extends Common {
         if (accomm.length == 0) {
           current.force = true
           Global.maxWid = this.warpW; // 回归初始状态
+          console.log('整个对象换行，回归初始状态：', Global.maxWid);
           const test = this.full(current, Global.maxWid)
           return {
             accomm: test.accomm,
@@ -111,6 +113,7 @@ export class HandleText extends Common {
       }
     }
     Global.maxWid -= wid;
+    console.log('切割之后：', Global.maxWid);
     return {
       accomm: accomm,
       residue: residue,
@@ -180,6 +183,7 @@ export class HandleText extends Common {
       }
     }
     Global.maxWid -= wid;
+    console.log('整个对象换行之后容纳：', Global.maxWid);
     return {
       accomm: accomm,
       residue: residue,
@@ -211,6 +215,7 @@ export class HandleText extends Common {
     }
   }
   firstObj (prev, current, parent) {
+    // current.force = true;
     const font = current.texture.content
     const size = font.hasOwnProperty('fontSize') ? font.fontSize : basic.common.fontSize
     // console.log('admiss前', Global.maxWid);
@@ -227,8 +232,12 @@ export class HandleText extends Common {
     font.style.fontSize : basic.common.fontSize;
     // console.log('admiss前', Global.maxWid);
     // 对当前对象进行切割，不切割并且要换行 将换行标识改为true
-    if (current.isWrap > 0) Global.maxWid = basic.common.warpW;
+    if (current.isWrap > 0) {
+      Global.maxWid = basic.common.warpW;
+      console.log('isWrap换行：', Global.maxWid);
+    }
     const admiss = this.admissible(current, Global.maxWid)
+    console.log(admiss, Global.maxWid);
     Global.forceWrap = current.force;
     // 给当前对象添加fontSize
     this.addFontSize(current)
@@ -250,7 +259,8 @@ export class HandleText extends Common {
       this.arrays = null
       this.maxHei = 0
       this.curMaxHei = 0
-      Global.maxWid -= (this.prevData.prevX + this.prevData.prevW)
+      // Global.maxWid -= (this.prevData.prevX + this.prevData.prevW)
+      // console.log('不换行：', Global.maxWid);
       super.handleWrap(current)
       Global.allPrev.push(current)
     } else {
@@ -278,6 +288,8 @@ export class HandleText extends Common {
         Global.forceWrap,
         Global.maxHei,
         Global.maxHei + super.max(Global.len))
+        console.log('-------------------------------------');
+        console.log('-------------------------------------');
     } else {
       this.firstObj(prev, current, parent)
       super.setTransform(
@@ -286,7 +298,15 @@ export class HandleText extends Common {
         true,
         Global.maxHei,
         Global.maxHei + super.max(Global.len))
+        console.log('-------------------------------------');
+        console.log('-------------------------------------');
     }
-    if (Global.forceWrap) super.vertical(this.arrays, this.maxHei, this.curMaxHei)
+    if (Global.forceWrap) {
+      super.vertical(this.arrays, this.maxHei, this.curMaxHei);
+      this.specialStyle(this.arrays, this.maxHei, Global.maxHei)
+    }
+  }
+  specialStyle (lineObj, prevMax, curMax) {
+    super.specialStyle(lineObj, prevMax, curMax)
   }
 }

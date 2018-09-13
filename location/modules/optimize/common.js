@@ -79,39 +79,50 @@ export class Common {
     current.rectangle[2] = w
     current.rectangle[3] = h
   }
-  positionTop (current, prevMax) {
-    current.transform[1] = prevMax
+  alignTop (len) {
+    len += 1;
+    return len
   }
-  positionBottom (current, maxHei) {
-    current.transform[1] = maxHei
+  alignBottom (len, val, prevMax, curMax) {
+    const spaceY = curMax - prevMax - val.rectangle[3];
+    val.transform[1] = prevMax + spaceY
+    len += 1;
+    return len
+  }
+  lineThrough () {
+
+  }
+  underLine () {
+
   }
   specialStyle (lineObj, prevMax, curMax) {
-    // let specialState = null;
-    // let normalArr = [], len = 0;
-    // let sup = false, sub = false;
-    // lineObj.map((val, ind) => {
-    //   const special = val.texture.content.specialStyle
-    //   // if (special == 'sup') {
-    //   //   if (!sup) Global.maxHei += basic.common.sub;
-    //   //   sup = true;
-    //   //   len += 1;
-    //   // // } else if (special == 'sub') {
-    //   // //   if (!sub) Global.maxHei += basic.common.sub;
-    //   // //   sub = true;
-    //   // //   val.transform[1] = curMax - basic.common.fontpadtop + basic.common.sub
-    //   // //   len += 1;
-    //   // } else {
-    //     normalArr.push(val)
-    //   // }
-    // })
-    // // 根据标签的状态更改剩余对象的y轴
-    // if (len) {
-    //   normalArr.map(val => {
-    //     const line = Global.maxHei - prevMax;
-    //     const curWidth = val.rectangle[3];
-    //     const width = (line - curWidth) / 2
-    //     val.transform[1] = width + prevMax
-    //   })
-    // }
+    let specialState = null;
+    let normalArr = [], len = 0;
+    lineObj.map((val, ind) => {
+      const special = val.texture.content.specialStyle
+      if (special == 'sup') {
+        const alignTop = this.alignTop(len)
+        len = alignTop;
+      } else if (special == 'sub') {
+        const alignBottom = this.alignBottom(len, val, prevMax, curMax)
+        len = alignBottom;
+      } else {
+        normalArr.push(val)
+        if (special == 'linethrough') {
+          this.lineThrough()
+        } else if (special == 'underline') {
+          this.underLine()
+        }
+      }
+    })
+    // 根据标签的状态更改剩余对象的y轴
+    if (len) {
+      normalArr.map(val => {
+        const line = Global.maxHei - prevMax;
+        const curWidth = val.rectangle[3];
+        const width = (line - curWidth) / 2
+        val.transform[1] = width + prevMax
+      })
+    }
   }
 }
