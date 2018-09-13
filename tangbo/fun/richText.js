@@ -6,13 +6,12 @@ import { splitTag } from './splitTag';
 import { traverseRTArr } from './traverseRTArr'
 
 export const richText = (child,resource,promiseArr) => {//富文本解析
-    
     let str=child.texture.content;
     str=toText(str);
     let tagArr=splitTag(str);
     let arr=traverseRTArr(tagArr)
     let brSw = 0 ;
-    arr.forEach(function(elem,i,arr){
+    arr.forEach(function(elem){
         let sw=true;
         let mobj = {};
         let robj = {};
@@ -23,13 +22,15 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             elem.content = elem.content.replace(/(&nbsp;)|(&copy;)/g,function(key){
                 if(key == "&nbsp;") return " ";
                 else if (key == "&copy;") return "©";
-
             })
             texture.content.text = elem.content;
-
             texture.type = 3;
             texture.content.style = elem.style || {};
             texture.content.specialStyle=elem.specialStyle || "normal";
+            if(elem.specialStyle){
+                console.log(texture.content.style)
+                console.log('specialStyle:---------------------->'+texture.content.specialStyle)
+            }
             mobj = new Text(texture);
         } else if (elem.type == 4) {//图片
             let imgObj = {};
@@ -48,7 +49,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                         imgObj.src = "." + src.slice(src.indexOf("com") + 3);
                     }
                     imgObj.name = src.slice(src.lastIndexOf('/') + 1,src.lastIndexOf('.')) + rid;
-                    imgObj.ext = imgObj.src.slice(imgObj.src.lastIndexOf(".") + 1 )
+                    imgObj.ext = imgObj.src.slice(imgObj.src.lastIndexOf(".") + 1 );
                 } else if (/^data-resourceId=/.test(prop)) {
                     imgObj.resourceId = prop.split("=")[1];
                 } else if (/^data-width=/.test(prop)) {
@@ -63,7 +64,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             imgObj.texture = texture;
             mobj = new mImage(imgObj);
         } else if(elem.type == 5){//br标签
-            brSw++;
+            brSw ++;
             // let length=child.children.length;
             // if (length > 0) child.children[length-1].isWrap = child.children[length-1].isWrap + 1;
         } else if(elem.type == 6){//公式
@@ -76,7 +77,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                 brSw = 0;
             }
             mobj = new mImage(config);
-            sw=false;
+            sw = false;
             child.children.push(mobj);
             let rectangle = child.children[child.children.length-1].rectangle;
             promiseArr.push(
@@ -90,7 +91,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             }
             child.children.push(mobj);
         }
-        if(robj.id != undefined ){resource.add(robj);console.log(robj.id)}
+        if(robj.id != undefined ) resource.add(robj);
     })
     child.texture = {
         content:"",
