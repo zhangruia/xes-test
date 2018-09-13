@@ -211,6 +211,7 @@ export class HandleText extends Common {
     }
   }
   firstObj (prev, current, parent) {
+    // current.force = true;
     const font = current.texture.content
     const size = font.hasOwnProperty('fontSize') ? font.fontSize : basic.common.fontSize
     // console.log('admiss前', Global.maxWid);
@@ -287,6 +288,15 @@ export class HandleText extends Common {
         Global.maxHei,
         Global.maxHei + super.max(Global.len))
     }
-    if (Global.forceWrap) super.vertical(this.arrays, this.maxHei, this.curMaxHei)
+    if (Global.forceWrap) {
+      super.vertical(this.arrays, this.maxHei, this.curMaxHei);
+      this.specialStyle(this.arrays, this.maxHei, Global.maxHei)
+    }
+  }
+  specialStyle (lineObj, prevMax, curMax) {
+    // console.log(lineObj);
+    // console.log(lineObj);
+    super.specialStyle(lineObj, prevMax, curMax)
+    // if (Global.forceWrap) super.vertical(this.arrays, this.maxHei, this.curMaxHei)
   }
 }
