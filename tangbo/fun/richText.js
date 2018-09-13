@@ -6,7 +6,7 @@ import { splitTag } from './splitTag';
 import { traverseRTArr } from './traverseRTArr'
 
 export const richText = (child,resource,promiseArr) => {//富文本解析
-    
+
     let str=child.texture.content;
     str=toText(str);
     let tagArr=splitTag(str);
@@ -90,7 +90,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             }
             child.children.push(mobj);
         }
-        if(robj.id != undefined ){resource.add(robj);console.log(robj.id)}
+        if(robj.id != undefined ){resource.add(robj);}
     })
     child.texture = {
         content:"",
