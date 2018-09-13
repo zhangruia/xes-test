@@ -22,6 +22,7 @@ export class HandleImg extends Common {
     const prevData = prevInformation(prev)
     Global.maxWid = basic.common.warpW - prevData.prevX - prevData.prevW
     let imgwid = current.rectangle[2]
+    console.log('图片大小：', imgwid, current.rectangle[3]);
     if (current.isWrap > 0) {
       Global.forceWrap = true
       this.arrays = Global.allPrev
@@ -41,6 +42,7 @@ export class HandleImg extends Common {
       this.maxHei = Global.maxHei
       this.curMaxHei = super.max(Global.len)
       Global.maxHei += super.max(Global.len)
+      Global.maxWid = basic.common.warpW;
       let max = super.max(Global.widthLen)
       Global.globalWid = (Global.globalWid <= max) ? max : Global.globalWid
       Global.len = []
@@ -53,7 +55,6 @@ export class HandleImg extends Common {
       this.arrays = null
       this.maxHei = 0
       this.curMaxHei = 0
-      Global.maxWid -= current.rectangle[2];
       super.handleWrap(current)
       Global.allPrev.push(current)
     }
@@ -69,12 +70,13 @@ export class HandleImg extends Common {
       Global.maxHei + super.max(Global.len)
     )
     if (Global.forceWrap) {
+
       super.vertical(this.arrays, this.maxHei, this.curMaxHei)
       this.specialStyle(this.arrays, this.maxHei, Global.maxHei)
     }
+    Global.maxWid -= item.rectangle[2];
   }
   specialStyle (lineObj, prevMax, curMax) {
     super.specialStyle(lineObj, prevMax, curMax)
-    // if (Global.forceWrap) super.vertical(this.arrays, this.maxHei, this.curMaxHei)
   }
 }

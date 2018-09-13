@@ -26,6 +26,8 @@ import resourceJsonC2 from "../static/resource_ceshi2";
 import resourceJsonC3 from "../static/resource_ceshi3";
 import resourceJsonC4 from "../static/resource_ceshi4";
 import {translate} from "../tangbo/index";
+import { Container } from 'xpixi-data'
+
 export default {
   name: 'App',
   components: {
@@ -42,7 +44,39 @@ export default {
      translate(mainJsonC2,resourceJsonC2).then((data)=>{
         getData(data.main)
        this.inFun(data.main,data.resource)
-       console.log(data.main)
+       // let current = JSON.parse(JSON.stringify(data.main.pages[0].children[2].children[0]))
+       // let cont = current.texture
+
+       // let a = new XPIXI.Container()
+       // let b = Object.assign(a, current)
+       // console.log(b);
+       // a.children = [{
+       //   conName: 'Text',
+       //   force: false,
+       //   isWrap: 0,
+       //   rectangle: [0, 0, 400, 50],
+       //   texture: cont,
+       //   transform: [100, 100, 0, 0, 0, 0]
+       // },
+       // {
+       //   conName: 'Graphics',
+       //   lineColor: 'red',
+       //   lineWidth: 200,
+       //   x: 100,
+       //   y: 50
+       // }];
+       // a.conName = "Container"
+       // a.force = false
+       // a.isWrap = 0
+       // a.transform = [0, 0, 0, 0, 0, 0]
+       // a.rectangle = [0, 0, 100, 100]
+       // a.texture = {
+       //   content: [],
+       //   type: 4
+       // }
+       // console.log(a);
+       // data.main.pages[0].children[2].children[0] = a
+
      });
   },
   methods:{

@@ -89,7 +89,7 @@ export class Common {
     len += 1;
     return len
   }
-  deleteLine () {
+  lineThrough () {
 
   }
   underLine () {
@@ -108,6 +108,11 @@ export class Common {
         len = alignBottom;
       } else {
         normalArr.push(val)
+        if (special == 'linethrough') {
+          this.lineThrough()
+        } else if (special == 'underline') {
+          this.underLine()
+        }
       }
     })
     // 根据标签的状态更改剩余对象的y轴
