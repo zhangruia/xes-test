@@ -7,7 +7,7 @@ export const splitTag=(str)=>{//切割富文本所有内容
     let sw = false;//控制存标签/内容
     let fsw = false;//控制公式存储
     let tagArr = [];//以对象格式，放入数组，存所有数据
-    let tagReg=/<(?=\/?(div|span|img|strong|p|i|b|br|font|s|u|a|footer|header|nav|h[1~6]))/;
+    let tagReg=/<(?=\/?(div|span|img|strong|p|i|b|br|font|s|u|a|footer|header|nav|h[1~6]|del))/;
     for (let i = 0,length=str.length;i<length;i++){
         let key=str[i];
         if(key=="$" && str[i+1]=="$"){
