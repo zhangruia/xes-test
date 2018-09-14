@@ -69,6 +69,7 @@ export default {
        // }, 5000)
        getData(data.main)
        this.inFun(data.main,data.resource)
+       // console.log(data.main.pages[0].children[2].children);
      });
   },
   methods:{

@@ -28,8 +28,8 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             texture.content.style = elem.style || {};
             texture.content.specialStyle=elem.specialStyle || "normal";
             if(elem.specialStyle){
-                console.log(texture.content.style)
-                console.log('specialStyle:---------------------->'+texture.content.specialStyle)
+                // console.log(texture.content.style)
+                // console.log('specialStyle:---------------------->'+texture.content.specialStyle)
             }
             mobj = new Text(texture);
         } else if (elem.type == 4) {//图片
