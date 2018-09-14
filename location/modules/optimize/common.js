@@ -90,10 +90,10 @@ export class Common {
     return len
   }
   lineThrough () {
-
+    console.log('删除线');
   }
   underLine () {
-
+    console.log('下划线');
   }
   specialStyle (lineObj, prevMax, curMax) {
     let specialState = null;
