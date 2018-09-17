@@ -26,7 +26,8 @@
     "fontpadleft": 0,
     "fontpadtop": 0,
     "sub": 10,
-    "lineH": 40
+    "lineH": 40,
+    "lineTop": 5
   },
   "fillvacancy": {
     "submitX": 1650,

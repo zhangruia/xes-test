@@ -66,7 +66,6 @@ export class HandleText extends Common {
     return wid
   }
   admissible (current, maxWid) {
-    // console.log(current.texture.content.text, maxWid, 'hhhhhhhhhhhh');
     let accomm = '', // 可容纳内容
         residue = ''; // 需要剪裁内容
     let wid = 0;
@@ -113,7 +112,7 @@ export class HandleText extends Common {
       }
     }
     Global.maxWid -= wid;
-    // console.log('切割之后：', Global.maxWid);
+    // console.log('切割之后：', Global.maxWid, wid);
     return {
       accomm: accomm,
       residue: residue,
@@ -230,14 +229,12 @@ export class HandleText extends Common {
     const font = current.texture.content;
     const size = (font.hasOwnProperty('style') && font.style.hasOwnProperty('fontSize')) ?
     font.style.fontSize : basic.common.fontSize;
-    // console.log('admiss前', Global.maxWid);
     // 对当前对象进行切割，不切割并且要换行 将换行标识改为true
     if (current.isWrap > 0) {
       Global.maxWid = basic.common.warpW;
       // console.log('isWrap换行：', Global.maxWid);
     }
     const admiss = this.admissible(current, Global.maxWid)
-    // console.log(admiss, Global.maxWid);
     Global.forceWrap = current.force;
     // 给当前对象添加fontSize
     this.addFontSize(current)
@@ -280,6 +277,7 @@ export class HandleText extends Common {
 
   }
   transform (prev, current, parent) {
+    // console.log(prev?prev.texture.content:prev);
     if (prev) {
       this.isWrap(prev, current, parent)
       super.setTransform(
@@ -288,8 +286,6 @@ export class HandleText extends Common {
         Global.forceWrap,
         Global.maxHei,
         Global.maxHei + super.max(Global.len))
-        // console.log('-------------------------------------');
-        // console.log('-------------------------------------');
     } else {
       this.firstObj(prev, current, parent)
       super.setTransform(
@@ -298,15 +294,13 @@ export class HandleText extends Common {
         true,
         Global.maxHei,
         Global.maxHei + super.max(Global.len))
-        // console.log('-------------------------------------');
-        // console.log('-------------------------------------');
     }
     if (Global.forceWrap) {
       super.vertical(this.arrays, this.maxHei, this.curMaxHei);
-      this.specialStyle(this.arrays, this.maxHei, Global.maxHei)
+      this.specialStyle(this.arrays, this.maxHei, Global.maxHei, parent)
     }
   }
-  specialStyle (lineObj, prevMax, curMax) {
-    super.specialStyle(lineObj, prevMax, curMax)
+  specialStyle (lineObj, prevMax, curMax, parent) {
+    super.specialStyle(lineObj, prevMax, curMax, parent)
   }
 }
