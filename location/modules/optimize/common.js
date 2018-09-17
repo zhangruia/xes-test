@@ -89,16 +89,45 @@ export class Common {
     len += 1;
     return len
   }
-  lineThrough () {
-
+  lineThrough (parent, val, curMax) {
+    this.findAddChildIndex(parent, val, curMax)
   }
-  underLine () {
-
+  underLine (parent, val, curMax) {
+    // this.findAddChildIndex(parent, val, curMax)
   }
-  specialStyle (lineObj, prevMax, curMax) {
+  findAddChildIndex (parent, val, curMax, coorW, coorY) {
+    const childs = parent.children;
+    let newContainer = new PIXI.Container();
+
+    const text = new XPIXI.Text({
+      conName: 'Text',
+      force: val.force,
+      isWrap: val.isWrap,
+      texture: val.texture,
+      rectangle: val.rectangle,
+      transform: val.transform
+    });
+    let graphics = new PIXI.Graphics()
+    graphics.lineStyle(2, 0x000000, 2);
+    graphics.moveTo(val.transform[0], coorY);
+    graphics.lineTo(coorW, coorY); // 线宽 = 文本宽度 + x坐标 、y的弧度
+
+    newContainer.addChild(text)
+    newContainer.addChild(graphics)
+    childs.map((item, ind) => {
+      if (val.texture.content.text === item.texture.content.text) {
+        Global.graphics.push({
+          ind: ind,
+          newContainer: newContainer
+        })
+      }
+    })
+  }
+  specialStyle (lineObj, prevMax, curMax, parent) {
     let specialState = null;
     let normalArr = [], len = 0;
     lineObj.map((val, ind) => {
+      // console.log(val.texture.content.text, ind);
       const special = val.texture.content.specialStyle
       if (special == 'sup') {
         const alignTop = this.alignTop(len)
@@ -108,10 +137,13 @@ export class Common {
         len = alignBottom;
       } else {
         normalArr.push(val)
-        if (special == 'linethrough') {
-          this.lineThrough()
+        const coorW = val.rectangle[2] + val.transform[0]
+        if (special == 'line-through') {
+          const coorY = val.transform[1] + (val.rectangle[3] / 2)
+          this.findAddChildIndex(parent, val, curMax, coorW, coorY)
         } else if (special == 'underline') {
-          this.underLine()
+          const coorY = val.transform[1] + val.rectangle[3] + basic.common.lineTop
+          this.findAddChildIndex(parent, val, curMax, coorW, coorY)
         }
       }
     })

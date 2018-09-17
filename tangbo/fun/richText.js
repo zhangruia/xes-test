@@ -51,7 +51,7 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                     imgObj.name = src.slice(src.lastIndexOf('/') + 1,src.lastIndexOf('.')) + rid;
                     imgObj.ext = imgObj.src.slice(imgObj.src.lastIndexOf(".") + 1 );
                 } else if (/resourceId=/.test(prop)) {
-                    imgObj.resourceId = prop.split("=")[1];                                                                  
+                    imgObj.resourceId = prop.split("=")[1];
                 } else if (/width=/.test(prop)) {
                     imgObj.width = parseInt(prop.split("=")[1]);
                 } else if (/height=/.test(prop)) {

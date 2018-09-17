@@ -28,6 +28,7 @@ import resourceJsonC4 from "../static/resource_ceshi4";
 // import {translate} from "../tangbo/index";
 import { translate } from "xes-json-richtext";
 import { Container } from 'xpixi-data';
+import  Global  from '../location/modules/optimize/global.json'
 
 export default {
   name: 'App',
@@ -36,51 +37,16 @@ export default {
   },
   data(){
     return{
-      showPage: false, 
+      showPage: false,
       rootStageObj: {},
       listJson: null
     }
   },
   created(){
-     translate(mainJsonC2,resourceJsonC2).then((data)=>{
-        getData(data.main)
-        console.log(data.main)
-        console.log(data.resource)
-       this.inFun(data.main,data.resource)
-       // let current = JSON.parse(JSON.stringify(data.main.pages[0].children[2].children[0]))
-       // let cont = current.texture
-       
-       // let a = new XPIXI.Container()
-       // let b = Object.assign(a, current)
-       // console.log(b);
-       // a.children = [{
-       //   conName: 'Text',
-       //   force: false,
-       //   isWrap: 0,
-       //   rectangle: [0, 0, 400, 50],
-       //   texture: cont,
-       //   transform: [100, 100, 0, 0, 0, 0]
-       // },
-       // {
-       //   conName: 'Graphics',
-       //   lineColor: 'red',
-       //   lineWidth: 200,
-       //   x: 100,
-       //   y: 50
-       // }];
-       // a.conName = "Container"
-       // a.force = false
-       // a.isWrap = 0
-       // a.transform = [0, 0, 0, 0, 0, 0]
-       // a.rectangle = [0, 0, 100, 100]
-       // a.texture = {
-       //   content: [],
-       //   type: 4
-       // }
-       // console.log(a);
-       // data.main.pages[0].children[2].children[0] = a
-
-     });
+    translate(mainJsonC2,resourceJsonC2).then((data)=>{
+      getData(data.main)
+      this.inFun(data.main,data.resource)
+    });
   },
   methods:{
      inFun(main,resource) {
@@ -97,6 +63,11 @@ export default {
           window.abc = this.rootStageObj
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
+          const graphics = Global.graphics
+          graphics.map(val => {
+            window.abc.children[2].addChildAt(val.newContainer, val.ind)
+            window.abc.children[2].children.splice(val.ind+1, 1)
+          })
         }
       );
     },
