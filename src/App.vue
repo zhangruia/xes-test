@@ -25,8 +25,9 @@ import resourceJsonC1 from "../static/resource_ceshi1";
 import resourceJsonC2 from "../static/resource_ceshi2";
 import resourceJsonC3 from "../static/resource_ceshi3";
 import resourceJsonC4 from "../static/resource_ceshi4";
-import {translate} from "../tangbo/index";
-import { Container } from 'xpixi-data'
+// import {translate} from "../tangbo/index";
+import { translate } from "xes-json-richtext";
+import { Container } from 'xpixi-data';
 
 export default {
   name: 'App',
