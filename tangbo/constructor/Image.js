@@ -15,7 +15,7 @@ export class mImage{
         this.conName = 'Sprite';
         this.texture = config.texture;
         this.isWrap = config.isWarp || 0;
-        this.rectangle = [0,0,config.width ? config.width : 0,config.height ? config.height : 0];
+        this.rectangle = [0,0,config.width ? config.width : 100,config.height ? config.height : 100];
         this.transform = [300, 660, 1, 1, 0, 0, 0, 0, 0];
     }
 }

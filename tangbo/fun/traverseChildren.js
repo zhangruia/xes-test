@@ -1,14 +1,14 @@
 import { richText } from './richText';
-import { getConName, toText } from '../common/common'
+import { getConName, toText } from '../commonFun/common'
 import { styleTransform } from './changeStyle'
 export const traverseChildren=(children,resource,promiseArr)=>{
     //遍历children
     for(let i in children){
         let child = children[i];
-        children[i].rectangle=[0,0,0,0];
-        children[i].transform=[0,0,0,0,0,0,0,0,0];
+        children[i].rectangle = [0,0,0,0];
+        children[i].transform = [0,0,0,0,0,0,0,0,0];
         let content = child.texture.content;
-        if(content)children[i].content=toText(content);
+        if(content) children[i].content=toText(content);
         let textureType = children[i].texture.type;
         styleTransform(children[i].texture.style);
         let conName = getConName(child);

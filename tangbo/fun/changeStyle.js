@@ -60,7 +60,7 @@ export const addStyle = (newTag,tagObj,pFontSize = 16) => {//识别特殊标签 
   }else if(newTag.indexOf("<u") != -1 || newTag.indexOf("<ins") != -1){
       tagObj.style.textDecoration = "underline";
   }else if(newTag.indexOf("<del") != -1){
-      tagObj.style.textDecoration = "line-through;";
+      tagObj.style.textDecoration = "line-through";
   }else if(newTag.indexOf("<h1") != -1){
       tagObj.style.fontWeight = "bold";
       tagObj.style.fontSize = 2 * pFontSize;

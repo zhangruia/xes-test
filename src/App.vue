@@ -35,7 +35,7 @@ export default {
   },
   data(){
     return{
-      showPage: false,
+      showPage: false, 
       rootStageObj: {},
       listJson: null
     }
@@ -43,10 +43,12 @@ export default {
   created(){
      translate(mainJsonC2,resourceJsonC2).then((data)=>{
         getData(data.main)
+        console.log(data.main)
+        console.log(data.resource)
        this.inFun(data.main,data.resource)
        // let current = JSON.parse(JSON.stringify(data.main.pages[0].children[2].children[0]))
        // let cont = current.texture
-
+       
        // let a = new XPIXI.Container()
        // let b = Object.assign(a, current)
        // console.log(b);

@@ -22,7 +22,7 @@ export class HandleImg extends Common {
     const prevData = prevInformation(prev)
     Global.maxWid = basic.common.warpW - prevData.prevX - prevData.prevW
     let imgwid = current.rectangle[2]
-    console.log('图片大小：', imgwid, current.rectangle[3]);
+    // console.log('图片大小：', imgwid, current.rectangle[3]);
     if (current.isWrap > 0) {
       Global.forceWrap = true
       this.arrays = Global.allPrev

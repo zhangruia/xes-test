@@ -15,7 +15,7 @@ export  const traverseRTArr=(tagArr)=>{//处理splitTag.js返回的数组
         if(type == 1 || type == 2){
           //可添加新的标签
             findArr.push(elem.tag);
-            styleArr.push(elem.style)
+            styleArr.push(elem.style);
         }else if(type == 0){
             findArr.pop();
             styleArr.pop();
