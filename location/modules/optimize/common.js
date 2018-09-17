@@ -95,45 +95,39 @@ export class Common {
   underLine (parent, val, curMax) {
     // this.findAddChildIndex(parent, val, curMax)
   }
-  findAddChildIndex (parent, val, curMax) {
-    const childs = parent.children,
-          style = val.texture.content.style,
-          width = val.rectangle[2]; // 文本的宽度
+  findAddChildIndex (parent, val, curMax, coorW, coorY) {
+    const childs = parent.children;
+    let newContainer = new PIXI.Container();
 
-    let len = 0, // 线的个数
-        lineWid = null,
-        newObj = JSON.parse(JSON.stringify(val)); // 将线转给一个新的对象
+    const text = new XPIXI.Text({
+      conName: 'Text',
+      force: val.force,
+      isWrap: val.isWrap,
+      texture: val.texture,
+      rectangle: val.rectangle,
+      transform: val.transform
+    });
+    let graphics = new PIXI.Graphics()
+    graphics.lineStyle(2, 0x000000, 2);
+    graphics.moveTo(val.transform[0], coorY);
+    graphics.lineTo(coorW, coorY); // 线宽 = 文本宽度 + x坐标 、y的弧度
 
-    newObj.force = false;
-    newObj.isWrap = 0;
-    newObj.texture.content.text = ''; // 置空
-    newObj.line = true; // 给线添加一个特殊标识
-    const special = val.texture.content.specialStyle
-    if (special == 'underline') {
-      lineWid = style.fontSize ? (style.fontSize) * 0.6 : basic.common.fontSize * 0.6
-    } else {
-      lineWid = style.fontSize ? (style.fontSize) * 0.35 : basic.common.fontSize * 0.35
-    } // 线宽
-
+    newContainer.addChild(text)
+    newContainer.addChild(graphics)
     childs.map((item, ind) => {
       if (val.texture.content.text === item.texture.content.text) {
-        for (let i = lineWid * len; i < width; i += 1) {
-          if (lineWid * len < width) {
-            len += 1;
-            if (special == 'line-through;') newObj.texture.content.text += '-'
-            else if (special == 'underline') newObj.texture.content.text += '_'
-          }
-        }
-        parent.children.splice(ind + 1, 0, newObj)
-        console.log(item.texture.content.text, ind, parent, 'parent');
+        Global.graphics.push({
+          ind: ind,
+          newContainer: newContainer
+        })
       }
     })
-    // console.log(parent);
   }
   specialStyle (lineObj, prevMax, curMax, parent) {
     let specialState = null;
     let normalArr = [], len = 0;
     lineObj.map((val, ind) => {
+      // console.log(val.texture.content.text, ind);
       const special = val.texture.content.specialStyle
       if (special == 'sup') {
         const alignTop = this.alignTop(len)
@@ -141,17 +135,15 @@ export class Common {
       } else if (special == 'sub') {
         const alignBottom = this.alignBottom(len, val, prevMax, curMax)
         len = alignBottom;
-      } else if (special == 'line-through;') {
-        console.log(11111111);
-        
       } else {
         normalArr.push(val)
+        const coorW = val.rectangle[2] + val.transform[0]
         if (special == 'line-through;') {
-          // this.lineThrough(parent, val, curMax)
-          this.findAddChildIndex(parent, val, curMax)
+          const coorY = val.transform[1] + (val.rectangle[3] / 2)
+          this.findAddChildIndex(parent, val, curMax, coorW, coorY)
         } else if (special == 'underline') {
-          // this.underLine(parent, val, curMax)
-          // this.findAddChildIndex(parent, val, curMax)
+          const coorY = val.transform[1] + val.rectangle[3] + basic.common.lineTop
+          this.findAddChildIndex(parent, val, curMax, coorW, coorY)
         }
       }
     })

@@ -8,16 +8,12 @@ export const richText = (child, parent) => {
   Global.maxWid = basic.common.warpW; // 初始状态
   for(let i = 0; i < child.length; i += 1){
     let item = child[i], index = i;
-    console.log(item.texture.content, index);
+    // console.log(item.texture.content, index);
     // console.log(child);
-    console.log('-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-==-==-=-=-=');
+    // console.log('-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-==-==-=-=-=');
     if (item.conName === 'Text') {
       item['force'] = (item.hasOwnProperty('force') && item.force == true) ? true : false;
-      if (item.hasOwnProperty('line')) {
-        // console.log(11111111);
-        // return;
-        // console.log(item.);
-      } else if (child[index - 1] && child[index - 1].hasOwnProperty('line')) {
+      if (child[index - 1] && child[index - 1].hasOwnProperty('line')) {
         new HandleText(child[index - 2], item, parent);
       } else {
         new HandleText(child[index - 1], item, parent);
@@ -47,5 +43,5 @@ export const richText = (child, parent) => {
   // 设置富文本对象的外层数据
   new Common().setRectangle(parent,Global.globalWid, Global.maxHei + Math.max.apply(Math,Global.len))
   parent.transform[0] = 200
-  parent.transform[1] = 0
+  parent.transform[1] = 100
 }

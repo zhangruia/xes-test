@@ -27,7 +27,7 @@ import resourceJsonC3 from "../static/resource_ceshi3";
 import resourceJsonC4 from "../static/resource_ceshi4";
 import {translate} from "../tangbo/index";
 import { Container } from 'xpixi-data'
-// let a = null
+import  Global  from '../location/modules/optimize/global.json'
 
 export default {
   name: 'App',
@@ -42,35 +42,10 @@ export default {
     }
   },
   created(){
-     translate(mainJsonC2,resourceJsonC2).then((data)=>{
-       // let current = JSON.parse(JSON.stringify(data.main.pages[0].children[2].children[0]))
-       // let cont = current.texture
-
-       // a = new XPIXI.Container(
-         // {
-         //   transform: [0, 0, 0, 0, 0, 0]
-         // }
-       // )
-       // let text = new XPIXI.Text({
-       //   conName: 'Text',
-       //   texture: cont,
-       //   rectangle: [0, 0, 400, 50],
-       //   transform: [100, 100, 0, 0, 0, 0]
-       // })
-       // let g = new PIXI.Graphics()
-       // g.lineColor = 'red'
-       // g.lineWidth = 200
-       // g.x = 100
-       // g.y = 50
-       // a.addChild(text)
-       // a.addChild(g)
-       // setTimeout(() => {
-       //   console.log(111111);
-       // }, 5000)
-       getData(data.main)
-       this.inFun(data.main,data.resource)
-       // console.log(data.main.pages[0].children[2].children);
-     });
+    translate(mainJsonC2,resourceJsonC2).then((data)=>{
+      getData(data.main)
+      this.inFun(data.main,data.resource)
+    });
   },
   methods:{
      inFun(main,resource) {
@@ -87,8 +62,11 @@ export default {
           window.abc = this.rootStageObj
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
-          // window.abc.children[2].children.unshift(a)
-          // console.log(window.abc.children[2]);
+          const graphics = Global.graphics
+          graphics.map(val => {
+            window.abc.children[2].addChildAt(val.newContainer, val.ind)
+            window.abc.children[2].children.splice(val.ind+1, 1)
+          })
         }
       );
     },

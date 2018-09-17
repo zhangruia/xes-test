@@ -6,7 +6,6 @@ export const getData = function (pages) {
     if (value.conName === 'Container') {
       const child = value.children
       richText(child, value)
-      console.log(value);
     }
   })
 }
