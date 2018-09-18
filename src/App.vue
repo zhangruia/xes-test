@@ -23,10 +23,10 @@ import resourceJsonC1 from "../static/resource_ceshi1";
 import resourceJsonC2 from "../static/resource_ceshi2";
 import resourceJsonC3 from "../static/resource_ceshi3";
 import resourceJsonC4 from "../static/resource_ceshi4";
-import { getData } from '../location/optimize/index'
-import {translate} from "../tangbo/index";
-import { Container } from 'xpixi-data'
-import  Global  from '../location/optimize/feature/json/global.json'
+import { getData, GlobalData } from 'xes-json-renders';
+import {translate} from "xes-json-richtext";
+import { Container } from 'xpixi-data';
+// import  Global  from '../location/optimize/feature/json/global.json';
 
 export default {
   name: 'App',
@@ -61,7 +61,7 @@ export default {
           window.abc = this.rootStageObj
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
-          const graphics = Global.graphics
+          const graphics = GlobalData.graphics
           graphics.map(val => {
             window.abc.children[2].addChildAt(val.newContainer, val.ind)
             window.abc.children[2].children.splice(val.ind+1, 1)
