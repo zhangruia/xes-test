@@ -1,8 +1,8 @@
 import { HandleText } from './handleText'
 import { HandleImg } from './handleImg'
 import { Common } from './common'
-import Global from './global.json'
-import basic from '../../common/basic.json'
+import Global from './json/global.json'
+import basic from './json/basic.json'
 
 export const richText = (child, parent) => {
   Global.maxWid = basic.common.warpW; // 初始状态

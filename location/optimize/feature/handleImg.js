@@ -1,7 +1,7 @@
 import { Common } from './common'
-import Global from './global.json'
-import basic from '../../common/basic.json'
-import { prevInformation } from './information/prevInformation'
+import Global from './json/global.json'
+import basic from './json/basic.json'
+import { prevInformation } from '../information/prevInformation'
 
 export class HandleImg extends Common {
   constructor (prev, item, parent) {

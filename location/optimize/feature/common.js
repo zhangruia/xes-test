@@ -1,5 +1,5 @@
-import Global from './global.json'
-import basic from '../../common/basic.json'
+import Global from './json/global.json'
+import basic from './json/basic.json'
 
 export class Common {
   constructor () {

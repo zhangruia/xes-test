@@ -1,6 +1,6 @@
 import { Common } from './common'
 import Global from './global.json'
-import basic from '../../common/basic.json'
+import basic from './basic.json'
 
 export class HandleText extends Common {
   constructor (prev, item, parent) {

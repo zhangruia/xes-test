@@ -13,8 +13,6 @@ require('xes-ligature');
 import {canvasStage} from 'xes_canvas_renderer';
 import { PixiExporter } from "xeditor-convertor";
 import {pageSizeFun} from "../static/preload";
-import { ergodic } from '../location/index'
-import { getData } from '../location/modules/optimize/index'
 import mainJson1 from "../static/main1";
 import resourceJson1 from "../static/resource1";
 import mainJsonC1 from "../static/main_ceshi1";
@@ -25,9 +23,10 @@ import resourceJsonC1 from "../static/resource_ceshi1";
 import resourceJsonC2 from "../static/resource_ceshi2";
 import resourceJsonC3 from "../static/resource_ceshi3";
 import resourceJsonC4 from "../static/resource_ceshi4";
+import { getData } from '../location/optimize/index'
 import {translate} from "../tangbo/index";
 import { Container } from 'xpixi-data'
-import  Global  from '../location/modules/optimize/global.json'
+import  Global  from '../location/optimize/feature/json/global.json'
 
 export default {
   name: 'App',
