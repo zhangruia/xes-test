@@ -13,8 +13,6 @@ require('xes-ligature');
 import {canvasStage} from 'xes_canvas_renderer';
 import { PixiExporter } from "xeditor-convertor";
 import {pageSizeFun} from "../static/preload";
-import { ergodic } from '../location/index'
-import { getData } from '../location/modules/optimize/index'
 import mainJson1 from "../static/main1";
 import resourceJson1 from "../static/resource1";
 import mainJsonC1 from "../static/main_ceshi1";
@@ -25,10 +23,10 @@ import resourceJsonC1 from "../static/resource_ceshi1";
 import resourceJsonC2 from "../static/resource_ceshi2";
 import resourceJsonC3 from "../static/resource_ceshi3";
 import resourceJsonC4 from "../static/resource_ceshi4";
-// import {translate} from "../tangbo/index";
-import { translate } from "xes-json-richtext";
 import { Container } from 'xpixi-data';
-import  Global  from '../location/modules/optimize/global.json'
+import { getData, GlobalData } from 'xes-json-renders'
+import { translate } from "xes-json-richtext";
+// import { translate } from "../tangbo/index"
 
 export default {
   name: 'App',
@@ -45,6 +43,8 @@ export default {
   created(){
     translate(mainJsonC2,resourceJsonC2).then((data)=>{
       getData(data.main)
+      console.log(data.main)
+      console.log(data.resource)
       this.inFun(data.main,data.resource)
     });
   },
@@ -54,8 +54,8 @@ export default {
         main,
         resource,
         (current, all) => {
-          // console.log("资源加载个数：" + current);
-          // console.log("资源总个数：" + all);
+          console.log("资源加载个数：" + current);
+          console.log("资源总个数：" + all);
         },
 
         () => {
@@ -63,7 +63,7 @@ export default {
           window.abc = this.rootStageObj
           pageSizeFun(document, window,pixi.pixiApp.stage.width,pixi.pixiApp.stage.height);
           this.showPage=true;
-          const graphics = Global.graphics
+          const graphics = GlobalData.graphics
           graphics.map(val => {
             window.abc.children[2].addChildAt(val.newContainer, val.ind)
             window.abc.children[2].children.splice(val.ind+1, 1)

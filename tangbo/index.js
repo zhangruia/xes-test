@@ -34,6 +34,7 @@ export const  translate=(main,resourceJson)=>{
             let obj={};
             obj.main=data[promiseArr.length-1];
             obj.resource=data[promiseArr.length-2].resource;
+            obj.resource.isAbsolutePath = true;
             return obj;
         })
     }else{

@@ -59,7 +59,9 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
                 }
             }
             robj = new rImage(imgObj);
-            texture.content = [rid];
+            texture.content = {
+                default: rid
+            };
             texture.type = 4;
             imgObj.texture = texture;
             if(brSw != 0 ){
@@ -79,7 +81,9 @@ export const richText = (child,resource,promiseArr) => {//富文本解析
             brSw ++;
         } else if(elem.type == 6){//公式
             let rid = newId();
-            texture.content = [rid];
+            texture.content = {
+                default: rid
+            };
             texture.type = 4;
             config.texture = texture;
             if(brSw != 0 ){
