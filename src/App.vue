@@ -43,7 +43,7 @@ export default {
   created(){
     translate(mainJsonC2,resourceJsonC2).then((data)=>{
       getData(data.main)
-      console.log(data.main);
+      // console.log(data.main);
       this.inFun(data.main,data.resource)
     });
   },
